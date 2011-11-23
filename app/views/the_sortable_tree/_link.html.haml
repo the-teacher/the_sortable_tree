@@ -1,0 +1,10 @@
+- if opts[:admin]
+  - handle=   content_tag :div, raw("&nbsp;"), :class => :handle
+  - link=     link_to(node.title, url_for(node), :title => node.title)
+  - content=  raw(handle.to_s) + controls + link
+  %div{ :class => "link#{' root' if root}" }
+    = content
+- else
+  %div{:class => "link #{"root" if root}"}
+    = link_to(node.title, polymorphic_path(node), :title => node.title)
+

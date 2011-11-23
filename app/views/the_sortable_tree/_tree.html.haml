@@ -1,0 +1,5 @@
+= render :partial => "#{opts[:path]}/on_ready_js"
+= render :partial => "#{opts[:path]}/on_update_js"
+= render :partial => "#{opts[:path]}/sortable_tree_ajax", :locals => { :opts => opts }
+%ol.sortable.ui-sortable.nested_set{ :id => "#{opts[:klass]}_nested_set" }
+  = raw tree

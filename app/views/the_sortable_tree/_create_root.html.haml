@@ -1,0 +1,3 @@
+- image=  image_tag('iconza/blue/add.png', :class => :root_create_image) + raw('&nbsp;')
+- link=   link_to(image + raw(t("#{klass}.new")), url_for(:controller => klass, :action => :new))
+.root_create_link= link

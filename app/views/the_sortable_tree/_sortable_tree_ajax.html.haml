@@ -1,0 +1,21 @@
+:javascript
+  function sortable_tree(item_id, parent_id, prev_id, next_id){
+    jQuery.ajax({
+      type: 'POST',
+      url: '#{opts[:rebuild_url]}',
+      data: { id: item_id,
+              parent_id: parent_id,
+              prev_id: prev_id,
+              next_id: next_id },
+      dataType: 'script',
+      beforeSend: function(xhr){
+        //$('##{opts[:klass]}_nested_set .handle').hide();
+      },
+      success: function(data, status, xhr){
+        //$('##{opts[:klass]}_nested_set .handle').show();
+      },
+      error: function(xhr, status, error){
+        alert(error);
+      }
+    });
+  }
