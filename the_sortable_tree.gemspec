@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Ilya N. Zykin"]
   s.email       = ["zykin-ilya@ya.ru"]
   s.homepage    = "https://github.com/the-teacher/the_sortable_tree"
-  s.summary     = %q{Sortable GUI for nested_set gem! Rails 3.1+}
-  s.description = %q{Sortable GUI for nested_set gem! Rails 3.1+}
+  s.summary     = %q{Drug&Drop GUI for nested_set gem. Sortable tree view helper}
+  s.description = %q{Drug&Drop GUI for nested_set gem. Sortable tree view helper}
 
   s.rubyforge_project = "the_sortable_tree"
 

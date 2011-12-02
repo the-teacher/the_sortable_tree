@@ -5,28 +5,16 @@ module TheSortableTreeHelper
   # github.com/the-teacher
   #-------------------------------------------------------------------------------------------------------
   
-  def define_class_name(tree, options)
-    klass = nil
-    if options.key? [:class_name]
-      symbolic = options[:class_name].is_a?(String) || options[:class_name].is_a?(Symbol)
-      klass = options[:class_name].to_s if symbolic
-      klass = options[:class_name].class.to_s unless symbolic
-    else
-      klass = tree.first.class.to_s.downcase 
-    end
-    klass.to_s
-  end
   # = sortable_tree(@pages)
-  # = sortable_tree(@pages, :class_name => 'Pages', :id_field => :zip, :clean => false, :admin => true)
+  # = sortable_tree @products, :klass => :product, :path => 'products/the_sortable_tree', :rebuild_url => rebuild_products_path
 
   def create_root_element_link(options= {})
     opts= {:top_root => false}.merge!(options)
-    render :partial  =>  "#{opts[:path]}/create_root", :locals  =>  { :opts  =>  opts }
+    render :partial  =>  "#{opts[:path]}/new", :locals  =>  { :opts  =>  opts }
   end
 
   def ans_controls(node, options= {})
     opts= {
-      :class_name => nil,   # class of nested elements
       :id_field => 'id',    # id field name, id by default
       :first => false,      # first element flag
       :last => false,       # last element flag
@@ -36,9 +24,10 @@ module TheSortableTreeHelper
   end
 
   def sortable_tree(tree, options= {})
-    path = options[:path] || 'the_sortable_tree'
-    klass = define_class_name(tree, options)
-    tree = sortable_tree_bilder(tree, options.merge!({:path => path, :class_name => klass, :klass => klass}))
+    path = 'the_sortable_tree'
+    path = options[:path] if options[:path] && File.directory?([Rails.root, :app, :views, options[:path]].join '/')
+    klass = options[:klass].to_s
+    tree = sortable_tree_bilder(tree, options.merge!({:path => path, :klass => klass}))
     render :partial => "#{path}/tree", :locals => { :tree => tree, :opts => options }
   end
 
@@ -49,7 +38,6 @@ module TheSortableTreeHelper
       :admin => true,       # render admin tree?
       :root => false,       # is it root node? 
       :id_field => 'id',    # id field name, id by default
-      :class_name => nil,   # class of nested elements
       :first => false,      # first element flag
       :last => false,       # last element flag
       :level =>  0,         # recursion level
