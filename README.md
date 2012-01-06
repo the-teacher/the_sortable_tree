@@ -59,23 +59,36 @@ resources :pages do
 end
 ```
 
-**manage** action or anyone else action for show sortable tree
+**manage** action or any else action for show sortable tree
 
 **rebuild** action is _required_ action for correctly work of **the_sortable_tree**
 
 ### Find your tree
 
 ``` ruby
-def manage
-  @pages = Page.nested_set.all
+class PagesController < ApplicationController
+  include TheSortableTreeController::Rebuild
+
+  def manage
+    @pages = Page.nested_set.all
+  end
+
+  # any code here
 end
+
 ```
 
 or 
 
 ``` ruby
-def manage
-  @pages = Page.reversed_nested_set.all
+class PagesController < ApplicationController
+  include TheSortableTreeController::ReversedRebuild
+
+  def manage
+    @pages = Page.reversed_nested_set.all
+  end
+  
+  # any code here
 end
 ```
 
