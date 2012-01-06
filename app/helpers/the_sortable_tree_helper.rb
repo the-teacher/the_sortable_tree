@@ -93,7 +93,7 @@ module TheSortableTreeHelper
       # build views
       childs_res= childs_res.blank? ? '' : render(:partial => "#{opts[:path]}/nested_set", :locals => {:opts => opts, :parent => node, :childs => childs_res})
       link= render(:partial => "#{opts[:path]}/link", :locals => {:opts => opts, :node => node, :root => root, :controls => controls})
-      res= render(:partial => "#{opts[:path]}/nested_set_item",  :locals => {:opts => opts, :node => node, :link => link, :childs => childs_res})
+      res= render(:partial => "#{opts[:path]}/item",  :locals => {:opts => opts, :node => node, :link => link, :childs => childs_res})
 
       # delete current node from tree if you want
       # recursively moving by tree is 25%+ faster on 500 elems
