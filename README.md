@@ -2,6 +2,8 @@
 
 Engine Based GUI for nested_set gem. Rails 3+
 
+![TheSortableTree](./pic.jpg)
+
 **sortable_tree** - recursive helper-method for render sortable nested_set tree.
 
 **sortable_tree** uses partials for rendering, that's why it is **so easy to customize**!
