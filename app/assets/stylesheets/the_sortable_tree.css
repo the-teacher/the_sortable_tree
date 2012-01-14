@@ -54,14 +54,14 @@
   margin:0 0 0 3px;
   cursor:pointer;
 }
-.root_create_image{
+.nested_set_new_image{
   vertical-align:middle;
   border:none;
 }
-.root_create_link{
+.nested_set_new{
   margin:25px 0;
 }
-.root_create_link a{
+.nested_set_new a{
   font-size:14pt;
 }
 .nested_set .handle{
