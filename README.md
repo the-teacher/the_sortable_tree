@@ -8,6 +8,12 @@ Engine Based GUI for awesome_nested_set gem. Rails 3+
 
 **sortable_tree** uses partials for rendering, that's why it is **so easy to customize**!
 
+### Is it fast?
+
+Hmmmm...
+Development env, 584 elements, 3 levels deep - rendered by 50 sec.
+I think it is good result.
+
 ### Install
 
     gem 'the_sortable_tree'
@@ -26,7 +32,6 @@ bundle
 
 ``` ruby
 class Page < ActiveRecord::Base
-  # SCOPES FOR SORTABLE NESTED SET
   include TheSortableTree::Scopes
   # any code here
 end
@@ -102,7 +107,7 @@ end
 - content_for :js do
   = javascript_include_tag 'jquery.ui.nestedSortable'
 
-= sortable_tree @pages, :klass => :page, :rebuild_url => rebuild_pages_path
+= sortable_tree @pages, :new_url => new_page_path, :max_levels => 4
 ```
 
 ### Customize
@@ -148,7 +153,7 @@ create  app/views/pages/the_sortable_tree/_tree.html.haml
 Customize and use it!
 
 ``` ruby
-= sortable_tree @pages, :klass => :page, :rebuild_url => rebuild_pages_path, :path => 'pages/the_sortable_tree'
+= sortable_tree @pages, :new_url => new_page_path, :path => 'pages/the_sortable_tree'
 ```
 
 ### Acknowledgments
