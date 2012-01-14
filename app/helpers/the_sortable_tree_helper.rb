@@ -13,13 +13,14 @@ module TheSortableTreeHelper
     tree.first.class.to_s.downcase
   end
 
-  def sortable_tree(tree, options= {})
-    title = options[:title] || :title
-    path  = options[:path]  || :the_sortable_tree
-    max_levels = options[:max_levels] || 3
-    klass = define_class_of_elements_of tree
-    tree  = sortable_tree_builder(tree, options.merge!({:path => path, :klass => klass, :title => title, :max_levels => max_levels}))
-    render :partial => "#{path}/tree", :locals => { :tree => tree, :opts => options }
+  def sortable_tree(tree, opts= {})
+    opts.merge!({
+      :path  => opts[:path] || :the_sortable_tree,
+      :klass => define_class_of_elements_of(tree),
+      :title => opts[:title] || :title,
+      :max_levels => opts[:max_levels] || 3
+    })
+    render :partial => "#{opts[:path]}/tree", :locals => { :tree => sortable_tree_builder(tree, opts), :opts => opts }
   end
 
   def sortable_tree_builder(tree, options= {})
