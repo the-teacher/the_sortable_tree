@@ -1,0 +1,16 @@
+ol.nested_set_min li{
+    font-size: 1.4em;
+    line-height: 130%;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+ol.nested_set_min ol{
+    border-left: 1px dashed #AAA;
+    padding-left: 10px;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+ol.nested_set_min ol li{ font-weight: normal; }
+
+.nested_set_min a:hover { color: #003A89 !important; }
+.nested_set_min a:visited { color: #809dc4; }

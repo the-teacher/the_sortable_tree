@@ -49,7 +49,7 @@ module TheSortableTreeHelper
         _opts = opts.merge({:node => elem, :root => false, :level => opts[:level].next})
         children_res << sortable_tree_builder(tree, _opts)
       end
-      result << render(:partial => "#{opts[:path]}/item", :locals => {:opts => opts, :root => root, :node => node, :children => children_res})
+      result << render(:partial => "#{opts[:path]}/node", :locals => {:opts => opts, :root => root, :node => node, :children => children_res})
     end
     raw result
   end# sortable_tree_builder
