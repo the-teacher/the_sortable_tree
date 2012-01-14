@@ -14,10 +14,9 @@ module TheSortableTreeHelper
   end
 
   def sortable_tree(tree, options= {})
-    tree  = tree.to_a
     title = options[:title] || :title
     path  = options[:path]  || :the_sortable_tree
-    max_levels =  options[:max_levels] || 3
+    max_levels = options[:max_levels] || 3
     klass = define_class_of_elements_of tree
     tree  = sortable_tree_builder(tree, options.merge!({:path => path, :klass => klass, :title => title, :max_levels => max_levels}))
     render :partial => "#{path}/tree", :locals => { :tree => tree, :opts => options }
@@ -54,12 +53,8 @@ module TheSortableTreeHelper
         _opts = opts.merge({:node => elem, :root => false, :level => opts[:level].next})
         children_res << sortable_tree_builder(tree, _opts)
       end
-      # build views
-      children_res = children_res.blank? ? '' : render(:partial => "#{opts[:path]}/nested_set", :locals => {:opts => opts, :parent => node, :childs => children_res})
-      link = render(:partial => "#{opts[:path]}/link",  :locals => {:opts => opts, :node => node, :root => root})
-      res  = render(:partial => "#{opts[:path]}/item",  :locals => {:opts => opts, :node => node, :link => link, :childs => children_res})
-
-      result << res
+      # build item
+      result << render(:partial => "#{opts[:path]}/item", :locals => {:opts => opts, :root => root, :node => node, :childs => children_res})
     end
     raw result
   end# sortable_tree_builder
