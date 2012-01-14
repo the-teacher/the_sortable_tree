@@ -16,8 +16,9 @@ module TheSortableTreeHelper
   def sortable_tree(tree, options= {})
     title = options[:title] || :title
     path  = options[:path]  || :the_sortable_tree
+    max_levels =  options[:max_levels] || 3
     klass = define_class_of_elements_of tree
-    tree  = sortable_tree_builder(tree, options.merge!({:path => path, :klass => klass, :title => title}))
+    tree  = sortable_tree_builder(tree, options.merge!({:path => path, :klass => klass, :title => title, :max_levels => max_levels}))
     render :partial => "#{path}/tree", :locals => { :tree => tree, :opts => options }
   end
 
@@ -27,7 +28,7 @@ module TheSortableTreeHelper
       :id => :id,           # node id field
       :node => nil,         # node
       :root => false,       # is it root node?
-      :level =>  0,         # recursion level
+      :level => 0,          # recursion level
       #:clean => true       # delete element from tree after rendering. ~25% time economy when rendering tree once on a page
     }.merge!(options)
 
