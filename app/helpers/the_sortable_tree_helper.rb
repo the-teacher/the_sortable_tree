@@ -4,10 +4,10 @@ module TheSortableTreeHelper
   # Ilya Zykin, zykin-ilya@ya.ru, Russia, Ivanovo 2009-2012
   # github.com/the-teacher
   #-------------------------------------------------------------------------------------------------------
-  
+
   # = sortable_tree @pages, :new_url => new_page_url, :max_levels => 5
   # = sortable_tree @products, :new_url => new_product_url, :path => 'products/the_sortable_tree'
-  
+
   def define_class_of_elements_of tree
     return nil if tree.empty?
     tree.first.class.to_s.downcase
@@ -31,30 +31,24 @@ module TheSortableTreeHelper
       :level => 0           # recursion level
     }.merge!(options)
 
-    node = opts[:node]
     root = opts[:root]
+    node = opts[:node]
 
     unless node
       roots = tree.select{|elem| elem.parent_id.nil?}      
-      # render roots
       roots.each do |root|
         _opts = opts.merge({:node => root, :root => true, :level => opts[:level].next})
         result << sortable_tree_builder(tree, _opts)
       end
     else
-      res = ''
-      controls = ''
       children_res = ''
-      # select children
-      childs = tree.select{|elem| elem.parent_id == node.id}
-      opts.merge!({:has_children => childs.blank?})
-      # render childs
-      childs.each do |elem|
+      children = tree.select{|elem| elem.parent_id == node.id}
+      opts.merge!({:has_children => children.blank?})
+      children.each do |elem|
         _opts = opts.merge({:node => elem, :root => false, :level => opts[:level].next})
         children_res << sortable_tree_builder(tree, _opts)
       end
-      # build item
-      result << render(:partial => "#{opts[:path]}/item", :locals => {:opts => opts, :root => root, :node => node, :childs => children_res})
+      result << render(:partial => "#{opts[:path]}/item", :locals => {:opts => opts, :root => root, :node => node, :children => children_res})
     end
     raw result
   end# sortable_tree_builder

@@ -126,7 +126,7 @@ create  app/views/pages/the_sortable_tree/_js_init_sortable_tree.html.haml
 create  app/views/pages/the_sortable_tree/_js_on_update_tree.html.haml
 create  app/views/pages/the_sortable_tree/_js_rebuild_ajax.html.haml
 create  app/views/pages/the_sortable_tree/_link.html.haml
-create  app/views/pages/the_sortable_tree/_nested_set.html.haml
+create  app/views/pages/the_sortable_tree/_children.html.haml
 create  app/views/pages/the_sortable_tree/_new.html.haml
 create  app/views/pages/the_sortable_tree/_tree.html.haml
 ```
@@ -137,7 +137,7 @@ create  app/views/pages/the_sortable_tree/_tree.html.haml
 
 **_link** - decoration of link to current element of tree
 
-**_nested_set** - decoration of childs
+**_children** - decoration of children
 
 **_new** - create new element link
 
