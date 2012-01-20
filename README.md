@@ -16,7 +16,9 @@ Hmmmm...
 
 * Development env
 * 584 elements
-* 3 levels deep - rendered by 50 sec.
+* 3 levels deep
+
+Rendered by 50 sec.
 
 I think it is good result.
 
