@@ -2,7 +2,7 @@
 
 **Dev status: GEM is FINISHED!**
 
-Engine Based GUI for awesome_nested_set gem. Rails 3+
+Engine Based Drag&Drop GUI for awesome_nested_set gem. Rails 3+
 
 ![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic.jpg)
 
