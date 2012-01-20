@@ -13,7 +13,11 @@ Engine Based GUI for awesome_nested_set gem. Rails 3+
 ### Is it fast?
 
 Hmmmm...
-Development env, 584 elements, 3 levels deep - rendered by 50 sec.
+
+* Development env
+* 584 elements
+* 3 levels deep - rendered by 50 sec.
+
 I think it is good result.
 
 Can you makes it fester? Welcome!
