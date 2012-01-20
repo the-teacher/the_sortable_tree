@@ -1,6 +1,6 @@
 ### TheSortableTree
 
-**Dev status: GEM is FINISHED! **
+**Dev status: GEM is FINISHED!**
 
 Engine Based GUI for awesome_nested_set gem. Rails 3+
 
@@ -16,7 +16,7 @@ Hmmmm...
 Development env, 584 elements, 3 levels deep - rendered by 50 sec.
 I think it is good result.
 
-Do you can makes it fester? Welcome!
+Can you makes it fester? Welcome!
 
 ### Install
 
