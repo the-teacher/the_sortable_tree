@@ -22,7 +22,7 @@ Rendered by 50 sec.
 
 I think it is good result.
 
-Can you makes it fester? Welcome!
+Can you makes it faster? Welcome!
 
 ### Install
 
