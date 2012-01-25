@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-
-  mount SortableNestedSet::Engine => "/sortable_nested_set"
+  mount TheSortableTree::Engine => "/the_sortable_tree"
 end

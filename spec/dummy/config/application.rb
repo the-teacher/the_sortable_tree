@@ -3,7 +3,7 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 Bundler.require
-require "sortable_nested_set"
+require "the_sortable_tree"
 
 module Dummy
   class Application < Rails::Application
