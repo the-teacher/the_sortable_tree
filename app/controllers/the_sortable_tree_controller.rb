@@ -5,7 +5,7 @@ module TheSortableTreeController
   module DefineVariablesMethod
     public
     def the_define_common_variables
-      collection =  self.class.to_s.split('/').last.split(':').last.sub(/Controller/,"") # recipes
+      collection =  self.class.to_s.split(':').last.sub(/Controller/,"").underscore.downcase # recipes
       variable =    collection.singularize                      # recipe
       klass =       variable.classify.constantize               # Recipe
       ["@#{variable}", collection, klass]
@@ -24,8 +24,6 @@ module TheSortableTreeController
       render :text => "Do nothing" and return if parent_id.zero? && prev_id.zero? && next_id.zero?
 
       variable, collection, klass = self.the_define_common_variables
-      logger.info("\n\n\n\n--")
-      logger.info(variable.inspect)
       variable = self.instance_variable_set(variable, klass.find(id))
 
       if prev_id.zero? && next_id.zero?
