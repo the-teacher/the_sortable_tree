@@ -2,7 +2,7 @@
 
 Engine Based Drag&Drop GUI for awesome_nested_set gem. Rails 3+
 
-School teacher comes to help! TaDa! ;)
+School teacher came to help! TaDa! ;)
 
 **Drag&Drop sortable tree**
 
