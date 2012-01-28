@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "the_sortable_tree"
   s.extra_rdoc_files = ["README.md"]
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile"]
   s.test_files = Dir["spec/**/*"]
 
   # s.add_dependency "haml", "~> 3.0"
