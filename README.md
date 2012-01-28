@@ -2,6 +2,8 @@
 
 Engine Based Drag&Drop GUI for awesome_nested_set gem. Rails 3+
 
+School teacher comes to help! TaDa! ;)
+
 **Drag&Drop sortable tree**
 
 ![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic.jpg)
@@ -37,9 +39,9 @@ Can you makes it faster? Welcome!
 
 ### ERB vs HAML vs SLIM
 
-So, ERB and SLIM fans want to make gem became independent of HAML.
+So, ERB and SLIM fans want to make gem independent of HAML.
 
-Ok, let it be. But you will convert view partials youself. It's my revenge ;0)
+Ok, let it be. But you will convert view partials youself. It's my revenge ;)
 
 Read project wiki for looking ERB partials
 
@@ -228,6 +230,12 @@ Customize and use it!
 **_js_on_update_tree**- JS for sortable tree
 
 **_js_rebuild_ajax**- JS for sortable tree
+
+### Contributors
+
+* https://github.com/the-teacher
+* https://github.com/winescout
+* https://github.com/gbrain
 
 ### Acknowledgments
 
