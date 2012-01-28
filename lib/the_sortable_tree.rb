@@ -1,4 +1,7 @@
-require "haml"
+# So, ERB and SLIM fans want to make gem became independent of HAML
+# Ok, let it be. But you will convert view partials youself
+# require "haml"
+
 require "the_sortable_tree/engine"
 require "the_sortable_tree/version"
 

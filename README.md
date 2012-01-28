@@ -10,6 +10,13 @@ Engine Based Drag&Drop GUI for awesome_nested_set gem. Rails 3+
 
 **sortable_tree** uses partials for rendering, that's why it is **so easy to customize**!
 
+### List of available variants of rendering 
+
+* Drag&Drop sortable tree
+* Simple nested sets (**min** option)
+* Nested sets with expand/collapse animation (**expand** option) [under development]
+* Nested comments (**comments** option) [under development]
+
 ### Is it fast?
 
 Hmmmm...
@@ -20,12 +27,22 @@ Hmmmm...
 
 Rendered by 50 sec.
 
-I think it is good result.
+I think it is good result for rendering by partials.
 
 Can you makes it faster? Welcome!
 
-### Install
+### ERB vs HAML vs SLIM
 
+So, ERB and SLIM fans want to make gem became independent of HAML.
+
+Ok, let it be. But you will convert view partials youself. It's my revenge ;0)
+
+Read project wiki for looking ERB partials
+
+**By default I'm use HAML, and now you should define it manually in your Gemfile.**
+
+### Install
+    gem 'haml'
     gem 'the_sortable_tree'
 
 bundle
