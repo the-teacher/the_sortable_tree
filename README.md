@@ -1,10 +1,14 @@
 ### TheSortableTree
 
-**Dev status: GEM is FINISHED!**
-
 Engine Based Drag&Drop GUI for awesome_nested_set gem. Rails 3+
 
+**Drag&Drop sortable tree**
+
 ![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic.jpg)
+
+**Simple nested sets (__min__ option)**
+
+![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic_min.jpg)
 
 **sortable_tree** - recursive helper-method for render sortable awesome_nested_set tree.
 
