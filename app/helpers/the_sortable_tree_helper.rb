@@ -18,7 +18,8 @@ module TheSortableTreeHelper
       :path  => opts[:path] || :the_sortable_tree,
       :klass => define_class_of_elements_of(tree),
       :title => opts[:title] || :title,
-      :max_levels => opts[:max_levels] || 3
+      :max_levels => opts[:max_levels] || 3,
+      :namespace => Array.wrap(opts[:namespace])
     })
     render :partial => "#{opts[:path]}/tree", :locals => { :tree => sortable_tree_builder(tree, opts), :opts => opts }
   end
@@ -36,7 +37,7 @@ module TheSortableTreeHelper
     node = opts[:node]
 
     unless node
-      roots = tree.select{|elem| elem.parent_id.nil?}      
+      roots = tree.select{|elem| elem.parent_id.nil?}
       roots.each do |root|
         _opts = opts.merge({:node => root, :root => true, :level => opts[:level].next})
         result << sortable_tree_builder(tree, _opts)
