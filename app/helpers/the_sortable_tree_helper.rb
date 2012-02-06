@@ -5,14 +5,15 @@ module TheSortableTreeHelper
   # github.com/the-teacher
   #-------------------------------------------------------------------------------------------------------
 
-  # = sortable_tree @pages, :new_url => new_page_url, :max_levels => 5
+  # = sortable_tree @pages,    :new_url => new_page_url, :max_levels => 5
   # = sortable_tree @products, :new_url => new_product_url, :path => 'products/the_sortable_tree'
+  # = sortable_tree @catalogs, :namespace => :admin, :new_url => new_catalog_url, :max_levels => 5
 
   def define_class_of_elements_of tree
     case
-    when tree.is_a?(ActiveRecord::Relation) then tree.name.to_s.downcase
-    when tree.empty? then nil
-    else tree.first.class.to_s.downcase
+      when tree.is_a?(ActiveRecord::Relation) then tree.name.to_s.downcase
+      when tree.empty? then nil
+      else tree.first.class.to_s.downcase
     end
   end
 
