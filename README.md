@@ -25,7 +25,7 @@ School teacher came to help! TaDa! ;)
 
 ### Can I use gem with Rails 2 or Rails 3.0?
 
-Take the files from the gem and put it in your rails 2 application.
+Take files from the gem and put it in your rails 2 application.
 
 View helper and view files does not depend on the version of rails.
 
@@ -76,8 +76,6 @@ bundle
 **title** - title field of node (:title => :name etc. **:title** by default)
 
 **path** - path to custom view partials (:path => 'pages/the_sortable_tree')
-
-**title** - title field of node (:title => :name etc. **:title** by default)
 
 **max_levels** - how many draggable levels can be? (**3** by default). **Can't be 0 (zero) and negative**
 
