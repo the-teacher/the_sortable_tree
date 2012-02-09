@@ -1,6 +1,6 @@
 ### TheSortableTree
 
-Engine Based Drag&Drop GUI for awesome_nested_set gem. Rails 3+
+Engine Based Drag&Drop GUI for awesome_nested_set gem. **Rails >= 3.1**
 
 School teacher came to help! TaDa! ;)
 
@@ -22,6 +22,16 @@ School teacher came to help! TaDa! ;)
 * Simple nested sets (**min** option)
 * Nested sets with expand/collapse animation (**expand** option) [under development]
 * Nested comments (**comments** option) [under development]
+
+### Can I use gem with Rails 2 or Rails 3.0?
+
+Take the files from the gem and put it in your rails 2 application.
+
+View helper and view files does not depend on the version of rails.
+
+Copy and Paste rebuild function from TheSortableTreeController.
+
+Perhaps, you may have to slightly change the function of the controller.
 
 ### Is it fast?
 
