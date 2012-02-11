@@ -1,8 +1,18 @@
+ol.nested_set_min * {
+  margin: 0; padding: 0;
+  list-style:none;
+}
+ol.nested_set_min {
+  list-style:none;
+  font-size: 16px;
+}
 ol.nested_set_min li{
-    font-size: 1.4em;
+    font-size: 0.9em;
     line-height: 130%;
     margin-bottom: 5px;
     font-weight: bold;
+    list-style:none;
+    list-style-position: outside;
 }
 ol.nested_set_min ol{
     border-left: 1px dashed #AAA;

@@ -58,6 +58,7 @@ Read project wiki for looking ERB partials
 **By default I'm use HAML, and now you should define it manually in your Gemfile.**
 
 ### Install
+
     gem 'haml'
     gem 'the_sortable_tree'
 
@@ -69,42 +70,17 @@ bundle
 2. gem 'haml'
 3. JQuery UI
 
-### Options
-
-**id** - id field (:id => :friendly_id etc. **:id** by default)
-
-**title** - title field of node (:title => :name etc. **:title** by default)
-
-**path** - path to custom view partials (:path => 'pages/the_sortable_tree')
-
-**max_levels** - how many draggable levels can be? (**3** by default). **Can't be 0 (zero) and negative**
-
-**namespace** - namespace for admin sections for example. (:namespace => :admin, **:namespace** => nil by default)
-
-**opts[:level]** - view helper define level of recursion for each node. You can call **opts[:level]** into view partials
-
-### Partials
-
-**_tree** - root container for nested set elements
-
-**_node** - element of tree (link to current node and nested set of children)
-
-**_link** - decoration of link to current element of tree
-
-**_children** - decoration of children
-
-**_new** - create new element link
-
-**_controls** - control elements for current node
-
-
-**_js_init_sortable_tree** - JS for sortable tree
-
-**_js_on_update_tree**- JS for sortable tree
-
-**_js_rebuild_ajax**- JS for sortable tree
-
 ### Example of using with Page Model
+
+### Jquery
+
+**app/assets/javascripts/application.js**
+
+``` ruby
+//= require jquery
+//= require jquery-ui
+//= require jquery_ujs
+```
 
 ### Extend your Model
 
@@ -254,6 +230,41 @@ Customize and use it!
 
 = sortable_tree @pages, :new_url => new_page_path, :path => 'pages/the_sortable_tree', :max_levels => 2
 ```
+
+### Options
+
+**id** - id field (:id => :friendly_id etc. **:id** by default)
+
+**title** - title field of node (:title => :name etc. **:title** by default)
+
+**path** - path to custom view partials (:path => 'pages/the_sortable_tree')
+
+**max_levels** - how many draggable levels can be? (**3** by default). **Can't be 0 (zero) and negative**
+
+**namespace** - namespace for admin sections for example. (:namespace => :admin, **:namespace** => nil by default)
+
+**opts[:level]** - view helper define level of recursion for each node. You can call **opts[:level]** into view partials
+
+### Partials
+
+**_tree** - root container for nested set elements
+
+**_node** - element of tree (link to current node and nested set of children)
+
+**_link** - decoration of link to current element of tree
+
+**_children** - decoration of children
+
+**_new** - create new element link
+
+**_controls** - control elements for current node
+
+
+**_js_init_sortable_tree** - JS for sortable tree
+
+**_js_on_update_tree**- JS for sortable tree
+
+**_js_rebuild_ajax**- JS for sortable tree
 
 ### Contributors
 

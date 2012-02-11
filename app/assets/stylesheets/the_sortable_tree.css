@@ -1,5 +1,11 @@
+ol.nested_set * {
+  margin: 0; padding: 0;
+  list-style:none;
+}
 .nested_set{
   padding: 0;
+  list-style:none;
+  font-size: 16px;
 }
 .nested_set ol{
   margin:0 0 0 25px;
