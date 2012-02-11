@@ -60,6 +60,7 @@ Read project wiki for looking ERB partials
 ### Install
 
     gem 'haml'
+    gem 'awesome_nested_set' # gem 'nested_set'
     gem 'the_sortable_tree'
 
 bundle
