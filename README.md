@@ -232,6 +232,10 @@ Customize and use it!
 = sortable_tree @pages, :new_url => new_page_path, :path => 'pages/the_sortable_tree', :max_levels => 2
 ```
 
+### LiveDemo
+
+https://github.com/the-teacher/the_sortable_tree_test_app
+
 ### Options
 
 **id** - id field (:id => :friendly_id etc. **:id** by default)
