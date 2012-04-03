@@ -33,6 +33,11 @@ Copy and Paste rebuild function from TheSortableTreeController.
 
 Perhaps, you may have to slightly change the function of the controller.
 
+### Changelog
+
+1.8.5 - helper can rendering a part tree
+1.8.0 - stable release
+
 ### Is it fast?
 
 Hmmmm...
@@ -230,6 +235,18 @@ Customize and use it!
   = javascript_include_tag 'jquery.ui.nestedSortable'
 
 = sortable_tree @pages, :new_url => new_page_path, :path => 'pages/the_sortable_tree', :max_levels => 2
+```
+
+### Rendering a part of tree
+
+``` ruby
+@root  = Page.root
+@pages = @root.descendants.nested_set.all
+```
+
+``` ruby
+= @root.inspect
+= sortable_tree @pages, :new_url => new_page_path
 ```
 
 ### LiveDemo

@@ -1,3 +1,3 @@
 module TheSortableTree
-  VERSION = "1.8.0"
+  VERSION = "1.8.5"
 end
