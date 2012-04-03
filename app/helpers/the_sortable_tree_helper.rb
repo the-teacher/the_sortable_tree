@@ -41,9 +41,17 @@ module TheSortableTreeHelper
     node = opts[:node]
 
     unless node
-      roots = tree.select{|elem| elem.parent_id.nil?}
+      roots = tree.select{ |elem| elem.parent_id.nil? }
+
+      # TODO: try to remove compact
+      # children rendering
+      if roots.empty? && !tree.empty?
+        min_parent_id = tree.map(&:parent_id).compact.min
+        roots = tree.select{ |elem| elem.parent_id == min_parent_id }
+      end
+
       roots.each do |root|
-        _opts = opts.merge({:node => root, :root => true, :level => opts[:level].next})
+        _opts  =  opts.merge({:node => root, :root => true, :level => opts[:level].next})
         result << sortable_tree_builder(tree, _opts)
       end
     else
@@ -51,11 +59,11 @@ module TheSortableTreeHelper
       children = tree.select{|elem| elem.parent_id == node.id}
       opts.merge!({:has_children => children.blank?})
       children.each do |elem|
-        _opts = opts.merge({:node => elem, :root => false, :level => opts[:level].next})
+        _opts        =  opts.merge({:node => elem, :root => false, :level => opts[:level].next})
         children_res << sortable_tree_builder(tree, _opts)
       end
       result << render(:partial => "#{opts[:path]}/node", :locals => {:opts => opts, :root => root, :node => node, :children => children_res})
     end
     raw result
-  end# sortable_tree_builder
-end# module
+  end
+end
