@@ -35,6 +35,8 @@ Perhaps, you may have to slightly change the function of the controller.
 
 ### Changelog
 
+1.8.6 - fixed CamelCase names definition (by andisthejackass)
+
 1.8.5 - helper can rendering a part tree
 
 1.8.0 - stable release
