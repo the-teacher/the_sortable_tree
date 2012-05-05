@@ -12,28 +12,41 @@ module TheSortableTreeHelper
   def define_class_of_elements_of tree
     case
       when tree.is_a?(ActiveRecord::Relation) then tree.name.to_s.underscore.downcase
-      when tree.empty? then nil
+      when tree.empty?                        then nil
       else tree.first.class.to_s.underscore.downcase
     end
   end
 
-  def sortable_tree(tree, opts= {})
-    opts.merge!({
-      :path  => opts[:path] || :the_sortable_tree,
-      :klass => define_class_of_elements_of(tree),
-      :title => opts[:title] || :title,
-      :max_levels => opts[:max_levels] || 3,
-      :namespace => Array.wrap(opts[:namespace])
-    })
+  def sortable_tree(tree, options= {})
+    opts = {
+      :max_levels => 3,
+      :async      => false,
+      :type       => :tree,
+      :title      => :title,
+      :path       => :sortable_tree,
+      :klass      => define_class_of_elements_of(tree)
+    }.merge! options
+
+    # RAILS require
+    opts[:namespace] = Array.wrap opts[:namespace]
+
+    # tree
+    # sortable_tree
+    # comments_tree
+
+    # partial_path = "tree/async"
+    # partial_path = "sortable_tree/async"
+    # partial_path = "comments_tree/async"
+
     render :partial => "#{opts[:path]}/tree", :locals => { :tree => sortable_tree_builder(tree, opts), :opts => opts }
   end
 
   def sortable_tree_builder(tree, options= {})
     result = ''
-    opts = {
-      :id => :id,           # node id field
-      :node => nil,         # node
-      :root => false,       # is it root node?
+    opts   = {
+      :id    => :id,        # node id field
+      :node  => nil,        # node
+      :root  => false,      # is it root node?
       :level => 0           # recursion level
     }.merge!(options)
 
