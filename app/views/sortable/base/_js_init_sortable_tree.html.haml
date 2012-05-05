@@ -1,0 +1,17 @@
+:javascript
+  $(function(){
+    $('ol.sortable').nestedSortable({
+      disableNesting: 'no-nest',
+      forcePlaceholderSize: true,
+      handle: 'i.handle',
+      helper: 'clone',
+      items: 'li',
+      maxLevels: #{opts[:max_levels]},
+      opacity: .6,
+      placeholder: 'placeholder',
+      revert: 250,
+      tabSize: 25,
+      tolerance: 'pointer',
+      toleranceElement: '> div'
+    })
+  });

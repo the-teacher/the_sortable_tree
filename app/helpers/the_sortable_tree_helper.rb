@@ -17,26 +17,29 @@ module TheSortableTreeHelper
     end
   end
 
+  # types:
+  #   tree
+  #   sortable
+  #   comments
   def sortable_tree(tree, options= {})
     opts = {
       :max_levels => 3,
       :async      => false,
       :type       => :tree,
+      :path       => false,
       :title      => :title,
-      :path       => :sortable_tree,
       :klass      => define_class_of_elements_of(tree)
     }.merge! options
 
     # RAILS require
     opts[:namespace] = Array.wrap opts[:namespace]
 
-    # tree
-    # sortable_tree
-    # comments_tree
-
-    # partial_path = "tree/async"
-    # partial_path = "sortable_tree/async"
-    # partial_path = "comments_tree/async"
+    # PATH building
+    unless opts[:path]
+      variant      = 'base'
+      variant      = 'async' if opts[:async]
+      opts[:path]  = "#{opts[:type]}/#{variant}"
+    end
 
     render :partial => "#{opts[:path]}/tree", :locals => { :tree => sortable_tree_builder(tree, opts), :opts => opts }
   end

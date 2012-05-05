@@ -1,0 +1,13 @@
+:javascript
+  function sortable_tree(item_id, parent_id, prev_id, next_id){
+    jQuery.ajax({
+      type:       'POST',
+      dataType:   'script',
+      url:        '#{url_for(:controller => opts[:klass].pluralize, :action => :rebuild)}',
+      data:       { id: item_id, parent_id: parent_id, prev_id: prev_id, next_id: next_id },
+
+      beforeSend: function(xhr){ $('.nested_set i.handle').hide() },
+      success:    function(data, status, xhr){ $('.nested_set i.handle').show() },
+      error:      function(xhr, status, error){ alert(error) }
+    });
+  }

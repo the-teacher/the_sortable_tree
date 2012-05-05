@@ -1,0 +1,16 @@
+-# EDIT
+- edit = link_to '', polymorphic_url(opts[:namespace] + [node], :action => :edit), :title => t('.edit_this'), :class => 'button edit'
+-# DELETE
+- if opts[:has_children]
+  - delete =  link_to('', url_for(opts[:namespace] + [node]),
+    :title    =>  t('.delete'),
+    :method   =>  :delete,
+    :confirm  =>  t('.delete_confirm'),
+    :class    =>  'button delete')
+- else
+  - delete =  link_to('', '#',
+    :title    =>  t('.cant_be_deleted'),
+    :onclick  =>  "alert('#{t('.delete_nested_elements')}')",
+    :class    =>  'button undeleted')
+-# OUTPUT
+= edit + delete

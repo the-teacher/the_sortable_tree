@@ -1,10 +1,22 @@
 en:
-  the_sortable_tree:
-    new:
-      create: Add element
-    controls:
-      edit_this: Edit element
-      delete: Delete element
-      delete_confirm: Do you want to delete element? 
-      cant_be_deleted: Cant be deleted. Has nested elements
-      delete_nested_elements: Delete all nested elements
+  sortable:
+    base:
+      new:
+        create: Add element
+      controls:
+        edit_this: Edit element
+        delete: Delete element
+        delete_confirm: Do you want to delete element? 
+        cant_be_deleted: Cant be deleted. Has nested elements
+        delete_nested_elements: Delete all nested elements
+
+  comments:
+    base:
+      new:
+        create: Add element
+      controls:
+        edit_this: Edit element
+        delete: Delete element
+        delete_confirm: Do you want to delete element? 
+        cant_be_deleted: Cant be deleted. Has nested elements
+        delete_nested_elements: Delete all nested elements

@@ -1,0 +1,12 @@
+:javascript
+  $(function(){
+    $('ol.sortable').sortable({
+      update: function(event, ui){
+        parent_id = ui.item.parent().parent().attr('id');
+        item_id = ui.item.attr('id');
+        prev_id = ui.item.prev().attr('id');
+        next_id = ui.item.next().attr('id');
+        sortable_tree(item_id, parent_id, prev_id, next_id);
+      }
+    });
+  });

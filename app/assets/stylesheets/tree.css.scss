@@ -1,0 +1,38 @@
+.tree{
+  * {
+    margin: 0; padding: 0;
+    list-style:none;
+  }
+
+  ol{
+
+    margin: 0; padding: 0;
+    list-style:none;
+
+    &.nested_set {
+      list-style:none;
+      font-size: 16px;
+
+      li{
+        font-size: 0.9em;
+        line-height: 130%;
+        margin-bottom: 5px;
+        font-weight: bold;
+        list-style:none;
+        list-style-position: outside;
+      }
+
+      ol{
+        border-left: 1px dashed #AAA;
+        padding-left: 10px;
+        margin-left: 15px;
+        margin-top: 5px;
+
+        li{ font-weight: normal; }
+      }
+
+      a:hover { color: #003A89 !important; }
+      a:visited { color: #809dc4; }  
+    }
+  }
+}
