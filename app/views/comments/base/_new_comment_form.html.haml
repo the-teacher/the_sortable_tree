@@ -1,0 +1,18 @@
+= form_for Comment.new, :class => :new_comment do |f|
+  = f.hidden_field :parent_id
+
+  %label= t('.title')
+  %p= f.text_field opts[:title]
+
+  %label= t('.contacts')
+  %p= f.text_field opts[:contacts_field]
+
+  %label
+    = t('.content')
+    %span.for{ :style => 'display:none' }
+      = t('.for')
+      %i Undefined
+      = link_to t('.skip'), '#', :class => :skip
+  %p= f.text_area opts[:raw_content_field]
+
+  %div= f.submit t('.submit')

@@ -1,0 +1,7 @@
+.comment
+  = hidden_field :comment, :id, :value => node.send(opts[:node_id]), :id => nil
+  .title
+    %span.main= node.send opts[:title]
+    %span.reply= link_to t('.reply'), '#'
+  .contacts= node.send opts[:contacts_field]
+  .content=  raw node.send opts[:content_field]

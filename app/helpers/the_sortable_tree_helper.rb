@@ -24,11 +24,16 @@ module TheSortableTreeHelper
   def sortable_tree(tree, options= {})
     opts = {
       :max_levels => 3,
-      :async      => false,
       :type       => :tree,
+      :js         => false,
       :path       => false,
       :title      => :title,
-      :klass      => define_class_of_elements_of(tree)
+      :klass      => define_class_of_elements_of(tree),
+      # comments options
+      :node_id            => :id,
+      :contacts_field     => :email,
+      :content_field      => :content,
+      :raw_content_field  => :raw_content
     }.merge! options
 
     # RAILS require
@@ -37,7 +42,7 @@ module TheSortableTreeHelper
     # PATH building
     unless opts[:path]
       variant      = 'base'
-      variant      = 'async' if opts[:async]
+      variant      = 'js' if opts[:js]
       opts[:path]  = "#{opts[:type]}/#{variant}"
     end
 
