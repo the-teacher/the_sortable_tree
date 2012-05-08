@@ -245,7 +245,7 @@ And render with partials from **pages/sortable/base**
 rails g the_sortable_tree:views Comment comments
 ```
 
-And render with partials from **pages/sortable/base**
+And render with partials from **comments/comments/base**
 
 ``` ruby
 = sortable_tree @comments, :path => 'comments/comments/base', :title => :name
@@ -288,8 +288,11 @@ end
 ### Comments Options
 
 **node_id** - comment's id which should be set as value of hidden field **parend_id** when Reply link pressed (**id** by default)
+
 **contacts_field** - **email** field by default, **false** when contacts should be hidden
+
 **content_field** - field with prepared comment's content (**content** by default)
+
 **raw_content_field** - field with raw comment's content (**raw_content** by default, you can set it to **content**)
 
 ### Common Options
