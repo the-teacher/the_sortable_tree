@@ -42,6 +42,8 @@ https://github.com/the-teacher/the_sortable_tree_test_app
 
 ### Changelog
 
+1.9.1 - Rewrite with coffee => **assets/javascripts/sortable/base.js.coffee**
+
 1.9.0 - 1) **Helper API changed!** 2) Comments tree with sand form and reply fu! 3) Way to manual set sortable Model klass into controller.
 
 1.8.6 - fixed CamelCase names definition (by andisthejackass)
@@ -173,7 +175,7 @@ end
   <%= csrf_meta_tags %>
 
   <%= javascript_include_tag 'jquery.ui.nestedSortable' %>
-  <%= javascript_include_tag 'comments_tree' %>
+  <%= javascript_include_tag 'sortable/base' %>
 
   <%= stylesheet_link_tag    'tree',          :media => :all %>
   <%= stylesheet_link_tag    'sortable',      :media => :all %>
@@ -289,7 +291,7 @@ end
 
 **node_id** - comment's id which should be set as value of hidden field **parend_id** when Reply link pressed (**:id** by default)
 
-**contacts_field** - **:email** field by default, **false** when contacts should be hidden
+**contacts_field** - **:email** field by default. If you want to hide contacts field - you should use customization by view generators
 
 **content_field** - field with prepared comment's content (**:content** by default)
 
@@ -309,7 +311,7 @@ end
 
 **opts[:level]** - view helper define level of recursion for each node. You can call **opts[:level]** into view partials
 
-### Partials
+### Base partial's descriptions
 
 **_tree** - root container for nested set elements
 
@@ -323,12 +325,6 @@ end
 
 **_controls** - control elements for current node
 
-
-**_js_init_sortable_tree** - JS for sortable tree
-
-**_js_on_update_tree**- JS for sortable tree
-
-**_js_rebuild_ajax**- JS for sortable tree
 
 ### Contributors
 
