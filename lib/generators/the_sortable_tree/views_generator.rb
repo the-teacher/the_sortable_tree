@@ -5,16 +5,21 @@ module TheSortableTree
 
       def self.banner
         <<-BANNER.chomp
-rails g the_sortable_tree:views MODEL [min]
+rails g the_sortable_tree:views MODEL [tree|sortable|comments]
   Copies files for rendering sortable nested set
         BANNER
       end
 
       def copy_sortable_tree_files
-        if ARGV[1] == 'min'
-          directory "the_sortable_tree_min", "app/views/#{folder}/the_sortable_tree_min"
+        # sortable
+        # comments
+        # tree
+        if ARGV[1] == 'sortable'
+          directory "sortable/base", "app/views/#{folder}/sortable/base"
+        elsif ARGV[1] == 'comments'
+          directory "comments/base", "app/views/#{folder}/comments/base"
         else
-          directory "the_sortable_tree", "app/views/#{folder}/the_sortable_tree"
+          directory "tree/base", "app/views/#{folder}/tree/base"
         end
       end
 
@@ -24,6 +29,6 @@ rails g the_sortable_tree:views MODEL [min]
         name.pluralize.downcase
       end
 
-    end#ViewsGenerator
+    end
   end
 end
