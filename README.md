@@ -14,15 +14,15 @@ Sortable awesom_nested_set, View Helper for nested set, Nested Comments
 
 ### Capabilities
 
-**Simple nested sets (default or __tree__ option)**
+**Just Tree [default or tree option)**
 
 ![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic_min.jpg)
 
-**Drag&Drop sortable tree [sortable option]**
+**Drag&Drop Sortable Tree [sortable option]**
 
 ![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic.jpg)
 
-**Drag&Drop sortable tree [__comments__ option]**
+**Comments Tree [__comments__ option]**
 
 ![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/dev/comments.gif)
 
