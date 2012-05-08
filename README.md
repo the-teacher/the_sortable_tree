@@ -12,6 +12,7 @@ Sortable awesom_nested_set, View Helper for nested set, Nested Comments
 
 **sortable_tree** uses partials for rendering, that's why it is **so easy to customize**!
 
+### Capabilities
 
 **Simple nested sets (default or __tree__ option)**
 
