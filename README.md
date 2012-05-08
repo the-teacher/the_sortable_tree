@@ -1,6 +1,12 @@
 ### TheSortableTree
 
-Awesome Drag&Drop GUI for awesome_nested_set gem. **Rails >= 3.1**
+Awesome Helper for building sortable nested sets
+
+### Keywords
+
+Sortable awesom_nested_set, View Helper for nested set, Nested Comments
+
+### Description
 
 **sortable_tree** - recursive helper-method for rendering sortable awesome_nested_set tree.
 
