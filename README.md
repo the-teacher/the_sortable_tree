@@ -184,13 +184,13 @@ end
 ### Render your tree
 
 ``` ruby
-= sortable_tree @pages, :new_url => new_page_path, :max_levels => 4
+= sortable_tree @pages, :new_url => new_page_path
 ```
 
 ### Render your sortable tree
 
 ``` ruby
-= sortable_tree @pages, :new_url => new_page_path, :type => :sortable
+= sortable_tree @pages, :new_url => new_page_path, :type => :sortable, :max_levels => 4
 ```
 
 ### Render your comments tree (with New Form and Reply)
