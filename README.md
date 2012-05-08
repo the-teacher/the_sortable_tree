@@ -221,10 +221,22 @@ rails g the_sortable_tree:views Model [option]
 rails g the_sortable_tree:views Page
 ```
 
+And render with partials from **pages/tree/base**
+
+``` ruby
+= sortable_tree @pages, :path => 'pages/tree/base'
+```
+
 ### Customize your sortable tree
 
 ``` ruby
 rails g the_sortable_tree:views Page sortable
+```
+
+And render with partials from **pages/sortable/base**
+
+``` ruby
+= sortable_tree @pages, :path => 'pages/sortable/base', :new_url => new_page_path
 ```
 
 ### Customize your comments tree
@@ -233,7 +245,15 @@ rails g the_sortable_tree:views Page sortable
 rails g the_sortable_tree:views Comment comments
 ```
 
-### Rendering a part of tree
+And render with partials from **pages/sortable/base**
+
+``` ruby
+= sortable_tree @comments, :path => 'comments/comments/base', :title => :name
+```
+
+### Troubleshooting
+
+If you need to render a part of tree:
 
 ``` ruby
 @root  = Page.root
@@ -244,8 +264,6 @@ rails g the_sortable_tree:views Comment comments
 = @root.inspect
 = sortable_tree @pages, :new_url => new_page_path
 ```
-
-### Troubleshooting
 
 If **TheSortableTree** can't correctly define a Name of your Model, just add **sortable_model** into your Controller:
 
@@ -267,15 +285,22 @@ class Inventory::CategoriesController < ApplicationController
 end
 ```
 
-### Options
+### Comments Options
 
-**id** - id field (:id => :friendly_id etc. **:id** by default)
+**node_id** - comment's id which should be set as value of hidden field **parend_id** when Reply link pressed (**id** by default)
+**contacts_field** - **email** field by default, **false** when contacts should be hidden
+**content_field** - field with prepared comment's content (**content** by default)
+**raw_content_field** - field with raw comment's content (**raw_content** by default, you can set it to **content**)
+
+### Common Options
+
+**id** - id field (:id => :slug etc. **:id** by default)
 
 **title** - title field of node (:title => :name etc. **:title** by default)
 
-**path** - path to custom view partials (:path => 'pages/the_sortable_tree')
+**path** - path to custom view partials (:path => 'pages/sortable/tree')
 
-**max_levels** - how many draggable levels can be? (**3** by default). **Can't be 0 (zero) and negative**
+**max_levels** - how many draggable levels can be or **Max Comments Reply Level** ? (**3** by default). **Can't be 0 (zero) and negative**
 
 **namespace** - namespace for admin sections for example. (:namespace => :admin, **:namespace** => nil by default)
 
