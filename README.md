@@ -42,7 +42,7 @@ https://github.com/the-teacher/the_sortable_tree_test_app
 
 ### Changelog
 
-1.9.0 - 1) Comments tree with sand form and reply fu! 2) Way to manual set sortable Model klass into controller.
+1.9.0 - 1) **Helper API changed!** 2) Comments tree with sand form and reply fu! 3) Way to manual set sortable Model klass into controller.
 
 1.8.6 - fixed CamelCase names definition (by andisthejackass)
 
