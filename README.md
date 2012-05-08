@@ -74,13 +74,9 @@ HAML by default. You can use any Template Engine, but convert partials by yourse
     gem 'awesome_nested_set' # gem 'nested_set'
     gem 'the_sortable_tree'
 
+```ruby
 bundle
-
-### Require
-
-1. gem 'nested_set' or gem 'awesome_nested_set'
-2. gem 'haml'
-3. JQuery UI
+```
 
 ### Example of using with Page Model
 
