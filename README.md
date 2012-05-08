@@ -24,14 +24,9 @@ Sortable awesom_nested_set, View Helper for nested set, Nested Comments
 
 **Comments Tree [__comments__ option]**
 
+With New Comment form and reply functionality
+
 ![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/dev/comments.gif)
-
-
-### List of available variants of rendering 
-
-* Nested Set Tree (default or **tree** option)
-* Drag&Drop sortable tree (**sortable** option)
-* Nested comments (**comments** option)
 
 ### Can I use gem with Rails 2 or Rails 3.0?
 
@@ -39,7 +34,7 @@ There is no strong dependencies for Rails 3.
 
 Take files from the gem and put it in your Rails 2 application.
 
-And fix errors :) You can ask me if you will do it.
+And fix errors :) Ha-Ha-Ha! You can ask me if you will do it.
 
 ### Changelog
 
