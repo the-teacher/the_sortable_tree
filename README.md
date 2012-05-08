@@ -36,6 +36,10 @@ Take files from the gem and put it in your Rails 2 application.
 
 And fix errors :) Ha-Ha-Ha! You can ask me if you will do it.
 
+### LiveDemo and App for testcase creating
+
+https://github.com/the-teacher/the_sortable_tree_test_app
+
 ### Changelog
 
 1.9.0 - 1) Comments tree with sand form and reply fu! 2) Way to manual set sortable Model klass into controller.
@@ -191,9 +195,15 @@ end
 
 ### Render your comments tree (with New Form and Reply)
 
+Plz, read **Comments Doc** before using this
+
 ``` ruby
 = sortable_tree @comments, :title => :name, :type => :comments
 ```
+
+### Comments Doc
+
+Coming soon...
 
 ### Customization
 
@@ -235,9 +245,27 @@ rails g the_sortable_tree:views Comment comments
 = sortable_tree @pages, :new_url => new_page_path
 ```
 
-### LiveDemo
+### Troubleshooting
 
-https://github.com/the-teacher/the_sortable_tree_test_app
+If **TheSortableTree** can't correctly define a Name of your Model, just add **sortable_model** into your Controller:
+
+``` ruby
+class Inventory::CategoriesController < ApplicationController
+  include TheSortableTreeController::Rebuild
+
+  def sortable_model
+    Inventory::Category
+  end
+
+  def index
+    @inventory_categories = Inventory::Category.nested_set.all
+  end
+
+  def manage
+    @inventory_categories = Inventory::Category.nested_set.all
+  end
+end
+```
 
 ### Options
 
