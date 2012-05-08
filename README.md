@@ -287,25 +287,25 @@ end
 
 ### Comments Options
 
-**node_id** - comment's id which should be set as value of hidden field **parend_id** when Reply link pressed (**id** by default)
+**node_id** - comment's id which should be set as value of hidden field **parend_id** when Reply link pressed (**:id** by default)
 
-**contacts_field** - **email** field by default, **false** when contacts should be hidden
+**contacts_field** - **:email** field by default, **false** when contacts should be hidden
 
-**content_field** - field with prepared comment's content (**content** by default)
+**content_field** - field with prepared comment's content (**:content** by default)
 
-**raw_content_field** - field with raw comment's content (**raw_content** by default, you can set it to **content**)
+**raw_content_field** - field with raw comment's content (**:raw_content** by default, you can set it to **:content**)
 
 ### Common Options
 
-**id** - id field (:id => :slug etc. **:id** by default)
+**id** - id field (**:id** by default)
 
-**title** - title field of node (:title => :name etc. **:title** by default)
+**title** - title field of node (**:title** by default)
 
 **path** - path to custom view partials (:path => 'pages/sortable/tree')
 
-**max_levels** - how many draggable levels can be or **Max Comments Reply Level** ? (**3** by default). **Can't be 0 (zero) and negative**
+**max_levels** - count of draggable levels or **max reply level** in comments tree. (**3** by default). **Can't be 0 (zero) and negative**
 
-**namespace** - namespace for admin sections for example. (:namespace => :admin, **:namespace** => nil by default)
+**namespace** - namespace for admin sections for example. (**nil** by default)
 
 **opts[:level]** - view helper define level of recursion for each node. You can call **opts[:level]** into view partials
 
