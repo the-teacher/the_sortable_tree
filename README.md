@@ -4,7 +4,7 @@ Awesome Helper for building sortable nested sets
 
 ### Keywords
 
-Sortable awesom_nested_set, View Helper for nested set, Nested Comments
+Sortable awesom_nested_set, Drag&Drop GUI for awesom_nested_set, View Helper for nested set, Nested Comments
 
 ### Description
 
