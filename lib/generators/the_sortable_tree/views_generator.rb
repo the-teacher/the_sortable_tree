@@ -15,8 +15,10 @@ rails g the_sortable_tree:views MODEL [tree|sortable|comments]
         # comments
         # tree
         if ARGV[1] == 'sortable'
+          directory "../assets/javascripts/sortable", "app/assets/javascripts/sortable"
           directory "sortable/base", "app/views/#{folder}/sortable/base"
         elsif ARGV[1] == 'comments'
+          directory "../assets/javascripts/comments", "app/assets/javascripts/comments"
           directory "comments/base", "app/views/#{folder}/comments/base"
         else
           directory "tree/base", "app/views/#{folder}/tree/base"

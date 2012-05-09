@@ -28,52 +28,6 @@ With New Comment form and reply functionality
 
 ![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/dev/comments.gif)
 
-### Can I use gem with Rails 2 or Rails 3.0?
-
-There is no strong dependencies for Rails 3.
-
-Take files from the gem and put it in your Rails 2 application.
-
-And fix errors :) Ha-Ha-Ha! You can ask me if you will do it.
-
-### LiveDemo and App for testcase creating
-
-https://github.com/the-teacher/the_sortable_tree_test_app
-
-### Changelog
-
-1.9.1 - Rewrite with coffee => **assets/javascripts/sortable/base.js.coffee**
-
-1.9.0 - 1) **Helper API changed!** 2) Comments tree with sand form and reply fu! 3) Way to manual set sortable Model klass into controller.
-
-1.8.6 - fixed CamelCase names definition (by andisthejackass)
-
-1.8.5 - helper can rendering a part tree
-
-1.8.0 - stable release
-
-### Is it fast?
-
-Hmmmm...
-
-* Development env
-* 584 elements
-* 3 levels deep
-
-Rendered by 50 sec.
-
-I think it is good result for rendering by partials.
-
-### It's can be faster?
-
-Perhaps. Read next idea to learn more. There is no implementation now, sorry.
-
-https://github.com/the-teacher/the_sortable_tree/issues/milestones?with_issues=no
-
-### ERB vs HAML vs SLIM
-
-HAML by default. You can use any Template Engine, but convert partials by yourself, plz.
-
 ### Install
 
     gem 'haml'
@@ -327,6 +281,53 @@ end
 
 **_controls** - control elements for current node
 
+### Can I use gem with Rails 2 or Rails 3.0?
+
+There is no strong dependencies for Rails 3.
+
+Take files from the gem and put it in your Rails 2 application.
+
+And fix errors :) Ha-Ha-Ha! You can ask me if you will do it.
+
+### LiveDemo and App for testcase creating
+
+https://github.com/the-teacher/the_sortable_tree_test_app
+
+### Changelog
+
+1.9.2 - View Generators updated
+
+1.9.1 - Rewrite with coffee => **assets/javascripts/sortable/base.js.coffee**
+
+1.9.0 - 1) **Helper API changed!** 2) Comments tree with sand form and reply fu! 3) Way to manual set sortable Model klass into controller.
+
+1.8.6 - fixed CamelCase names definition (by andisthejackass)
+
+1.8.5 - helper can rendering a part tree
+
+1.8.0 - stable release
+
+### Is it fast?
+
+Hmmmm...
+
+* Development env
+* 584 elements
+* 3 levels deep
+
+Rendered by 50 sec.
+
+I think it is good result for rendering by partials.
+
+### It's can be faster?
+
+Perhaps. Read next idea to learn more. There is no implementation now, sorry.
+
+https://github.com/the-teacher/the_sortable_tree/issues/milestones?with_issues=no
+
+### ERB vs HAML vs SLIM
+
+HAML by default. You can use any Template Engine, but convert partials by yourself, plz.
 
 ### Contributors
 
