@@ -175,7 +175,9 @@ end
   <%= csrf_meta_tags %>
 
   <%= javascript_include_tag 'jquery.ui.nestedSortable' %>
+
   <%= javascript_include_tag 'sortable/base' %>
+  <%= javascript_include_tag 'comments/base' %>
 
   <%= stylesheet_link_tag    'tree',          :media => :all %>
   <%= stylesheet_link_tag    'sortable',      :media => :all %>
