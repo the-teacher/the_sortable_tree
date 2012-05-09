@@ -28,6 +28,10 @@ With New Comment form and reply functionality
 
 ![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/dev/comments.gif)
 
+### LiveDemo and App for testcase creating
+
+https://github.com/the-teacher/the_sortable_tree_test_app
+
 ### Install
 
     gem 'haml'
@@ -161,7 +165,60 @@ Plz, read **Comments Doc** before using this
 
 ### Comments Doc
 
-Coming soon...
+My comment Model looks like this:
+
+``` ruby
+create_table :comments do |t|
+  t.string :name
+  t.string :email
+
+  t.text   :raw_content
+  t.text   :content
+end
+```
+
+For me is very important to have 2 fields for **content**.
+
+**raw_content** is unsecure raw content from user.
+
+**content** is prepared content once passed by content filters (Textile, Sanitize and others).
+
+There is base example of my Comment Model.
+
+``` ruby
+class Comment < ActiveRecord::Base
+  acts_as_nested_set
+  include TheSortableTree::Scopes
+  before_save :prepare_content
+
+  private
+
+  def prepare_content
+    # Any content filters here
+    self.content = "<b>#{self.raw_content}</b>"
+  end
+end
+```
+
+Plz, read **Comments Options** for modify Render Helper for your purposes.
+
+If you have Model like this:
+
+``` ruby
+create_table :comments do |t|
+  t.string :title
+  t.string :contacts
+  t.text   :content
+end
+```
+
+You can call helper with next params:
+
+``` ruby
+= sortable_tree @comments, :type => :comments, :title => :title, :contacts_field => :contacts, :raw_content_field => :content, :content_field => :content
+```
+
+
 
 ### Customization
 
@@ -288,10 +345,6 @@ There is no strong dependencies for Rails 3.
 Take files from the gem and put it in your Rails 2 application.
 
 And fix errors :) Ha-Ha-Ha! You can ask me if you will do it.
-
-### LiveDemo and App for testcase creating
-
-https://github.com/the-teacher/the_sortable_tree_test_app
 
 ### Changelog
 
