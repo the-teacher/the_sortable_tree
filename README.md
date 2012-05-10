@@ -14,7 +14,7 @@ Sortable awesom_nested_set, Drag&Drop GUI for awesom_nested_set, View Helper for
 
 ### Capabilities
 
-**Just Tree [default or tree option)**
+**Just Tree [default or tree option]**
 
 ![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic_min.jpg)
 
