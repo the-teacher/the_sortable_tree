@@ -383,7 +383,7 @@ Rendered by 50 sec.
 
 I think it is good result for rendering by partials.
 
-### It's can be faster?
+### Can it be faster?
 
 Perhaps. Read next idea to learn more. There is no implementation now, sorry.
 
