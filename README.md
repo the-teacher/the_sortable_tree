@@ -298,6 +298,19 @@ class Inventory::CategoriesController < ApplicationController
 end
 ```
 
+How can I render a **select/options** menu in form? Should I use TheSortableTree?
+
+No. You should not. TheSortableTree is helper for building composite interfaces. Simple dropdown menu can be rendering with Awesome Nested Set Helper **sorted_nested_set_options**
+
+There is Example:
+
+```ruby
+- sorted_nested_set_options(Catalog, lambda{ |catalog| catalog.lft }) do |catalog, level|
+  - options << content_tag(:option, catalog.title, :value => catalog.id, :class => "level_#{level}")
+
+= f.select :catalog_id, options, {}
+```
+
 ### Comments Options
 
 **node_id** - comment's id which should be set as value of hidden field **parend_id** when Reply link pressed (**:id** by default)
