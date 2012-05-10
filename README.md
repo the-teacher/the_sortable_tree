@@ -275,7 +275,7 @@ If you need to render a part of tree:
 
 ``` ruby
 = @root.inspect
-= sortable_tree @pages, :new_url => new_page_path
+= sortable_tree @pages
 ```
 
 If **TheSortableTree** can't correctly define a Name of your Model, just add **sortable_model** into your Controller:
