@@ -146,13 +146,13 @@ end
 ### Render your tree
 
 ``` ruby
-= sortable_tree @pages, :new_url => new_page_path
+= sortable_tree @pages
 ```
 
 ### Render your sortable tree
 
 ``` ruby
-= sortable_tree @pages, :new_url => new_page_path, :type => :sortable, :max_levels => 4
+= sortable_tree @pages, :type => :sortable, :new_url => new_page_path, :max_levels => 4
 ```
 
 ### Render your comments tree (with New Form and Reply)
@@ -160,7 +160,7 @@ end
 Plz, read **Comments Doc** before using this
 
 ``` ruby
-= sortable_tree @comments, :title => :name, :type => :comments
+= sortable_tree @comments, :type => :comments, :title => :name
 ```
 
 ### Comments Doc
@@ -179,9 +179,9 @@ end
 
 For me is very important to have 2 fields for **content**.
 
-**raw_content** is unsecure raw content from user.
+**raw_content** is unsecure raw content from user (this name using in new comment form).
 
-**content** is prepared content once passed by content filters (Textile, Sanitize and others).
+**content** is prepared content once passed by content filters (Textile, Sanitize and others). This field using for rendering.
 
 There is base example of my Comment Model.
 
@@ -206,7 +206,7 @@ If you have Model like this:
 
 ``` ruby
 create_table :comments do |t|
-  t.string :title
+  t.string :topic
   t.string :contacts
   t.text   :content
 end
@@ -215,10 +215,8 @@ end
 You can call helper with next params:
 
 ``` ruby
-= sortable_tree @comments, :type => :comments, :title => :title, :contacts_field => :contacts, :raw_content_field => :content, :content_field => :content
+= sortable_tree @comments, :type => :comments, :title => :topic, :contacts_field => :contacts, :raw_content_field => :content, :content_field => :content
 ```
-
-
 
 ### Customization
 
