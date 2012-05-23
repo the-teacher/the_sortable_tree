@@ -19,7 +19,7 @@ $ ->
         toleranceElement: '> div'
 
       $('ol.sortable').sortable
-        update: (event, ui) ->
+        update: (event, ui) =>
           parent_id = ui.item.parent().parent().attr('id')
           item_id   = ui.item.attr('id')
           prev_id   = ui.item.prev().attr('id')
