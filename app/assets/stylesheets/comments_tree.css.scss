@@ -1,0 +1,84 @@
+.comments_tree{
+  * {
+    margin: 0; padding: 0;
+    list-style:none;
+  }
+
+  .new_comment{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid Blue;
+    border-radius: 5px;
+    p{
+      margin-bottom: 10px;
+    }
+    input[type=text], textarea{
+      border: 1px solid Grey;
+      border-left: 2px solid Grey;
+      width: 90%;
+    }
+  }
+
+  .nested_set{
+    margin-bottom: 25px;
+  }
+
+  ol{
+
+    margin: 0;
+    padding: 0;
+    list-style:none;
+
+    &.nested_set {
+      list-style:none;
+      font-size: 16px;
+
+      li{
+        font-size: 0.95em;
+        line-height: 130%;
+        margin-bottom: 5px;
+        list-style:none;
+        list-style-position: outside;
+
+        .comment{
+          border: 1px solid LightGray;
+          border-radius: 4px;
+          padding: 10px;
+          
+          .title, .contacts{
+            margin-bottom: 5px;
+          }
+
+          .title{
+            color: blue;
+            .reply a{
+              font-size: 0.9em;
+              font-family: Arial;
+              color: green;
+              text-decoration: none;
+              &:hover{ text-decoration: underline; }
+            }
+          }
+          .contacts{
+            font-style: italic;
+          }
+          .content{
+            background: LightGray;
+            border-radius: 2px;
+            font-family: Arial;
+            padding: 5px;
+          }
+        }
+      }
+
+      ol{
+        border-left: 1px dashed LightGreen;
+        padding-left: 10px;
+        margin-left: 15px;
+        margin-top: 5px;
+
+        li{ font-weight: normal; }
+      }
+    }
+  }
+}

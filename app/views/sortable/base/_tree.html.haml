@@ -1,0 +1,12 @@
+.sortable
+  = render :partial => "#{opts[:path]}/new", :locals => { :opts => opts }
+  - unless tree.empty?
+    :javascript
+      $(function() {
+        sortable             = new document.TheSortableTree;
+        sortable.max_levels  = #{opts[:max_levels]};
+        sortable.rebuild_url = "#{url_for(:controller => opts[:klass].pluralize, :action => :rebuild)}";
+        sortable.init()
+      })
+
+    %ol.ui-sortable.sortable.nested_set{ :id => "#{opts[:klass]}_nested_set" }= raw tree

@@ -5,12 +5,12 @@ module TheSortableTreeController
   module DefineVariablesMethod
     public
     def the_define_common_variables
-      collection =  self.class.to_s.split(':').last.sub(/Controller/,"").underscore.downcase # recipes
-      variable =    collection.singularize                      # recipe
-      klass = self.class.to_s.sub(/Controller/,"").singularize.constantize
+      collection = self.class.to_s.split(':').last.sub(/Controller/,'').underscore.downcase                 # recipes
+      variable   = collection.singularize                                                                   # recipe  
+      klass      = self.respond_to?(:sortable_model) ? self.sortable_model : variable.classify.constantize  # Recipe
       ["@#{variable}", collection, klass]
     end
-  end#DefineVariablesMethod
+  end
 
   module Rebuild
     include DefineVariablesMethod
@@ -36,7 +36,7 @@ module TheSortableTreeController
 
       render(:nothing => true)
     end
-  end#Rebuild
+  end
   
   module ReversedRebuild
     include DefineVariablesMethod
@@ -62,6 +62,5 @@ module TheSortableTreeController
 
       render(:nothing => true)
     end
-  end#ReversedRebuild
-
+  end
 end

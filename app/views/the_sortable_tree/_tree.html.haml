@@ -1,6 +1,0 @@
-= render :partial => "#{opts[:path]}/new", :locals => { :opts => opts }
-- unless tree.empty?
-  = render :partial => "#{opts[:path]}/js_init_sortable_tree", :locals => { :opts => opts }
-  = render :partial => "#{opts[:path]}/js_on_update_tree"
-  = render :partial => "#{opts[:path]}/js_rebuild_ajax", :locals => { :opts => opts }
-  %ol.ui-sortable.sortable.nested_set{ :id => "#{opts[:klass]}_nested_set" }= raw tree

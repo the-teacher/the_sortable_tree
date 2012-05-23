@@ -1,69 +1,36 @@
 ### TheSortableTree
 
-Engine Based Drag&Drop GUI for awesome_nested_set gem. **Rails >= 3.1**
+Awesome Helper for building sortable nested sets
 
-School teacher came to help! TaDa! ;)
+### Keywords
 
-**Drag&Drop sortable tree**
+Sortable awesom_nested_set, Drag&Drop GUI for awesom_nested_set, View Helper for nested set, Nested Comments
 
-![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic.jpg)
+### Description
 
-**Simple nested sets (__min__ option)**
-
-![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic_min.jpg)
-
-**sortable_tree** - recursive helper-method for render sortable awesome_nested_set tree.
+**sortable_tree** - recursive helper-method for rendering sortable awesome_nested_set tree.
 
 **sortable_tree** uses partials for rendering, that's why it is **so easy to customize**!
 
-### List of available variants of rendering 
+### Capabilities
 
-* Drag&Drop sortable tree
-* Simple nested sets (**min** option)
-* Nested sets with expand/collapse animation (**expand** option) [under development]
-* Nested comments (**comments** option) [under development]
+**Just Tree [default or tree option]**
 
-### Can I use gem with Rails 2 or Rails 3.0?
+![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic_min.jpg)
 
-Take files from the gem and put it in your rails 2 application.
+**Drag&Drop Sortable Tree [sortable option]**
 
-View helper and view files does not depend on the version of rails.
+![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic.jpg)
 
-Copy and Paste rebuild function from TheSortableTreeController.
+**Comments Tree [__comments__ option]**
 
-Perhaps, you may have to slightly change the function of the controller.
+With New Comment form and reply functionality
 
-### Changelog
+![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/dev/comments.gif)
 
-1.8.6 - fixed CamelCase names definition (by andisthejackass)
+### LiveDemo and App for testcase creating
 
-1.8.5 - helper can rendering a part tree
-
-1.8.0 - stable release
-
-### Is it fast?
-
-Hmmmm...
-
-* Development env
-* 584 elements
-* 3 levels deep
-
-Rendered by 50 sec.
-
-I think it is good result for rendering by partials.
-
-Can you makes it faster? Welcome!
-
-### ERB vs HAML vs SLIM
-
-So, ERB and SLIM fans want to make gem independent of HAML.
-
-Ok, let it be. But you will convert view partials youself. It's my revenge ;)
-
-Read project wiki for looking ERB partials
-
-**By default I'm use HAML, and now you should define it manually in your Gemfile.**
+https://github.com/the-teacher/the_sortable_tree_test_app
 
 ### Install
 
@@ -71,13 +38,9 @@ Read project wiki for looking ERB partials
     gem 'awesome_nested_set' # gem 'nested_set'
     gem 'the_sortable_tree'
 
+```ruby
 bundle
-
-### Require
-
-1. gem 'nested_set' or gem 'awesome_nested_set'
-2. gem 'haml'
-3. JQuery UI
+```
 
 ### Example of using with Page Model
 
@@ -162,85 +125,148 @@ class PagesController < ApplicationController
 end
 ```
 
-### Render your tree with TheSortableTree (Haml markup)
+### Extend your Layout (erb)
 
 ``` ruby
-- content_for :css do
-  = stylesheet_link_tag 'the_sortable_tree', :media => :screen
-- content_for :js do
-  = javascript_include_tag 'jquery.ui.nestedSortable'
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
 
-= sortable_tree @pages, :new_url => new_page_path, :max_levels => 4
+  <%= javascript_include_tag 'jquery.ui.nestedSortable' %>
+
+  <%= javascript_include_tag 'sortable/base' %>
+  <%= javascript_include_tag 'comments/base' %>
+
+  <%= stylesheet_link_tag    'tree',          :media => :all %>
+  <%= stylesheet_link_tag    'sortable',      :media => :all %>
+  <%= stylesheet_link_tag    'comments_tree', :media => :all %>
 ```
 
-or (without administrator controls and drag&drop)
+
+### Render your tree
 
 ``` ruby
-- content_for :css do
-  = stylesheet_link_tag 'the_sortable_tree_min', :media => :screen
-
-= sortable_tree @pages, :new_url => new_page_path, :path => 'the_sortable_tree_min'
+= sortable_tree @pages
 ```
 
-### Customize tree for User (min version)
-
-**Use sortable_tree as view helper for simple rendering of nested_set tree**
+### Render your sortable tree
 
 ``` ruby
-rails g the_sortable_tree:views pages min
+= sortable_tree @pages, :type => :sortable, :new_url => new_page_path, :max_levels => 4
 ```
 
-It's will generate minimal set of view partials for **sortable_tree** helper
+### Render your comments tree (with New Form and Reply)
+
+Plz, read **Comments Doc** before using this
 
 ``` ruby
-create  app/views/pages/the_sortable_tree_min
-create  app/views/pages/the_sortable_tree_min/_children.html.haml
-create  app/views/pages/the_sortable_tree_min/_node.html.haml
-create  app/views/pages/the_sortable_tree_min/_link.html.haml
-create  app/views/pages/the_sortable_tree_min/_tree.html.haml
+= sortable_tree @comments, :type => :comments, :title => :name
 ```
 
-Just use it or Customize and use it!
+### Comments Doc
+
+My comment Model looks like this:
 
 ``` ruby
-- content_for :css do
-  = stylesheet_link_tag 'the_sortable_tree_min', :media => :screen
-= sortable_tree @pages, :new_url => new_page_path, :path => 'pages/the_sortable_tree_min'
+create_table :comments do |t|
+  t.string :name
+  t.string :email
+
+  t.text   :raw_content
+  t.text   :content
+end
 ```
 
-### Customize tree for Administrator (full version)
+For me is very important to have 2 fields for **content**.
+
+**raw_content** is unsecure raw content from user (this name using in new comment form).
+
+**content** is prepared content once passed by content filters (Textile, Sanitize and others). This field using for rendering.
+
+There is base example of my Comment Model.
 
 ``` ruby
-rails g the_sortable_tree:views pages
+class Comment < ActiveRecord::Base
+  acts_as_nested_set
+  include TheSortableTree::Scopes
+  before_save :prepare_content
+
+  private
+
+  def prepare_content
+    # Any content filters here
+    self.content = "<b>#{self.raw_content}</b>"
+  end
+end
 ```
 
-It's will generate view partials for **sortable_tree** helper
+Plz, read **Comments Options** for modify Render Helper for your purposes.
+
+If you have Model like this:
 
 ``` ruby
-create  app/views/pages/the_sortable_tree
-create  app/views/pages/the_sortable_tree/_controls.html.haml
-create  app/views/pages/the_sortable_tree/_node.html.haml
-create  app/views/pages/the_sortable_tree/_js_init_sortable_tree.html.haml
-create  app/views/pages/the_sortable_tree/_js_on_update_tree.html.haml
-create  app/views/pages/the_sortable_tree/_js_rebuild_ajax.html.haml
-create  app/views/pages/the_sortable_tree/_link.html.haml
-create  app/views/pages/the_sortable_tree/_children.html.haml
-create  app/views/pages/the_sortable_tree/_new.html.haml
-create  app/views/pages/the_sortable_tree/_tree.html.haml
+create_table :comments do |t|
+  t.string :topic
+  t.string :contacts
+  t.text   :content
+end
 ```
 
-Customize and use it!
+You can call helper with next params:
 
 ``` ruby
-- content_for :css do
-  = stylesheet_link_tag 'the_sortable_tree', :media => :screen
-- content_for :js do
-  = javascript_include_tag 'jquery.ui.nestedSortable'
-
-= sortable_tree @pages, :new_url => new_page_path, :path => 'pages/the_sortable_tree', :max_levels => 2
+= sortable_tree @comments, :type => :comments, :title => :topic, :contacts_field => :contacts, :raw_content_field => :content, :content_field => :content
 ```
 
-### Rendering a part of tree
+### Customization
+
+TheSortableTree view generator will copy a set of partials from gem to your View directory.
+
+``` ruby
+rails g the_sortable_tree:views Model [option]
+```
+
+## Examples
+
+### Customize your tree
+
+``` ruby
+rails g the_sortable_tree:views Page
+```
+
+And render with partials from **pages/tree/base**
+
+``` ruby
+= sortable_tree @pages, :path => 'pages/tree/base'
+```
+
+### Customize your sortable tree
+
+``` ruby
+rails g the_sortable_tree:views Page sortable
+```
+
+And render with partials from **pages/sortable/base**
+
+``` ruby
+= sortable_tree @pages, :path => 'pages/sortable/base', :new_url => new_page_path
+```
+
+### Customize your comments tree
+
+``` ruby
+rails g the_sortable_tree:views Comment comments
+```
+
+And render with partials from **comments/comments/base**
+
+``` ruby
+= sortable_tree @comments, :path => 'comments/comments/base', :title => :name
+```
+
+### Troubleshooting
+
+If you need to render a part of tree:
 
 ``` ruby
 @root  = Page.root
@@ -249,28 +275,67 @@ Customize and use it!
 
 ``` ruby
 = @root.inspect
-= sortable_tree @pages, :new_url => new_page_path
+= sortable_tree @pages
 ```
 
-### LiveDemo
+If **TheSortableTree** can't correctly define a Name of your Model, just add **sortable_model** into your Controller:
 
-https://github.com/the-teacher/the_sortable_tree_test_app
+``` ruby
+class Inventory::CategoriesController < ApplicationController
+  include TheSortableTreeController::Rebuild
 
-### Options
+  def sortable_model
+    Inventory::Category
+  end
 
-**id** - id field (:id => :friendly_id etc. **:id** by default)
+  def index
+    @inventory_categories = Inventory::Category.nested_set.all
+  end
 
-**title** - title field of node (:title => :name etc. **:title** by default)
+  def manage
+    @inventory_categories = Inventory::Category.nested_set.all
+  end
+end
+```
 
-**path** - path to custom view partials (:path => 'pages/the_sortable_tree')
+How can I render a **select/options** menu in form? Should I use TheSortableTree?
 
-**max_levels** - how many draggable levels can be? (**3** by default). **Can't be 0 (zero) and negative**
+No. You should not. TheSortableTree is helper for building composite interfaces. Simple dropdown menu can be rendering with Awesome Nested Set Helper **sorted_nested_set_options**
 
-**namespace** - namespace for admin sections for example. (:namespace => :admin, **:namespace** => nil by default)
+There is Example:
+
+```ruby
+- sorted_nested_set_options(Catalog, lambda{ |catalog| catalog.lft }) do |catalog, level|
+  - options << content_tag(:option, catalog.title, :value => catalog.id, :class => "level_#{level}")
+
+= f.select :catalog_id, options, {}
+```
+
+### Comments Options
+
+**node_id** - comment's id which should be set as value of hidden field **parend_id** when Reply link pressed (**:id** by default)
+
+**contacts_field** - **:email** field by default. If you want to hide contacts field - you should use customization by view generators
+
+**content_field** - field with prepared comment's content (**:content** by default)
+
+**raw_content_field** - field with raw comment's content (**:raw_content** by default, you can set it to **:content**)
+
+### Common Options
+
+**id** - id field (**:id** by default)
+
+**title** - title field of node (**:title** by default)
+
+**path** - path to custom view partials (:path => 'pages/sortable/tree')
+
+**max_levels** - count of draggable levels or **max reply level** in comments tree. (**3** by default). **Can't be 0 (zero) and negative**
+
+**namespace** - namespace for admin sections for example. (**nil** by default)
 
 **opts[:level]** - view helper define level of recursion for each node. You can call **opts[:level]** into view partials
 
-### Partials
+### Base partial's descriptions
 
 **_tree** - root container for nested set elements
 
@@ -284,12 +349,49 @@ https://github.com/the-teacher/the_sortable_tree_test_app
 
 **_controls** - control elements for current node
 
+### Can I use gem with Rails 2 or Rails 3.0?
 
-**_js_init_sortable_tree** - JS for sortable tree
+There is no strong dependencies for Rails 3.
 
-**_js_on_update_tree**- JS for sortable tree
+Take files from the gem and put it in your Rails 2 application.
 
-**_js_rebuild_ajax**- JS for sortable tree
+And fix errors :) Ha-Ha-Ha! You can ask me if you will do it.
+
+### Changelog
+
+1.9.2 - View Generators updated
+
+1.9.1 - Rewrite with coffee => **assets/javascripts/sortable/base.js.coffee**
+
+1.9.0 - 1) **Helper API changed!** 2) Comments tree with sand form and reply fu! 3) Way to manual set sortable Model klass into controller.
+
+1.8.6 - fixed CamelCase names definition (by andisthejackass)
+
+1.8.5 - helper can rendering a part tree
+
+1.8.0 - stable release
+
+### Is it fast?
+
+Hmmmm...
+
+* Development env
+* 584 elements
+* 3 levels deep
+
+Rendered by 50 sec.
+
+I think it is good result for rendering by partials.
+
+### Can it be faster?
+
+Perhaps. Read next idea to learn more. There is no implementation now, sorry.
+
+https://github.com/the-teacher/the_sortable_tree/issues/milestones?with_issues=no
+
+### ERB vs HAML vs SLIM
+
+HAML by default. You can use any Template Engine, but convert partials by yourself, plz.
 
 ### Contributors
 
