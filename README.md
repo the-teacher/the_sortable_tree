@@ -359,6 +359,8 @@ And fix errors :) Ha-Ha-Ha! You can ask me if you will do it.
 
 ### Changelog
 
+1.9.3 - Jeffery Utter patch for coffee script
+
 1.9.2 - View Generators updated
 
 1.9.1 - Rewrite with coffee => **assets/javascripts/sortable/base.js.coffee**
