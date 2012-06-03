@@ -1,10 +1,31 @@
 ru:
-  the_sortable_tree:
-    new:
-      create: Добавить элемент
-    controls:
-      edit_this: Редактировать элемент
-      delete: Удалить элемент
-      delete_confirm: Удалить элемент безвозвратно?
-      cant_be_deleted: Не может быть удалено. Есть дочерние элементы
-      delete_nested_elements: Сперва удалите все дочерние элементы
+  sortable:
+    base:
+      new:
+        create: Добавить элемент
+      controls:
+        edit_this: Редактировать элемент
+        delete: Удалить элемент
+        delete_confirm: Удалить элемент безвозвратно?
+        cant_be_deleted: Не может быть удалено. Есть дочерние элементы
+        delete_nested_elements: Сперва удалите все дочерние элементы
+
+  comments:
+    base:
+      new_comment_form:
+        title: Name
+        conatacts: Email
+        content: Your comment
+        for: for
+        skip: '[skip]'
+        submit: Send Comment
+      comment:
+        reply: '[reply]'
+      new:
+        create: Add element
+      controls:
+        edit_this: Edit element
+        delete: Delete element
+        delete_confirm: Do you want to delete element? 
+        cant_be_deleted: Cant be deleted. Has nested elements
+        delete_nested_elements: Delete all nested elements
