@@ -111,7 +111,7 @@ end
 
 ```
 
-or 
+or
 
 ``` ruby
 class PagesController < ApplicationController
@@ -120,7 +120,7 @@ class PagesController < ApplicationController
   def manage
     @pages = Page.reversed_nested_set.all
   end
-  
+
   # any code here
 end
 ```
@@ -142,6 +142,32 @@ end
   <%= stylesheet_link_tag    'comments_tree', :media => :all %>
 ```
 
+### Or, if you're using Asset Pipeline
+
+In JS manifest file (application.js):
+
+``` js
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+//= require jquery.ui.nestedSortable
+//= require sortable/base
+//= require comments/base
+//= require_tree .
+```
+
+In CSS manifest file (application.css):
+
+``` css
+/*
+*= require_self
+*= require_tree .
+*= require tree
+*= require sortable
+*= require comments_tree
+*/
+
+```
 
 ### Render your tree
 
