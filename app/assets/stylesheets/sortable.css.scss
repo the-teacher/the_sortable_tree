@@ -79,19 +79,19 @@
       margin: 0 0 0 3px;
       cursor: pointer;
 
-      .new{
+      &.new{
         background: transparent url(/assets/iconza/blue/add.png) no-repeat scroll center center;
         &:hover{ background: transparent url(/assets/iconza/red/add.png) no-repeat scroll center center }
       }
-      .edit{
+      &.edit{
         background: transparent url(/assets/iconza/blue/edit.png) no-repeat scroll center center;
         &:hover{ background: transparent url(/assets/iconza/red/edit.png) no-repeat scroll center center }
       }
-      .delete{
+      &.delete{
         background: transparent url(/assets/iconza/blue/delete.png) no-repeat scroll center center;
         &:hover{ background: transparent url(/assets/iconza/red/delete.png) no-repeat scroll center center }
       }
-      .undeleted{ background: transparent url(/assets/iconza/gray/delete.png) no-repeat scroll center center  }
+      &.undeleted{ background: transparent url(/assets/iconza/gray/delete.png) no-repeat scroll center center  }
     }
 
     .placeholder {
