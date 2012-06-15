@@ -5,7 +5,7 @@
   - delete =  link_to('', url_for(opts[:namespace] + [node]),
     :title    =>  t('.delete'),
     :method   =>  :delete,
-    :confirm  =>  t('.delete_confirm'),
+    :data     => {:confirm  =>  t('.delete_confirm')},
     :class    =>  'button delete')
 - else
   - delete =  link_to('', '#',
