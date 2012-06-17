@@ -2,6 +2,8 @@
 
 Awesome Helper for building sortable nested sets
 
+[TheSortableTree on RubyGems](http://rubygems.org/gems/the_sortable_tree)
+
 ### Keywords
 
 Sortable awesom_nested_set, Drag&Drop GUI for awesom_nested_set, View Helper for nested set, Nested Comments
@@ -384,6 +386,8 @@ Take files from the gem and put it in your Rails 2 application.
 And fix errors :) Ha-Ha-Ha! You can ask me if you will do it.
 
 ### Changelog
+
+1.9.4 - rm CoffeeScript document scope, ru locale, fix data-confirm
 
 1.9.3 - Jeffery Utter patch for coffee script
 
