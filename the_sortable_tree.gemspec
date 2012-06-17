@@ -7,7 +7,7 @@ require "the_sortable_tree/version"
 Gem::Specification.new do |s|
   s.name        = "the_sortable_tree"
   s.version     = TheSortableTree::VERSION
-  s.authors     = ["Ilya N. Zykin, Matthew Clark, Mikhail Dieterle"]
+  s.authors     = ["Ilya N. Zykin, Mikhail Dieterle, Matthew Clark"]
   s.email       = ["zykin-ilya@ya.ru"]
   s.homepage    = "https://github.com/the-teacher/the_sortable_tree"
   s.summary     = %q{Sortable awesom_nested_set, Drag&Drop GUI for awesom_nested_set, View Helper for nested set, Nested Comments}
