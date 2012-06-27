@@ -436,3 +436,63 @@ HAML by default. You can use any Template Engine, but convert partials by yourse
 
 * https://github.com/mjsarfatti/nestedSortable
 * http://iconza.com
+
+### TheSortableTree v2.0 API (not for use, under development)
+
+```ruby
+# select tag, build at server side
+= render_tree @pages, :type => :select
+
+
+
+# just tree, build at server side
+= render_tree @pages
+
+# just tree, build at client side
+= render_tree @pages, :side => :client
+
+
+
+# sortable tree, build at server side
+= render_tree @pages, :type => :sortable
+
+# sortable tree, build at client side
+= render_tree @pages, :type => :sortable, :side => :client
+
+
+
+# comments tree, build at server side
+= render_tree @pages, :type => :comments
+
+# comments tree, build at client side
+= render_tree @pages, :type => :comments, :side => :client
+
+
+
+type
+  tree
+  select
+  sortable
+  comments
+
+side
+  client
+  server
+
+async
+  true
+  false
+
+common opts
+  id
+  path
+  title
+  namespace
+  max_levels
+  
+comments  
+  node_id
+  content_field
+  contacts_field
+  raw_content_field
+```
