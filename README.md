@@ -1,4 +1,4 @@
-### TheSortableTree 
+### TheSortableTree
 
 Awesome Helper for building sortable nested sets
 
