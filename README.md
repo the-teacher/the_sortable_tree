@@ -467,21 +467,19 @@ HAML by default. You can use any Template Engine, but convert partials by yourse
 # comments tree, build at client side
 = render_tree @pages, :type => :comments, :side => :client
 
-
-
 type
-  tree
+  *tree
   select
   sortable
   comments
 
 side
-  client
-  server
+  *client
+  -- server
 
 async
   true
-  false
+  *false
 
 common opts
   id

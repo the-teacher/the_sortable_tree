@@ -1,0 +1,2 @@
+$ ->
+  render_tree()

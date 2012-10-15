@@ -1,0 +1,4 @@
+- if opts[:async]
+  get tree on page load
+- else
+  .tree_json_data{ style: 'display:none' }= @pages.to_json
