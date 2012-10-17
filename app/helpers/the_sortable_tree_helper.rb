@@ -46,7 +46,7 @@ module TheSortableTreeHelper
       opts[:path]  = "#{opts[:type]}/#{variant}"
     end
 
-    render :partial => "#{opts[:path]}/tree", :locals => { :opts => opts }
+    render :partial => "#{opts[:path]}/tree", :locals => { :tree => tree, :opts => opts }
   end
 
   # render :partial => "#{opts[:path]}/tree", :locals => { :tree => sortable_tree_builder(tree, opts), :opts => opts }
