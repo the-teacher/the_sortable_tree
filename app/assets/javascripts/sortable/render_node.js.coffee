@@ -3,9 +3,20 @@
   children_html = "<ol class='nested_set'>#{children}</ol>" if children.length > 0
 
   """
-    <li>
-      <h4>#{item.title}</h4>
-      <p>#{item.content}</p>
+    <li id='#{sortable_items_klass}_#{item.id}'>
+      <div class='item'>
+        <i class='handle'></i>
+        <h4>
+          <a href='#'>#{item.title}</a>
+        </h4>
+        
+        <p>#{item.content}</p>
+
+        <div class='controls'>
+          <a class='link button edit' href='#' />
+          <a class='link button delete' href='#' />
+        </div>
+      </div>
       #{children_html}
     </li>
   """
