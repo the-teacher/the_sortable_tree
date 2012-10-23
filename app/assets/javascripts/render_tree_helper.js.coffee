@@ -38,8 +38,8 @@
     # render tree
     for node in roots
       $.extend opts, { node: node, root: false, level: opts.level + 1 }
-      html += render_tree tree, opts
-
+      children_html = render_tree tree, opts
+      html += render_node node, children_html, opts
   else
     # render children nodes
     children      = []
@@ -52,14 +52,10 @@
     # has_children flag
     has_children = children.length isnt 0
 
-    # render children
     for node in children
-      $.extend opts, { node: node, root: false, level: opts.level + 1 }
-      children_html += render_tree tree, opts
-    
-    # build node
-    $.extend opts, { node: node, root: false, level: opts.level + 1, has_children: has_children }
-    html += render_node opts.node, children_html, opts
+      $.extend opts, { node: node, root: false, level: opts.level + 1, has_children: has_children }
+      children_html = render_tree tree, opts
+      html += render_node node, children_html, opts
   
   # result html
   html

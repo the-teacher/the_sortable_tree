@@ -1,0 +1,7 @@
+- if opts[:async]
+  get tree on page load
+- else
+  - tree_data = tree.to_json
+  :javascript
+    var tree_data = JSON.parse('#{tree_data}');
+  .tree_json_data{ style: 'display:none' }= tree_data

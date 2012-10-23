@@ -3,7 +3,7 @@
   children_html = "<ol class='nested_set'>#{children}</ol>" if children.length > 0
 
   """
-    <li id='#{sortable_items_klass}_#{item.id}'>
+    <li id='#{item.id}_#{sortable_items_klass}'>
       <div class='item'>
         <i class='handle'></i>
         <h4>
