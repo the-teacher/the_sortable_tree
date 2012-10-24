@@ -7,8 +7,13 @@
     list-style:none;
   }
 
-  ol{
+  .item{
+    background: #EEE;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
 
+  ol{
     margin: 0; padding: 0;
     list-style:none;
     margin-left: 20px;

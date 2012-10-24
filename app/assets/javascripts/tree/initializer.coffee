@@ -5,8 +5,20 @@ $ ->
   
   # Select all trees JSON data and build it
   for data_block in $ '.tree_json_data'
-    data_block = $ data_block
-    tree       = JSON.parse data_block.html()
-    tree_html  = render_tree(tree)
+    data_block  = $ data_block
+    klass       = data_block.find('.klass').html()
+    plural      = data_block.find('.plural').html()
+    # Data
+    locale = JSON.parse data_block.find('.locale').html()
+    tree   = JSON.parse data_block.find('.data').html()
+    
+    tree_html = render_tree tree,
+      klass:       klass
+      plural:      plural
+      locale:      locale
+
     # Append tree html after JSON data block
-    data_block.after "<ol class='tree'>#{tree_html}</ol>"
+    tree_block = $("<div class='tree_block' />").insertAfter(data_block)
+    tree_block.append """
+      <ol class='tree'>#{tree_html}</ol>
+    """
