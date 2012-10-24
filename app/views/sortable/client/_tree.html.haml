@@ -1,7 +1,0 @@
-- if opts[:async]
-  get tree on page load
-- else
-  :javascript
-    var sortable_items_klass = '#{opts[:klass]}';
-    var sortable_rebuild_url = '#{url_for(:controller => opts[:klass].pluralize, :action => :rebuild)}';
-  .tree_json_data{ style: 'display:none' }= tree.to_json

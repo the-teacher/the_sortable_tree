@@ -1,0 +1,7 @@
+<div class='tree_json_data' style='display:none'>
+  <div class='data'><%=   tree.to_json           %></div>
+  <div class='locale'><%= t(:sortable).to_json   %></div>
+  <div class='klass'><%=  opts[:klass]           %></div>
+  <div class='plural'><%= opts[:klass].pluralize %></div>
+  <div class='rebuild_url'><%= url_for(:controller => opts[:klass].pluralize, :action => :rebuild) %></div>  
+</div>

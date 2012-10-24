@@ -49,11 +49,8 @@
     for elem in tree
       children.push elem if elem.parent_id is opts.node.id
 
-    # has_children flag
-    has_children = children.length isnt 0
-
     for node in children
-      $.extend opts, { node: node, root: false, level: opts.level + 1, has_children: has_children }
+      $.extend opts, { node: node, root: false, level: opts.level + 1 }
       children_html = render_tree tree, opts
       html += render_node node, children_html, opts
   

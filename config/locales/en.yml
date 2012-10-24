@@ -1,31 +1,26 @@
 en:
   sortable:
-    base:
-      new:
-        create: Add element
-      controls:
-        edit_this: Edit element
-        delete: Delete element
-        delete_confirm: Do you want to delete element? 
-        cant_be_deleted: Cant be deleted. Has nested elements
-        delete_nested_elements: Delete all nested elements
+    new_path:       'Add new node'
+    edit:           'Edit node'
+    delete_title:   'Delete node'
+    delete_confirm: 'Are you sure?'
 
-  comments:
-    base:
-      new_comment_form:
-        title: Name
-        conatacts: Email
-        content: Your comment
-        for: for
-        skip: '[skip]'
-        submit: Send Comment
-      comment:
-        reply: '[reply]'
-      new:
-        create: Add element
-      controls:
-        edit_this: Edit element
-        delete: Delete element
-        delete_confirm: Do you want to delete element? 
-        cant_be_deleted: Cant be deleted. Has nested elements
-        delete_nested_elements: Delete all nested elements
+  # comments:
+  #   base:
+  #     new_comment_form:
+  #       title: Name
+  #       conatacts: Email
+  #       content: Your comment
+  #       for: for
+  #       skip: '[skip]'
+  #       submit: Send Comment
+  #     comment:
+  #       reply: '[reply]'
+  #     new:
+  #       create: Add element
+  #     controls:
+  #       edit_this: Edit element
+  #       delete: Delete element
+  #       delete_confirm: Do you want to delete element? 
+  #       cant_be_deleted: Cant be deleted. Has nested elements
+  #       delete_nested_elements: Delete all nested elements

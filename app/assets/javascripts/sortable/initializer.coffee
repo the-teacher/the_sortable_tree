@@ -1,8 +1,8 @@
-@rebuild_sortable_tree = (item_id, parent_id, prev_id, next_id) ->
+@rebuild_sortable_tree = (rebuild_url, item_id, parent_id, prev_id, next_id) ->
   $.ajax
     type:     'POST'
     dataType: 'script'
-    url:      sortable_rebuild_url
+    url:      rebuild_url
     data:
       id:        item_id
       parent_id: parent_id
@@ -28,39 +28,57 @@ $ ->
   ############################################
   # Select all trees JSON data and build it
   for data_block in $ '.tree_json_data'
-    data_block = $ data_block
-    tree       = JSON.parse data_block.html()
-    tree_html  = render_tree(tree)
+    data_block  = $ data_block
+    klass       = data_block.find('.klass').html()
+    plural      = data_block.find('.plural').html()
+    rebuild_url = data_block.find('.rebuild_url').html()
+    # Data
+    locale = JSON.parse data_block.find('.locale').html()
+    tree   = JSON.parse data_block.find('.data').html()
+    
+    tree_html = render_tree tree,
+      klass:       klass
+      plural:      plural
+      locale:      locale
+      rebuild_url: rebuild_url
 
     # Append tree html after JSON data block
-    data_block.after "<ol class='sortable'>#{tree_html}</ol>"
+    tree_block = $("<div class='tree_block' />").insertAfter(data_block)
+    tree_block.append """
+      <p class='sortable_new'>
+        <a href='#{plural}/new'>#{locale.new_path}</a>
+      </p>
+      <ol class='sortable'>
+        #{tree_html}
+      </ol>
+    """
 
-  ############################################
-  # Initialize Sortable Tree
-  ############################################
-  $('ol.sortable').nestedSortable
-    items:            'li'
-    helper:           'clone'
-    handle:           'i.handle'
-    tolerance:        'pointer'
-    maxLevels:        3
-    revert:           250
-    tabSize:          25
-    opacity:          .6
-    placeholder:      'placeholder'
-    disableNesting:   'no-nest'
-    toleranceElement: '> div'
-    forcePlaceholderSize: true
+    ############################################
+    # Initialize Sortable Tree for this block
+    ############################################
+    $('ol.sortable', tree_block).nestedSortable
+      items:            'li'
+      helper:           'clone'
+      handle:           'i.handle'
+      tolerance:        'pointer'
+      maxLevels:        3
+      revert:           250
+      tabSize:          25
+      opacity:          .6
+      placeholder:      'placeholder'
+      disableNesting:   'no-nest'
+      toleranceElement: '> div'
+      forcePlaceholderSize: true
 
-  ############################################
-  # Sortable Update Event
-  ############################################
-  $('ol.sortable').sortable
-    update: (event, ui) =>
-      item      = ui.item
-      item_id   = item.attr('id')
-      prev_id   = item.prev().attr('id')
-      next_id   = item.next().attr('id')
-      parent_id = item.parent().parent().attr('id')
-      
-      rebuild_sortable_tree(item_id, parent_id, prev_id, next_id)
+    ############################################
+    # Sortable Update Event for this block
+    ############################################
+    $('ol.sortable', tree_block).sortable
+      update: (event, ui) =>
+        item      = ui.item
+        item_id   = item.attr('id')
+        prev_id   = item.prev().attr('id')
+        next_id   = item.next().attr('id')
+        parent_id = item.parent().parent().attr('id')
+        
+        rebuild_sortable_tree(rebuild_url, item_id, parent_id, prev_id, next_id)
