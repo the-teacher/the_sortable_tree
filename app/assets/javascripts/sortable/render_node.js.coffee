@@ -5,6 +5,7 @@
   edit_title     = opts.locale.edit
   delete_title   = opts.locale.delete_title
   delete_confirm = opts.locale.delete_confirm
+  
   # Build children
   children_html  = "<ol class='nested_set'>#{children}</ol>" if children.length > 0
 

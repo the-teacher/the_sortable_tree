@@ -5,6 +5,13 @@
   .replace(/</g, '&lt;')
   .replace(/"/g, '&quot;')
 
+@_unescape = (str) ->
+  str
+  .replace(/&amp;/g, '&')
+  .replace(/&gt;/g, '>')
+  .replace(/&lt;/g, '<')
+  .replace(/&quot;/g, '"')
+
 @render_tree = (tree, options = {}) ->
   html = ''
 

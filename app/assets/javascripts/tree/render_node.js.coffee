@@ -2,6 +2,7 @@
   children_html = ''
   show_path     = "/#{opts.plural}/#{item.id}"
 
+  # Build children
   children_html = "<ol class='nested_set'>#{children}</ol>" if children.length > 0
 
   """
