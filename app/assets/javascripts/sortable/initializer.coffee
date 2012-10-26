@@ -41,7 +41,7 @@ $ ->
   # Client rendering: 10263ms
   # drag&drop sorting - very very slow ~ 30-40sec
 
-  console.time('tree build')
+  # console.time('tree build')
 
   ############################################
   # Build Sortable Tree
@@ -58,7 +58,7 @@ $ ->
     locale = JSON.parse data_block.find('.locale').html()
     tree   = JSON.parse data_block.find('.data').html()
 
-    console.log 'tree length: ', tree.length
+    # console.log 'tree length: ', tree.length
 
     # Build tree
     tree_html = render_tree tree,
@@ -108,4 +108,4 @@ $ ->
         
         rebuild_sortable_tree(rebuild_url, item_id, parent_id, prev_id, next_id)
 
-  console.timeEnd('tree build')
+  # console.timeEnd('tree build')

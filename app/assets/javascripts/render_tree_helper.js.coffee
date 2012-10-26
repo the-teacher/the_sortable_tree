@@ -32,15 +32,18 @@
     for node in tree
       roots.push node if node.parent_id is null
 
-    min_elem = tree[0]
-    
     # roots is empty, but tree is not empty
     # I should select nodes with minimal parent_id
     # they will be roots
     # order by lft, should be made at server side
+    min_elem = tree[0]
     if roots.length is 0 and tree.length isnt 0
       for elem in tree
         min_elem = elem if elem.parent_id < min_elem.parent_id
+      # select roots witn min parent_id
+      for elem in tree
+        if elem.parent_id is min_elem.parent_id
+          roots.push elem
 
     # render tree
     for node in roots
@@ -56,6 +59,7 @@
     for elem in tree
       children.push elem if elem.parent_id is opts.node.id
 
+    # render children nodes
     for node in children
       $.extend opts, { node: node, root: false, level: opts.level + 1 }
       children_html = render_tree tree, opts
