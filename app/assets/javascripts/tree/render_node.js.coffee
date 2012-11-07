@@ -1,4 +1,4 @@
-@render_node = (item, children, opts) ->
+@render_tree_node = (item, children, opts) ->
   children_html = ''
   show_path     = "/#{opts.plural}/#{item.id}"
 

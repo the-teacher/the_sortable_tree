@@ -62,6 +62,7 @@ $ ->
 
     # Build tree
     tree_html = render_tree tree,
+      render_node: render_sortable_node
       klass:       klass
       plural:      plural
       locale:      locale

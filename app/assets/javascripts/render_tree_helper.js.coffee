@@ -49,7 +49,7 @@
     for node in roots
       $.extend opts, { node: node, root: false, level: opts.level + 1 }
       children_html = render_tree tree, opts
-      html += render_node node, children_html, opts
+      html += opts.render_node(node, children_html, opts)
   else
     # render children nodes
     children      = []
@@ -63,7 +63,7 @@
     for node in children
       $.extend opts, { node: node, root: false, level: opts.level + 1 }
       children_html = render_tree tree, opts
-      html += render_node node, children_html, opts
+      html += opts.render_node(node, children_html, opts)
   
   # result html
   html

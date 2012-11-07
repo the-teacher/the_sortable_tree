@@ -29,6 +29,7 @@ $ ->
 
     # Build tree
     tree_html = render_tree tree,
+      render_node: render_tree_node
       klass:  klass
       plural: plural
       locale: locale

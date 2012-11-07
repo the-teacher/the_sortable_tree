@@ -1,4 +1,4 @@
-@render_node = (item, children, opts) ->
+@render_comment_node = (item, children, opts) ->
   children_html  = ''
   t              = opts.locale
   

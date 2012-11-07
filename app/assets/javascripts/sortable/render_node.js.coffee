@@ -1,4 +1,4 @@
-@render_node = (item, children, opts) ->
+@render_sortable_node = (item, children, opts) ->
   children_html  = ''
   base_path      = "/#{opts.plural}/#{item.id}"
   edit_path      = "/#{opts.plural}/#{item.id}/edit"

@@ -1,6 +1,13 @@
-@reply_links = ->
+@new_comment_submit_initialize = ->
+  $('#new_comment_block input[type=submit]').click (e) ->
+    button = $ e.target
+    form   = button.parent()
+    # form.submit()
+    false    
+
+@reply_links_initialize = ->
   $('.tree_block .comments .reply a').click ->
-    console.log 'clicked'
+    console.log 'clicked::replace answer form'
     false
 
 $ ->
@@ -21,6 +28,7 @@ $ ->
 
     # Build tree
     tree_html = render_tree tree,
+      render_node: render_comment_node
       klass:       klass
       plural:      plural
       locale:      t
@@ -38,4 +46,5 @@ $ ->
     """
 
 $ ->
-  reply_links()
+  reply_links_initialize()
+  new_comment_submit_initialize()
