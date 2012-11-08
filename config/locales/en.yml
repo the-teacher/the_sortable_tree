@@ -7,6 +7,5 @@ en:
   comments_tree:
     title: Name
     reply: Reply
+    skip: Skip
     new_comment: New Comment
-    new:  
-      skip: Skip

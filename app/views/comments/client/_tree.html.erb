@@ -1,18 +1,20 @@
-<div id='new_comment_block'>
-  <%= form_for Comment.new do |f| %>
-    <label>Name:</label>
-    <p><%= f.text_field :name %></p>
+<div id='new_comment_holder'>
+  <div id='new_comment_block'>
+    <%= form_for Comment.new do |f| %>
+      <label>Name:</label>
+      <p><%= f.text_field :name %></p>
 
-    <label>Email:</label>
-    <p><%= f.text_field :email %></p>
+      <label>Email:</label>
+      <p><%= f.text_field :email %></p>
 
-    <label>Content:</label>
-    <p><%= f.text_area :raw_content %></p>
+      <label>Content:</label>
+      <p><%= f.text_area :raw_content %></p>
 
-    <%= f.hidden_field :parent_id %>
+      <%= f.hidden_field :parent_id %>
 
-    <%= f.submit 'New Comment' %>
-  <% end %>
+      <%= f.submit 'New Comment' %>
+    <% end %>
+  </div>
 </div>
 
 <% unless tree.blank? %>
