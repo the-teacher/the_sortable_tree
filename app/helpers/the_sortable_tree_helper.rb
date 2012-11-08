@@ -21,7 +21,8 @@ module TheSortableTreeHelper
   #   tree
   #   sortable
   #   comments
-  def sortable_tree(tree, options= {})
+  #   select/options - should I to do that?
+  def render_tree(tree, options= {})
     opts = {
       max_levels: 3,
       :type       => :tree,
@@ -40,53 +41,53 @@ module TheSortableTreeHelper
     opts[:namespace] = Array.wrap opts[:namespace]
 
     # PATH building
-    unless opts[:path]
-      variant      = 'base'
-      variant      = opts[:side] if opts[:side]
-      opts[:path]  = "#{opts[:type]}/#{variant}"
-    end
+    opts[:path] = "#{opts[:type]}/#{opts[:side]}" unless opts[:path]
 
     render :partial => "#{opts[:path]}/tree", :locals => { :tree => tree, :opts => opts }
   end
 
-  # render :partial => "#{opts[:path]}/tree", :locals => { :tree => sortable_tree_builder(tree, opts), :opts => opts }
+  ###############################################
+  # Server Side Render Tree Helper [deprecated and slow]
+  ###############################################
+  def server_render_tree(tree, options= {})
+    result = ''
+    opts   = {
+      :id    => :id,        # node id field
+      :node  => nil,        # node
+      :root  => false,      # is it root node?
+      :level => 0           # recursion level
+    }.merge!(options)
 
-  # def sortable_tree_builder(tree, options= {})
-  #   result = ''
-  #   opts   = {
-  #     :id    => :id,        # node id field
-  #     :node  => nil,        # node
-  #     :root  => false,      # is it root node?
-  #     :level => 0           # recursion level
-  #   }.merge!(options)
+    root = opts[:root]
+    node = opts[:node]
 
-  #   root = opts[:root]
-  #   node = opts[:node]
+    unless node
+      roots = tree.select{ |elem| elem.parent_id.nil? }
 
-  #   unless node
-  #     roots = tree.select{ |elem| elem.parent_id.nil? }
+      # TODO: try to remove compact
+      # children rendering
+      if roots.empty? && !tree.empty?
+        min_parent_id = tree.map(&:parent_id).compact.min
+        roots = tree.select{ |elem| elem.parent_id == min_parent_id }
+      end
 
-  #     # TODO: try to remove compact
-  #     # children rendering
-  #     if roots.empty? && !tree.empty?
-  #       min_parent_id = tree.map(&:parent_id).compact.min
-  #       roots = tree.select{ |elem| elem.parent_id == min_parent_id }
-  #     end
-
-  #     roots.each do |root|
-  #       _opts  =  opts.merge({:node => root, :root => true, :level => opts[:level].next})
-  #       result << sortable_tree_builder(tree, _opts)
-  #     end
-  #   else
-  #     children_res = ''
-  #     children = tree.select{|elem| elem.parent_id == node.id}
-  #     opts.merge!({:has_children => children.blank?})
-  #     children.each do |elem|
-  #       _opts        =  opts.merge({:node => elem, :root => false, :level => opts[:level].next})
-  #       children_res << sortable_tree_builder(tree, _opts)
-  #     end
-  #     result << render(:partial => "#{opts[:path]}/node", :locals => {:opts => opts, :root => root, :node => node, :children => children_res})
-  #   end
-  #   raw result
-  # end
+      roots.each do |root|
+        _opts  =  opts.merge({:node => root, :root => true, :level => opts[:level].next})
+        result << server_render_tree(tree, _opts)
+      end
+    else
+      children_res = ''
+      children = tree.select{|elem| elem.parent_id == node.id}
+      opts.merge!({:has_children => children.blank?})
+      children.each do |elem|
+        _opts        =  opts.merge({:node => elem, :root => false, :level => opts[:level].next})
+        children_res << server_render_tree(tree, _opts)
+      end
+      result << render(:partial => "#{opts[:path]}/node", :locals => {:opts => opts, :root => root, :node => node, :children => children_res})
+    end
+    raw result
+  end
+  ###############################################
+  # ~Server Side Render Tree Helper
+  ###############################################
 end
