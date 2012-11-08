@@ -1,3 +1,13 @@
+<% unless tree.blank? %>
+  <i class='comments_tree' style='display:none'>
+    <i class='data'><%=   tree.to_json              %></i>
+    <i class='locale'><%= t(:comments_tree).to_json %></i>
+    <i class='klass'><%=  opts[:klass]              %></i>
+    <i class='plural'><%= opts[:klass].pluralize    %></i>
+    <i class='rebuild_url'><%= url_for(:controller => opts[:klass].pluralize, :action => :rebuild) %></i>
+  </i>
+<% end %>
+
 <div id='new_comment_holder'>
   <div id='new_comment_block'>
     <%= form_for Comment.new do |f| %>
@@ -16,13 +26,3 @@
     <% end %>
   </div>
 </div>
-
-<% unless tree.blank? %>
-  <i class='comments_tree' style='display:none'>
-    <i class='data'><%=   tree.to_json              %></i>
-    <i class='locale'><%= t(:comments_tree).to_json %></i>
-    <i class='klass'><%=  opts[:klass]              %></i>
-    <i class='plural'><%= opts[:klass].pluralize    %></i>
-    <i class='rebuild_url'><%= url_for(:controller => opts[:klass].pluralize, :action => :rebuild) %></i>
-  </i>
-<% end %>

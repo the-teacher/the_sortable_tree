@@ -7,7 +7,8 @@
   $('#new_comment_block input[type=submit]').click (e) ->
     button = $ e.target
     form   = button.parent()
-    # form.submit()
+    # potential ajax submit
+    form.submit()
     false  
 
 @reply_links_initialize = ->
@@ -76,9 +77,6 @@ $ ->
       <ol class='comments'>
         #{tree_html}
       </ol>
-      <div class='comments_new'>
-        <a href='/#{plural}/new'>#{t.new_comment}</a>
-      </div>
     """
 
 $ ->
