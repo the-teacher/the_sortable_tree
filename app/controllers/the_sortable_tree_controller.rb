@@ -7,7 +7,14 @@ module TheSortableTreeController
     def the_define_common_variables
       collection = self.class.to_s.split(':').last.sub(/Controller/,'').underscore.downcase                 # recipes
       variable   = collection.singularize                                                                   # recipe  
-      klass      = self.respond_to?(:sortable_model) ? self.sortable_model : variable.classify.constantize  # Recipe
+      modules_of_klass = self.class.to_s.split('::')[0...-1]                                                # SomeEngine
+      if self.respond_to?(:sortable_model) 
+        klass = self.sortable_model
+      elsif !modules_of_klass.empty?        
+        klass =  (modules_of_klass.join("/") + "/" + variable ).classify.constantize                        # SomeEngine::Recipe
+      else
+        klass = variable.classify.constantize                                                               # Recipe
+      end
       ["@#{variable}", collection, klass]
     end
   end
