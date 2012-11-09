@@ -14,14 +14,21 @@ rails g the_sortable_tree:views MODEL [tree|sortable|comments]
         # sortable
         # comments
         # tree
+
+        # expandable [todo]
+        # select [todo]
         if ARGV[1] == 'sortable'
+          copy_file "../assets/stylesheets/sortable.css.scss", "app/assets/stylesheets/sortable.css.scss"
           directory "../assets/javascripts/sortable", "app/assets/javascripts/sortable"
-          directory "sortable/base", "app/views/#{folder}/sortable/base"
+          directory "sortable/client", "app/views/#{folder}/sortable/client"
         elsif ARGV[1] == 'comments'
+          copy_file "../assets/stylesheets/comments_tree.css.scss", "app/assets/stylesheets/comments_tree.css.scss"
           directory "../assets/javascripts/comments", "app/assets/javascripts/comments"
-          directory "comments/base", "app/views/#{folder}/comments/base"
+          directory "comments/client", "app/views/#{folder}/comments/client"
         else
-          directory "tree/base", "app/views/#{folder}/tree/base"
+          copy_file "../assets/stylesheets/tree.css.scss", "app/assets/stylesheets/tree.css.scss"
+          directory "../assets/javascripts/tree", "app/assets/javascripts/tree"
+          directory "tree/client", "app/views/#{folder}/tree/client"
         end
       end
 

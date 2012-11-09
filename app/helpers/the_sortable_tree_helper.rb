@@ -21,7 +21,8 @@ module TheSortableTreeHelper
   #   tree
   #   sortable
   #   comments
-  #   select/options - should I to do that?
+  #   expandable [todo]
+  #   select/options [todo]
   def render_tree(tree, options= {})
     opts = {
       max_levels: 3,
@@ -31,10 +32,10 @@ module TheSortableTreeHelper
       :title      => :title,
       :klass      => define_class_of_elements_of(tree),
       # comments options
-      :node_id            => :id,
-      :contacts_field     => :email,
-      :content_field      => :content,
-      :raw_content_field  => :raw_content
+      :node_id           => :id,
+      :contacts_field    => :email,
+      :content_field     => :content,
+      :raw_content_field => :raw_content
     }.merge! options
 
     # RAILS require

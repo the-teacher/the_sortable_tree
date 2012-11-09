@@ -1,0 +1,16 @@
+.tree#tree_test{ :style => 'display:none;' }= raw @pages.to_json
+
+:css
+  .children{
+    margin-left: 20px;
+  }
+:javascript
+  $(function(){
+    new RenderTree('#tree_test', SortableTemplate, {
+      new_path:     '#{new_page_path}',
+      rebuild_path: '/pages/rebuild',
+      edit_path:    '/pages/:id/edit',
+      delete_path:  '/pages/:id',
+      show_path:    '/pages/:id'
+    });
+  })
