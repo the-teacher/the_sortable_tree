@@ -27,6 +27,15 @@ Just look to benchmark:
 * Client rendering: 3056ms
 * Performance: 16275 / 7962 = 2045 nodes/second
 
+### FAQ (Please, read it! It's important!)
+
+* How gem works?
+* Security notes!!!
+* How to render simple tree?
+* How to render sortable tree with (Drag&Drop GUI)?
+* How to render tree of comments?
+* What about Mountable Engines?
+
 ### Capabilities
 
 **Just Tree [default or tree option]**
@@ -58,7 +67,7 @@ gem 'the_sortable_tree'
 bundle
 ```
 
-### Example of using with Page Model
+### Render simple Nested Tree for Page Model
 
 ### Jquery and Javascripts
 
@@ -107,7 +116,7 @@ end
 ``` ruby
 resources :pages do
   collection do
-    get :manage
+    get  :manage
     post :rebuild
   end
 end
@@ -136,6 +145,8 @@ end
 ```ruby
 = render_tree @pages, type: :tree
 ```
+
+### The MIT License (MIT)
 
 Copyright 2009-2012 Ilya N. Zykin (the-teacher), Mikhail Dieterle (Mik-die), Matthew Clark
 
