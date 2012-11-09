@@ -27,9 +27,10 @@ Just look to benchmark:
 * Client rendering: 3056ms
 * Performance: 16275 / 7962 = 2045 nodes/second
 
-### FAQ (Please, read it! It's important!)
+### Content table
 
 * How gem works?
+* What gem can do?
 * Security notes!!!
 * How to render simple tree?
 * How to render sortable tree with (Drag&Drop GUI)?
