@@ -16,7 +16,7 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 
 ### Performance
 
-It's amazing! About 2500 nodes per second!!!
+It's amazing! More than 2000 nodes per second!!!
 
 Just look to benchmark:
 
@@ -25,3 +25,34 @@ Just look to benchmark:
 * 16275 nodes in tree
 * Server rendering: 4906.3ms
 * Client rendering: 3056ms
+* Performance: 16275 / 7962 = 2045 nodes/second
+
+### Capabilities
+
+**Just Tree [default or tree option]**
+
+![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic_min.jpg)
+
+**Drag&Drop Sortable Tree [sortable option]**
+
+![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic.jpg)
+
+**Comments Tree [__comments__ option]**
+
+With New Comment form and basic functionality
+
+![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/dev/comments.gif)
+
+### Demo Application and Application for testcase creating
+
+https://github.com/the-teacher/the_sortable_tree_test_app
+
+### Install
+
+    gem 'haml'
+    gem 'awesome_nested_set' # gem 'nested_set'
+    gem 'the_sortable_tree'
+
+```ruby
+bundle
+```
