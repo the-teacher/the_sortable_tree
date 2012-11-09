@@ -1,6 +1,6 @@
 ### TheSortableTree v2.0 (beta)
 
-Best and Fastest Helper for tree rendering (JS/Client side way)
+Best and Fastest *Rails 3* Helper for tree rendering (JS/Client side way)
 
 [TheSortableTree on RubyGems](http://rubygems.org/gems/the_sortable_tree)
 
@@ -49,9 +49,10 @@ https://github.com/the-teacher/the_sortable_tree_test_app
 
 ### Install
 
-    gem 'haml'
-    gem 'awesome_nested_set' # gem 'nested_set'
-    gem 'the_sortable_tree'
+```ruby
+gem 'awesome_nested_set' # gem 'nested_set'
+gem 'the_sortable_tree'
+```
 
 ```ruby
 bundle
