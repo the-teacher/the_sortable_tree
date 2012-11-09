@@ -4,15 +4,15 @@ Best and Fastest **Rails 3** Helper for tree rendering (JS/Client side way)
 
 [TheSortableTree on RubyGems](http://rubygems.org/gems/the_sortable_tree)
 
-### Keywords
-
-Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable nested set, Drag&Drop GUI for nested set, View helper for nested set, render tree
-
-### Description
+## Description
 
 **render_tree** - JavaScript (CoffeeScript) client side recursive helper-method for rendering nested set trees for Ruby and Rails.
 
 **render_tree** use native CoffeeScript template way for tree building. That why it is so easy to customize!
+
+## Keywords
+
+Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable nested set, Drag&Drop GUI for nested set, View helper for nested set, render tree
 
 ## Contents
 
@@ -27,7 +27,7 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 * How to render tree of comments?
 * What about Mountable Engines?
 
-### Performance
+## Performance
 
 It's amazing! More than 2000 nodes per second!!!
 
