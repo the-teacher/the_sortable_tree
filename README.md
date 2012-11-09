@@ -1,4 +1,4 @@
-### TheSortableTree
+### TheSortableTree v2.0 (beta)
 
 Best and Fastest Helper for tree rendering (JS/Client side way)
 
@@ -20,8 +20,8 @@ It's amazing! About 2500 nodes per second!!!
 
 Just look to benchmark:
 
-# 3 level deep
-# 25 nodes per level
-# 16275 nodes in tree
-# Server rendering: 4906.3ms
-# Client rendering: 3056ms
+* 3 level deep
+* 25 nodes per level
+* 16275 nodes in tree
+* Server rendering: 4906.3ms
+* Client rendering: 3056ms
