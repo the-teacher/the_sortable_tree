@@ -1,6 +1,6 @@
 ### TheSortableTree v2.0 (beta)
 
-Best and Fastest *Rails 3* Helper for tree rendering (JS/Client side way)
+Best and Fastest **Rails 3** Helper for tree rendering (JS/Client side way)
 
 [TheSortableTree on RubyGems](http://rubygems.org/gems/the_sortable_tree)
 
