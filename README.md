@@ -14,6 +14,19 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 
 **render_tree** use native CoffeeScript template way for tree building. That why it is so easy to customize!
 
+## Contents
+
+* Performance
+* How gem works?
+* What gem can do?
+* Security notes!!!
+* Install with Rails 3
+* Supported Nested Tree Gems
+* How to render simple tree?
+* How to render sortable tree with (Drag&Drop GUI)?
+* How to render tree of comments?
+* What about Mountable Engines?
+
 ### Performance
 
 It's amazing! More than 2000 nodes per second!!!
@@ -26,16 +39,6 @@ Just look to benchmark:
 * Server rendering: 4906.3ms
 * Client rendering: 3056ms
 * Performance: 16275 / 7962 = 2045 nodes/second
-
-### Content table
-
-* How gem works?
-* What gem can do?
-* Security notes!!!
-* How to render simple tree?
-* How to render sortable tree with (Drag&Drop GUI)?
-* How to render tree of comments?
-* What about Mountable Engines?
 
 ### Capabilities
 
