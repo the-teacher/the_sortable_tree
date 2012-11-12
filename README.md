@@ -4,6 +4,17 @@ Best and Fastest **Rails 3** Helper for tree rendering (JS/Client side way)
 
 [TheSortableTree on RubyGems](http://rubygems.org/gems/the_sortable_tree)
 
+## Install
+
+```ruby
+gem 'awesome_nested_set' # or any similar gem
+gem 'the_sortable_tree'
+```
+
+```ruby
+bundle
+```
+
 ## Description
 
 **build_tree** - JavaScript (CoffeeScript) client side recursive helper-method for rendering nested set trees for Ruby and Rails.
@@ -53,17 +64,6 @@ Just look to benchmark:
 * Server rendering: 4906.3ms *(converting to JSON)*
 * Client rendering: 3056ms *(rendering and append to DOM)*
 * Performance: 16275 / 7962 = 2045 nodes/second
-
-## Install
-
-```ruby
-gem 'awesome_nested_set'
-gem 'the_sortable_tree'
-```
-
-```ruby
-bundle
-```
 
 ## Supported nested set gems
 
