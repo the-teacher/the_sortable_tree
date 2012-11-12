@@ -29,13 +29,17 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 * Comments tree rendering
 * Expandable tree (uploading parts of tree via AJAX) **(planned)**
 
-# I want to know more
+## Customization
+
+* View generator
+
+## I want to know more
 
 * How gem works?
 * What gem can do?
 * Security notes!!!
-* What about Mountable Engines?
 * Show me Demo Application!
+* What about Mountable Engines?
 
 ## Performance
 
