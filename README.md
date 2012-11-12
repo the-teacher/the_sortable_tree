@@ -6,9 +6,9 @@ Best and Fastest **Rails 3** Helper for tree rendering (JS/Client side way)
 
 ## Description
 
-**render_tree** - JavaScript (CoffeeScript) client side recursive helper-method for rendering nested set trees for Ruby and Rails.
+**build_tree** - JavaScript (CoffeeScript) client side recursive helper-method for rendering nested set trees for Ruby and Rails.
 
-**render_tree** use native CoffeeScript template way for tree building. That why it is so easy to customize!
+**build_tree** use native CoffeeScript template way for tree building. That why it is so easy to customize!
 
 ## Keywords
 

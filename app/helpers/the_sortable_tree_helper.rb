@@ -23,7 +23,7 @@ module TheSortableTreeHelper
   #   comments
   #   expandable [todo]
   #   select/options [todo]
-  def render_tree(tree, options= {})
+  def build_tree(tree, options= {})
     opts = {
       max_levels: 3,
       :type       => :tree,
@@ -50,7 +50,7 @@ module TheSortableTreeHelper
   ###############################################
   # Server Side Render Tree Helper [deprecated and slow]
   ###############################################
-  def server_render_tree(tree, options= {})
+  def server_build_tree(tree, options= {})
     result = ''
     opts   = {
       :id    => :id,        # node id field
