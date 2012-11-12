@@ -24,9 +24,10 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 
 ## Using
 
-* How to render simple tree?
-* How to render sortable tree with (Drag&Drop GUI)?
-* How to render tree of comments?
+* Simple tree rendering
+* Sortable tree (Drag&Drop GUI) rendering
+* Comments tree rendering
+* Expandable tree (uploading parts of tree via AJAX) **(planned)**
 
 # I want to know more
 
@@ -45,8 +46,8 @@ Just look to benchmark:
 * 3 level deep
 * 25 nodes per level
 * 16275 nodes in tree
-* Server rendering: 4906.3ms (converting to JSON)
-* Client rendering: 3056ms (rendering and append to DOM)
+* Server rendering: 4906.3ms *(converting to JSON)*
+* Client rendering: 3056ms *(rendering and append to DOM)*
 * Performance: 16275 / 7962 = 2045 nodes/second
 
 ## Install
@@ -64,7 +65,7 @@ bundle
 
 * [gem 'awesome_nested_set'](https://github.com/collectiveidea/awesome_nested_set)
 * [gem 'nested_set'](https://github.com/skyeagle/nested_set)
-* gem 'acts_as_ordered_tree' **planned**
+* gem 'acts_as_ordered_tree' **(planned)**
 
 ### The MIT License (MIT)
 
