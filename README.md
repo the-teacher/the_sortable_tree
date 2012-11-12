@@ -17,20 +17,26 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 ## Contents
 
 * [Performance](https://github.com/the-teacher/the_sortable_tree#performance)
-* How gem works?
-* What gem can do?
-* Security notes!!!
 * [Install with Rails 3](https://github.com/the-teacher/the_sortable_tree#install)
 * [Supported Nested Tree Gems](https://github.com/the-teacher/the_sortable_tree#supported-nested-set-gems)
+
+## Using
+
 * How to render simple tree?
 * How to render sortable tree with (Drag&Drop GUI)?
 * How to render tree of comments?
+
+# I want to know more
+
+* How gem works?
+* What gem can do?
+* Security notes!!!
 * What about Mountable Engines?
 * Show me Demo Application!
 
 ## Performance
 
-It's amazing! More than 2000 nodes per second!!!
+It's amazing! **More than 2000 nodes per second!!!**
 
 Just look to benchmark:
 
@@ -56,7 +62,7 @@ bundle
 
 * [gem 'awesome_nested_set'](https://github.com/collectiveidea/awesome_nested_set)
 * [gem 'nested_set'](https://github.com/skyeagle/nested_set)
-* gem 'acts_as_ordered_tree' *planned*
+* gem 'acts_as_ordered_tree' **planned**
 
 ### The MIT License (MIT)
 
