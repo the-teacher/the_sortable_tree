@@ -53,8 +53,8 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 * How gem works?
 * What gem can do?
 * Security notes!!!
-* Show me Demo Application!
-* What about Mountable Engines?
+* [Show me Demo Application!](https://github.com/the-teacher/the_sortable_tree_test_app)
+* Troubleshooting
 
 ## Performance
 
