@@ -25,7 +25,7 @@ bundle
 
 **build_tree** use native CoffeeScript template way for tree building. That why it is so easy to customize!
 
-![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic.jpg)
+![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/docs/sortable_tree.jpg)
 
 ## Keywords
 
