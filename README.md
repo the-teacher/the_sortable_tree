@@ -10,6 +10,8 @@ Best and Fastest **Rails 3** Helper for tree rendering (JS/Client side way)
 
 **build_tree** use native CoffeeScript template way for tree building. That why it is so easy to customize!
 
+![TheSortableTree](https://github.com/the-teacher/the_sortable_tree/raw/master/pic.jpg)
+
 ## Keywords
 
 Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable nested set, Drag&Drop GUI for nested set, View helper for nested set, render tree
