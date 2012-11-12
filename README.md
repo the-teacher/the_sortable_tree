@@ -6,10 +6,14 @@ Best and Fastest **Rails 3** Helper for tree rendering (JS/Client side way)
 
 ## Install
 
+Gemfile
+
 ```ruby
 gem 'awesome_nested_set' # or any similar gem
 gem 'the_sortable_tree'
 ```
+
+Console
 
 ```ruby
 bundle
