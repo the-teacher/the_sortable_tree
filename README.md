@@ -45,8 +45,8 @@ Just look to benchmark:
 * 3 level deep
 * 25 nodes per level
 * 16275 nodes in tree
-* Server rendering: 4906.3ms
-* Client rendering: 3056ms
+* Server rendering: 4906.3ms (converting to JSON)
+* Client rendering: 3056ms (rendering and append to DOM)
 * Performance: 16275 / 7962 = 2045 nodes/second
 
 ## Install
