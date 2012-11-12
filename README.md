@@ -14,7 +14,7 @@ Best and Fastest **Rails 3** Helper for tree rendering (JS/Client side way)
 
 Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable nested set, Drag&Drop GUI for nested set, View helper for nested set, render tree
 
-## Contents
+## Basics
 
 * [Performance](https://github.com/the-teacher/the_sortable_tree#performance)
 * [Install with Rails 3](https://github.com/the-teacher/the_sortable_tree#install)
