@@ -55,6 +55,7 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 * [Security notes!!!](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/security_notes.md)
 * [Show me Demo Application!](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/the_sortable_tree_test_app.md)
 * [Troubleshooting](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/security_notes.md)
+* [Search engines](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/search_engines.md)
 
 ## Performance
 
