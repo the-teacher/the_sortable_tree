@@ -42,6 +42,7 @@ end
 ``` ruby
 class Page < ActiveRecord::Base
   include TheSortableTree::Scopes
+  
   # any code here
 end
 ```
