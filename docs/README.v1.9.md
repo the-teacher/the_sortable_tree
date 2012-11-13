@@ -88,7 +88,7 @@ end
 ``` ruby
 resources :pages do
   collection do
-    get :manage
+    get  :manage
     post :rebuild
   end
 end
