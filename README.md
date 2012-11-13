@@ -39,9 +39,9 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 
 ## Using
 
-* Simple tree rendering
-* Sortable tree (Drag&Drop GUI) rendering
-* Comments tree rendering
+* [Simple tree rendering](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/render_tree.md)
+* [Sortable tree (Drag&Drop GUI) rendering](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/sortable_tree.md)
+* [Comments tree rendering](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/comments_tree.md)
 * Expandable tree (uploading parts of tree via AJAX) **(planned)**
 
 ## Customization
@@ -52,7 +52,7 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 
 * [How gem works?](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/how_gem_works.md)
 * [Security notes!!!](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/security_notes.md)
-* [Show me Demo Application!](https://github.com/the-teacher/the_sortable_tree_test_app.md)
+* [Show me Demo Application!](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/the_sortable_tree_test_app.md)
 * [Troubleshooting](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/security_notes.md)
 
 ## Performance
