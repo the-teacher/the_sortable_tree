@@ -1,4 +1,4 @@
-## Render simple Nested Tree for Page Model
+## Render comments tree for Page Model
 
 ### Jquery and Javascripts
 
@@ -7,13 +7,12 @@
 ```ruby
 //= require jquery
 //= require jquery-ui
-//= require jquery_ujs
 ```
 
 ```ruby
 //= require 'render_tree_helper'
-//= require 'tree/render_node'
-//= require 'tree/initializer'
+//= require 'comments/render_node'
+//= require 'comments/initializer'
 ```
 
 ### Stylesheets
@@ -21,58 +20,70 @@
 **app/assets/stylesheets/application.css**
 
 ```ruby
-//= require 'tree'
+//= require 'comments_tree'
 ```
 
-### Extend your Model
+### Routes for pages
 
 ``` ruby
-class Page < ActiveRecord::Base
-  include TheSortableTree::Scopes
-  # any code here
-end
-```
-
-### Extend your Controller
-
-``` ruby
-class PagesController < ApplicationController
-  include TheSortableTreeController::Rebuild
-  # any code here
-end
-```
-
-### Extend your Routes
-
-``` ruby
-resources :pages do
-  collection do
-    get  :manage
-    post :rebuild
-  end
-end
+resources :pages
 ```
 
 **manage** action or any else action for show sortable tree
 
-**rebuild** action is _required_ action for correctly work of **the_sortable_tree**
+### Extend your Models
 
-### Find your tree
+``` ruby
+class Comment < ActiveRecord::Base
+  include TheSortableTree::Scopes
+  belongs_to :page
+  
+  # any code here
+end
+
+class Page
+  has_many :comments
+
+  # any code here
+end
+```
+
+### Extend your Controller and Find your tree
 
 ``` ruby
 class PagesController < ApplicationController
-  include TheSortableTreeController::Rebuild
+  # required only for sortable tree
+  # include TheSortableTreeController::Rebuild
 
-  def manage
-    @pages = Page.nested_set.select('id, title, content, parent_id').all
+  def show
+    @page     = Page.find params[:id]
+    @comments = @page.comments.nested_set.select('id, name, content, parent_id').all
   end
 
   # any code here
 end
 ```
 
-### Render Your Tree!
+### Render Your Comments Tree!
 
 ```ruby
-= render_tree @pages, type: :tree
+= render_tree @comments, type: :comments
+```
+
+## If you need to render reversed tree
+
+Select your tree with **reversed_nested_set** scope
+
+``` ruby
+class PagesController < ApplicationController
+  # required only for sortable tree
+  # include TheSortableTreeController::Rebuild
+
+  def manage
+    @page     = Page.find params[:id]
+    @comments = @page.comments.nested_set.select('id, name, content, parent_id').all
+  end
+
+  # any code here
+end
 ```

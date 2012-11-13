@@ -31,7 +31,7 @@ resources :pages do
   collection do
     get :manage
 
-    # not required for simple tree
+    # required only for sortable tree
     # post :rebuild
   end
 end
@@ -53,7 +53,7 @@ end
 
 ``` ruby
 class PagesController < ApplicationController
-  # not required for simple tree
+  # required only for sortable tree
   # include TheSortableTreeController::Rebuild
 
   def manage
@@ -76,8 +76,8 @@ Select your tree with **reversed_nested_set** scope
 
 ``` ruby
 class PagesController < ApplicationController
-  # not required for simple tree
-  # include TheSortableTreeController::ReversedRebuild
+  # required only for sortable tree
+  # include TheSortableTreeController::Rebuild
 
   def manage
     @pages = Page.reversed_nested_set.select('id, title, content, parent_id').all
