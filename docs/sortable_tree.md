@@ -24,26 +24,6 @@
 //= require 'sortable'
 ```
 
-### Extend your Model
-
-``` ruby
-class Page < ActiveRecord::Base
-  include TheSortableTree::Scopes
-  
-  # any code here
-end
-```
-
-### Extend your Controller
-
-``` ruby
-class PagesController < ApplicationController
-  include TheSortableTreeController::Rebuild
-  
-  # any code here
-end
-```
-
 ### Extend your Routes
 
 ``` ruby
@@ -58,6 +38,16 @@ end
 **manage** action or any else action for show sortable tree
 
 **rebuild** - _required_ action for correctly work of **the_sortable_tree**
+
+### Extend your Model
+
+``` ruby
+class Page < ActiveRecord::Base
+  include TheSortableTree::Scopes
+  
+  # any code here
+end
+```
 
 ### Extend your Controller and Find your tree
 

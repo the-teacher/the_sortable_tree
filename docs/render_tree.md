@@ -37,6 +37,8 @@ resources :pages do
 end
 ```
 
+**manage** action or any else action for show tree
+
 ### Extend your Model
 
 ``` ruby
