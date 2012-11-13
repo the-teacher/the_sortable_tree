@@ -57,6 +57,7 @@ class PagesController < ApplicationController
   # include TheSortableTreeController::Rebuild
 
   def manage
+    # IMPORTANT! Select only required fields
     @pages = Page.nested_set.select('id, title, content, parent_id').all
   end
 
@@ -80,6 +81,7 @@ class PagesController < ApplicationController
   # include TheSortableTreeController::Rebuild
 
   def manage
+    # IMPORTANT! Select only required fields
     @pages = Page.reversed_nested_set.select('id, title, content, parent_id').all
   end
 

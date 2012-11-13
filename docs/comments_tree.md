@@ -57,6 +57,8 @@ class PagesController < ApplicationController
 
   def show
     @page     = Page.find params[:id]
+
+    # IMPORTANT! Select only required fields
     @comments = @page.comments.nested_set.select('id, name, content, parent_id').all
   end
 
@@ -81,6 +83,8 @@ class PagesController < ApplicationController
 
   def manage
     @page     = Page.find params[:id]
+
+    # IMPORTANT! Select only required fields
     @comments = @page.comments.nested_set.select('id, name, content, parent_id').all
   end
 
