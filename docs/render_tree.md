@@ -24,6 +24,17 @@
 //= require 'tree'
 ```
 
+### Extend your Routes
+
+``` ruby
+resources :pages do
+  collection do
+    get  :manage
+    # post :rebuild # not required for simple tree
+  end
+end
+```
+
 ### Extend your Model
 
 ``` ruby
