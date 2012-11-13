@@ -1,4 +1,4 @@
-## Render simple Nested Tree for Page Model
+## Render sortablee tree of nested pages
 
 ### Jquery and Javascripts
 
@@ -12,8 +12,8 @@
 
 ```ruby
 //= require 'render_tree_helper'
-//= require 'tree/render_node'
-//= require 'tree/initializer'
+//= require 'sortable/render_node'
+//= require 'sortable/initializer'
 ```
 
 ### Stylesheets
@@ -21,7 +21,7 @@
 **app/assets/stylesheets/application.css**
 
 ```ruby
-//= require 'tree'
+//= require 'sortable'
 ```
 
 ### Extend your Model
@@ -29,6 +29,7 @@
 ``` ruby
 class Page < ActiveRecord::Base
   include TheSortableTree::Scopes
+  
   # any code here
 end
 ```
@@ -38,6 +39,7 @@ end
 ``` ruby
 class PagesController < ApplicationController
   include TheSortableTreeController::Rebuild
+  
   # any code here
 end
 ```
@@ -55,9 +57,9 @@ end
 
 **manage** action or any else action for show sortable tree
 
-**rebuild** action is _required_ action for correctly work of **the_sortable_tree**
+**rebuild** - _required_ action for correctly work of **the_sortable_tree**
 
-### Find your tree
+### Extend your Controller and Find your tree
 
 ``` ruby
 class PagesController < ApplicationController
@@ -74,5 +76,21 @@ end
 ### Render Your Tree!
 
 ```ruby
-= render_tree @pages, type: :tree
+= render_tree @pages, type: :sortable
+```
+
+## If you need to render reversed tree
+
+Select your tree with **reversed_nested_set** scope
+
+``` ruby
+class PagesController < ApplicationController
+  include TheSortableTreeController::ReversedRebuild
+
+  def manage
+    @pages = Page.reversed_nested_set.select('id, title, content, parent_id').all
+  end
+
+  # any code here
+end
 ```

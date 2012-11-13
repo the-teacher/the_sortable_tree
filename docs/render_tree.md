@@ -29,8 +29,10 @@
 ``` ruby
 resources :pages do
   collection do
-    get  :manage
-    # post :rebuild # not required for simple tree
+    get :manage
+
+    # not required for simple tree
+    # post :rebuild
   end
 end
 ```
@@ -44,11 +46,12 @@ class Page < ActiveRecord::Base
 end
 ```
 
-### Extend your Controller and find your tree
+### Find your tree
 
 ``` ruby
 class PagesController < ApplicationController
-  include TheSortableTreeController::Rebuild
+  # not required for simple tree
+  # include TheSortableTreeController::Rebuild
 
   def manage
     @pages = Page.nested_set.select('id, title, content, parent_id').all
@@ -66,9 +69,12 @@ end
 
 ## If you need to render reversed tree
 
+Select your tree with **reversed_nested_set** scope
+
 ``` ruby
 class PagesController < ApplicationController
-  include TheSortableTreeController::ReversedRebuild
+  # not required for simple tree
+  # include TheSortableTreeController::ReversedRebuild
 
   def manage
     @pages = Page.reversed_nested_set.select('id, title, content, parent_id').all
