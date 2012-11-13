@@ -33,16 +33,7 @@ class Page < ActiveRecord::Base
 end
 ```
 
-### Extend your Controller
-
-``` ruby
-class PagesController < ApplicationController
-  include TheSortableTreeController::Rebuild
-  # any code here
-end
-```
-
-### Find your tree
+### Extend your Controller and find your tree
 
 ``` ruby
 class PagesController < ApplicationController
@@ -60,4 +51,18 @@ end
 
 ```ruby
 = build_tree @pages
+```
+
+## If you need to render reversed tree
+
+``` ruby
+class PagesController < ApplicationController
+  include TheSortableTreeController::ReversedRebuild
+
+  def manage
+    @pages = Page.reversed_nested_set.select('id, title, content, parent_id').all
+  end
+
+  # any code here
+end
 ```
