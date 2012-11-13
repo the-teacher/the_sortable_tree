@@ -1,4 +1,4 @@
-## Render simple Nested Tree for Page Model
+## Render tree of nested pages
 
 ### Jquery and Javascripts
 
@@ -74,5 +74,5 @@ end
 ### Render Your Tree!
 
 ```ruby
-= render_tree @pages, type: :tree
+= build_tree @pages
 ```

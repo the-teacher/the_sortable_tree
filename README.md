@@ -37,7 +37,7 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 * [Install with Rails 3](https://github.com/the-teacher/the_sortable_tree#install)
 * [Supported Nested Tree Gems](https://github.com/the-teacher/the_sortable_tree#supported-nested-set-gems)
 
-## Using (How to render?)
+## Using (how to render?)
 
 * [Just Tree](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/render_tree.md)
 * [Sortable tree (Drag&Drop GUI)](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/sortable_tree.md)
