@@ -19,11 +19,23 @@ Because when we put JSON in SCRIPT tag it can call JavaScript code in content fi
 
 When we put JSON in HTML tag potentially dangerous code cannot be evalut.
 
+Next code is example of unsecure way to get tree
+
+```javascript
+<script>
+//<![CDATA[
+  tree = { field: "</script><script>alert(1)</script>" }
+//]]>
+</script>
+```
+
 Next code is example of secure way to get Tree data at client side.
 
 ```javascript
-tree = $('#json_data').html()
-tree = JSON.parse(tree)
+<script> //<![CDATA[
+  tree = $('#json_data').html()
+  tree = JSON.parse(tree)
+</script>
 ```
 
 If you know better way - just say me, and I will use it
