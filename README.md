@@ -46,13 +46,13 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 
 ## Customization
 
-* [View generator](https://github.com/the-teacher/the_sortable_tree#view_generator)
+* [View generator](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/view_generator.md)
 
 ## I want to know more
 
 * [How gem works?](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/how_gem_works.md)
 * [Security notes!!!](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/security_notes.md)
-* [Show me Demo Application!](https://github.com/the-teacher/the_sortable_tree_test_app)
+* [Show me Demo Application!](https://github.com/the-teacher/the_sortable_tree_test_app.md)
 * [Troubleshooting](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/security_notes.md)
 
 ## Performance
