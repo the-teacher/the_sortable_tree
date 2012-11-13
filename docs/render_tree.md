@@ -42,21 +42,6 @@ class PagesController < ApplicationController
 end
 ```
 
-### Extend your Routes
-
-``` ruby
-resources :pages do
-  collection do
-    get  :manage
-    post :rebuild
-  end
-end
-```
-
-**manage** action or any else action for show sortable tree
-
-**rebuild** action is _required_ action for correctly work of **the_sortable_tree**
-
 ### Find your tree
 
 ``` ruby
