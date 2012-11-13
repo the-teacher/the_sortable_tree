@@ -63,7 +63,7 @@ class PagesController < ApplicationController
 end
 ```
 
-### Render Your Tree!
+### Render Your Sortable Tree!
 
 ```ruby
 = render_tree @pages, type: :sortable
