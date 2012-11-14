@@ -1,6 +1,6 @@
 en:
   tree:
-    name: Tree
+    name: "<script>alert(1)</script>"
   sortable:
     new_path:       'Add new node'
     edit:           'Edit node'

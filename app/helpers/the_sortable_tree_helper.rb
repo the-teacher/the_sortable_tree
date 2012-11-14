@@ -50,6 +50,13 @@ module TheSortableTreeHelper
   ###############################################
   # Server Side Render Tree Helper [deprecated and slow]
   ###############################################
+  def tree_node opts = {}
+    "
+      <p>#{opts[:node].title}</p>
+      <div>#{opts[:children]}</div>
+    "
+  end
+
   def server_build_tree(tree, options= {})
     result = ''
     opts   = {
@@ -71,20 +78,21 @@ module TheSortableTreeHelper
         min_parent_id = tree.map(&:parent_id).compact.min
         roots = tree.select{ |elem| elem.parent_id == min_parent_id }
       end
-
+      
       roots.each do |root|
         _opts  =  opts.merge({:node => root, :root => true, :level => opts[:level].next})
-        result << server_render_tree(tree, _opts)
+        result << server_build_tree(tree, _opts)
       end
     else
       children_res = ''
       children = tree.select{|elem| elem.parent_id == node.id}
+
       opts.merge!({:has_children => children.blank?})
       children.each do |elem|
         _opts        =  opts.merge({:node => elem, :root => false, :level => opts[:level].next})
-        children_res << server_render_tree(tree, _opts)
+        children_res << server_build_tree(tree, _opts)
       end
-      result << render(:partial => "#{opts[:path]}/node", :locals => {:opts => opts, :root => root, :node => node, :children => children_res})
+      result << tree_node({:opts => opts, :root => root, :node => node, :children => children_res}) # render(:partial => "#{opts[:path]}/node", :locals => {:opts => opts, :root => root, :node => node, :children => children_res})
     end
     raw result
   end

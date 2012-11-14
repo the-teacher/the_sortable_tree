@@ -1,5 +1,22 @@
 <% unless tree.blank? %>
-<i class='render_tree' style='display:none' data-locale="<%= t(:tree).to_json %>" data-klass="<%= opts[:klass] %>" data-plural="<%= opts[:klass].pluralize %>" data-rebuild-url="<%= url_for(controller: opts[:klass].pluralize, action: :rebuild) %>">
-<i class='data'><%= tree.to_json %></i>
+<i class='render_tree' style='display:none' data-locale="<%= t(:tree).to_json %>" data-klass="<%= opts[:klass] %>" data-plural="<%= opts[:klass].pluralize %>">
+<%
+# tree.to_json
+%>
 </i>
 <% end %>
+
+<% Plain tree 1.3 ms %>
+<% tree.each do |item| %>
+
+  <li>
+    <div class='item'>
+    <h4><a href='#'><%= item.title %></a></h4>
+    <p><%=  item.content %></p>
+    </div>
+  </li>
+
+<% end %>
+
+<%= server_build_tree(tree) %>
+

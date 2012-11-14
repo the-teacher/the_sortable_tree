@@ -16,14 +16,12 @@ $ ->
   # Select all trees JSON data and build it
   for data_block in $ '.render_tree'
     # console.time('tree build')
+    
     # Init
     data_block  = $ data_block
-    klass       = data_block.find('.klass').html()
-    plural      = data_block.find('.plural').html()
-
-    # Data
-    locale = JSON.parse data_block.find('.locale').html()
-    tree   = JSON.parse data_block.find('.data').html()
+    klass       = data_block.data 'klass'
+    plural      = data_block.data 'plural'
+    tree        = JSON.parse data_block.html()
 
     # console.log 'tree length: ', tree.length
 
@@ -32,7 +30,6 @@ $ ->
       render_node: render_tree_node
       klass:  klass
       plural: plural
-      locale: locale
 
     # Append tree html after JSON data block
     tree_block = $("<div class='tree_block' />").insertAfter(data_block)
