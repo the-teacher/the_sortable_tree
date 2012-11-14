@@ -1,4 +1,6 @@
 en:
+  tree:
+    name: Tree
   sortable:
     new_path:       'Add new node'
     edit:           'Edit node'
