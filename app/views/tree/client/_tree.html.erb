@@ -1,22 +1,7 @@
-<% unless tree.blank? %>
-<i class='render_tree' style='display:none' data-locale="<%= t(:tree).to_json %>" data-klass="<%= opts[:klass] %>" data-plural="<%= opts[:klass].pluralize %>">
-<%
-# tree.to_json
-%>
-</i>
-<% end %>
+<h1><%= tree.size %></h1>
 
-<% Plain tree 1.3 ms %>
-<% tree.each do |item| %>
-
-  <li>
-    <div class='item'>
-    <h4><a href='#'><%= item.title %></a></h4>
-    <p><%=  item.content %></p>
-    </div>
-  </li>
-
-<% end %>
-
-<%= server_build_tree(tree) %>
-
+<div class='tree_block'>
+  <ol class='tree'>
+    <%= server_build_tree(tree) %>
+  </ol>
+</div>

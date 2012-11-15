@@ -51,10 +51,15 @@ module TheSortableTreeHelper
   # Server Side Render Tree Helper [deprecated and slow]
   ###############################################
   def tree_node opts = {}
-    "
-      <p>#{opts[:node].title}</p>
-      <div>#{opts[:children]}</div>
-    "
+    children = ''
+    children = "<ol class='nested_set'>#{opts[:children]}</ol>" unless opts[:children].empty?
+    "<li>
+      <div class='item'>
+        <h4><a href='#'>#{opts[:node].title}</a></h4>
+        <p>#{opts[:node].title}</p>
+      </div>
+      #{children}
+    </li>"
   end
 
   def server_build_tree(tree, options= {})
@@ -63,14 +68,27 @@ module TheSortableTreeHelper
       :id    => :id,        # node id field
       :node  => nil,        # node
       :root  => false,      # is it root node?
-      :level => 0           # recursion level
+      :level => 0,           # recursion level
+      :boost => []
     }.merge!(options)
 
     root = opts[:root]
     node = opts[:node]
 
+    # BOOST PATCH
+    # BUILD BOOST ONCE
+    if opts[:boost].empty?
+      tree.each do |item|
+        num = item.parent_id || 0
+        opts[:boost][num] = [] unless opts[:boost][num]
+        opts[:boost][num].push item
+      end
+    end
+
     unless node
-      roots = tree.select{ |elem| elem.parent_id.nil? }
+      # BOOST
+      # roots = tree.select{ |elem| elem.parent_id.nil? }
+      roots = opts[:boost][0]
 
       # TODO: try to remove compact
       # children rendering
@@ -80,18 +98,23 @@ module TheSortableTreeHelper
       end
       
       roots.each do |root|
-        _opts  =  opts.merge({:node => root, :root => true, :level => opts[:level].next})
+        _opts  =  opts.merge({:node => root, :root => true, :level => opts[:level].next, :boost => opts[:boost]})
         result << server_build_tree(tree, _opts)
       end
     else
       children_res = ''
-      children = tree.select{|elem| elem.parent_id == node.id}
-
+      # BOOST
+      # children = tree.select{|elem| elem.parent_id == node.id}
+      children = opts[:boost][node.id]
       opts.merge!({:has_children => children.blank?})
-      children.each do |elem|
-        _opts        =  opts.merge({:node => elem, :root => false, :level => opts[:level].next})
-        children_res << server_build_tree(tree, _opts)
+
+      unless children.nil?
+        children.each do |elem|
+          _opts        =  opts.merge({:node => elem, :root => false, :level => opts[:level].next, :boost => opts[:boost]})
+          children_res << server_build_tree(tree, _opts)
+        end
       end
+
       result << tree_node({:opts => opts, :root => root, :node => node, :children => children_res}) # render(:partial => "#{opts[:path]}/node", :locals => {:opts => opts, :root => root, :node => node, :children => children_res})
     end
     raw result
