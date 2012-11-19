@@ -23,7 +23,7 @@ module TheSortableTreeHelper
   #   comments
   #   expandable [todo]
   #   select/options [todo]
-  def build_tree(tree, options= {})
+  def build_client_tree(tree, options= {})
     opts = {
       max_levels: 3,
       :type       => :tree,
@@ -50,26 +50,27 @@ module TheSortableTreeHelper
   ###############################################
   # Server Side Render Tree Helper [deprecated and slow]
   ###############################################
-  def tree_node opts = {}
-    children = ''
-    children = "<ol class='nested_set'>#{opts[:children]}</ol>" unless opts[:children].empty?
-    "<li>
-      <div class='item'>
-        <h4><a href='#'>#{opts[:node].title}</a></h4>
-        <p>#{opts[:node].title}</p>
-      </div>
-      #{children}
-    </li>"
-  end
+  # def tree_node opts = {}
+  #   children = ''
+  #   children = "<ol class='nested_set'>#{opts[:children]}</ol>" unless opts[:children].empty?
+  #   "<li>
+  #     <div class='item'>
+  #       <h4><a href='#'>#{opts[:node].title}</a></h4>
+  #       <p>#{opts[:node].title}</p>
+  #     </div>
+  #     #{children}
+  #   </li>"
+  # end
 
-  def server_build_tree(tree, options= {})
+  def build_server_tree(tree, options= {})
     result = ''
     opts   = {
-      :id    => :id,        # node id field
-      :node  => nil,        # node
-      :root  => false,      # is it root node?
-      :level => 0,           # recursion level
-      :boost => []
+      :id    => :id,      # node id field
+      :node  => nil,      # node
+      :root  => false,    # is it root node?
+      :level => 0,        # recursion level
+      :boost => [],       # BOOST array!
+      :node_helper => nil # function for render NODE of tree
     }.merge!(options)
 
     root = opts[:root]
@@ -86,12 +87,10 @@ module TheSortableTreeHelper
     end
 
     unless node
-      # BOOST
-      # roots = tree.select{ |elem| elem.parent_id.nil? }
       roots = opts[:boost][0]
 
-      # TODO: try to remove compact
       # children rendering
+      # TODO: try to remove compact
       if roots.empty? && !tree.empty?
         min_parent_id = tree.map(&:parent_id).compact.min
         roots = tree.select{ |elem| elem.parent_id == min_parent_id }
@@ -99,23 +98,21 @@ module TheSortableTreeHelper
       
       roots.each do |root|
         _opts  =  opts.merge({:node => root, :root => true, :level => opts[:level].next, :boost => opts[:boost]})
-        result << server_build_tree(tree, _opts)
+        result << build_server_tree(tree, _opts)
       end
     else
       children_res = ''
-      # BOOST
-      # children = tree.select{|elem| elem.parent_id == node.id}
-      children = opts[:boost][node.id]
-      opts.merge!({:has_children => children.blank?})
+      children     = opts[:boost][node.id]
+      opts.merge! { :has_children => children.blank? }
 
       unless children.nil?
         children.each do |elem|
           _opts        =  opts.merge({:node => elem, :root => false, :level => opts[:level].next, :boost => opts[:boost]})
-          children_res << server_build_tree(tree, _opts)
+          children_res << build_server_tree(tree, _opts)
         end
       end
 
-      result << tree_node({:opts => opts, :root => root, :node => node, :children => children_res}) # render(:partial => "#{opts[:path]}/node", :locals => {:opts => opts, :root => root, :node => node, :children => children_res})
+      result << send(opts[:node_helper], { :opts => opts, :root => root, :node => node, :children => children_res })
     end
     raw result
   end
