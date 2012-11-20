@@ -5,9 +5,9 @@ module TheSortableTreeHelper
   # github.com/the-teacher
   #-------------------------------------------------------------------------------------------------------
   TREE_RENDERERS = {
-    :tree     => :render_tree_node,
-    :sortable => :render_sortable_tree_node,
-    :comments => :render_comments_tree_node
+    :tree     => TreeRenderHelper,
+    :sortable => SortableTreeRenderHelper,
+    :comments => CommentsTreeRenderHelper
   }
 
   def define_class_of_elements_of tree
@@ -21,6 +21,11 @@ module TheSortableTreeHelper
   ###############################################
   # Server Side Render Tree Helper
   ###############################################
+  def render_tree_node context, render_module, options = {}
+    @render = render_module::Render.new(context, options)
+    @render.render_node()
+  end
+
   def build_server_tree(tree, options= {})
     result = ''
     opts   = {
@@ -48,8 +53,8 @@ module TheSortableTreeHelper
     # namespace prepare [Rails require]
     opts[:namespace] = Array.wrap opts[:namespace]
 
-    # Module with **render_helper(opts)** function
-    opts[:render_method] = TREE_RENDERERS[opts[:type]] unless opts[:render_method]
+    # Module with **Render** class
+    opts[:render_module] = TREE_RENDERERS[opts[:type]] unless opts[:render_module]
 
     # Define tree class
     opts[:klass] = define_class_of_elements_of(tree) unless opts[:klass]
@@ -89,7 +94,7 @@ module TheSortableTreeHelper
         end
       end
 
-      result << send(opts[:render_method], { :root => root, :node => node, :children => children_res, :opts => opts })
+      result << render_tree_node(self, opts[:render_module], { :root => root, :node => node, :children => children_res, :opts => opts })
     end
     raw result
   end#build_server_tree
