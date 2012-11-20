@@ -4,10 +4,11 @@ module TheSortableTreeHelper
   # Ilya Zykin, zykin-ilya@ya.ru, Russia, Ivanovo 2009-2012
   # github.com/the-teacher
   #-------------------------------------------------------------------------------------------------------
-
-  # = sortable_tree @pages,    :new_url => new_page_url, :max_levels => 5
-  # = sortable_tree @products, :new_url => new_product_url, :path => 'products/the_sortable_tree'
-  # = sortable_tree @catalogs, :namespace => :admin, :new_url => new_catalog_url, :max_levels => 5
+  TREE_RENDERERS = {
+    :tree     => :render_tree_node,
+    :sortable => :render_sortable_tree_node,
+    :comments => :render_comments_tree_node
+  }
 
   def define_class_of_elements_of tree
     case
@@ -17,67 +18,34 @@ module TheSortableTreeHelper
     end
   end
 
-  # types:
-  #   tree
-  #   sortable
-  #   comments
-  #   expandable [todo]
-  #   select/options [todo]
-  def build_client_tree(tree, options= {})
-    opts = {
-      max_levels: 3,
-      :type       => :tree,
-      :side       => :client,
-      :path       => false,
-      :title      => :title,
-      :klass      => define_class_of_elements_of(tree),
-      # comments options
-      :node_id           => :id,
-      :contacts_field    => :email,
-      :content_field     => :content,
-      :raw_content_field => :raw_content
-    }.merge! options
-
-    # RAILS require
-    opts[:namespace] = Array.wrap opts[:namespace]
-
-    # PATH building
-    opts[:path] = "#{opts[:type]}/#{opts[:side]}" unless opts[:path]
-
-    render :partial => "#{opts[:path]}/tree", :locals => { :tree => tree, :opts => opts }
-  end
-
   ###############################################
-  # Server Side Render Tree Helper [deprecated and slow]
+  # Server Side Render Tree Helper
   ###############################################
-  # def tree_node opts = {}
-  #   children = ''
-  #   children = "<ol class='nested_set'>#{opts[:children]}</ol>" unless opts[:children].empty?
-  #   "<li>
-  #     <div class='item'>
-  #       <h4><a href='#'>#{opts[:node].title}</a></h4>
-  #       <p>#{opts[:node].title}</p>
-  #     </div>
-  #     #{children}
-  #   </li>"
-  # end
-
   def build_server_tree(tree, options= {})
     result = ''
     opts   = {
       :id    => :id,      # node id field
       :node  => nil,      # node
+      :type  => :tree,    # tree type
       :root  => false,    # is it root node?
       :level => 0,        # recursion level
-      :boost => [],       # BOOST array!
-      :node_helper => nil # function for render NODE of tree
+      :boost => []        # BOOST! array
     }.merge!(options)
 
+    # Basic vars
     root = opts[:root]
     node = opts[:node]
 
-    # BOOST PATCH
-    # BUILD BOOST ONCE
+    # Namespaces (RAILS require)
+    opts[:namespace] = [] # Array.wrap opts[:namespace]
+
+    # Module with **render_helper(opts)** function
+    opts[:render_method] = TREE_RENDERERS[opts[:type]] unless opts[:render_method]
+
+    # Define tree class
+    opts[:klass] = define_class_of_elements_of(tree) unless opts[:klass]
+
+    # BOOST PATCH (BUILD ONCE)
     if opts[:boost].empty?
       tree.each do |item|
         num = item.parent_id || 0
@@ -90,33 +58,59 @@ module TheSortableTreeHelper
       roots = opts[:boost][0]
 
       # children rendering
-      # TODO: try to remove compact
       if roots.empty? && !tree.empty?
         min_parent_id = tree.map(&:parent_id).compact.min
         roots = tree.select{ |elem| elem.parent_id == min_parent_id }
       end
       
       roots.each do |root|
-        _opts  =  opts.merge({:node => root, :root => true, :level => opts[:level].next, :boost => opts[:boost]})
+        _opts  =  opts.merge({ :node => root, :root => true, :level => opts[:level].next, :boost => opts[:boost] })
         result << build_server_tree(tree, _opts)
       end
     else
       children_res = ''
       children     = opts[:boost][node.id]
-      opts.merge! { :has_children => children.blank? }
+      opts.merge!({ :has_children => children.blank? })
 
       unless children.nil?
         children.each do |elem|
-          _opts        =  opts.merge({:node => elem, :root => false, :level => opts[:level].next, :boost => opts[:boost]})
+          _opts        =  opts.merge({ :node => elem, :root => false, :level => opts[:level].next, :boost => opts[:boost] })
           children_res << build_server_tree(tree, _opts)
         end
       end
 
-      result << send(opts[:node_helper], { :opts => opts, :root => root, :node => node, :children => children_res })
+      result << send(opts[:render_method], { :opts => opts, :root => root, :node => node, :children => children_res })
     end
     raw result
-  end
-  ###############################################
-  # ~Server Side Render Tree Helper
-  ###############################################
+  end#build_server_tree
 end
+
+# # types:
+# #   tree
+# #   sortable
+# #   comments
+# #   expandable [todo]
+# #   select/options [todo]
+# def build_client_tree(tree, options= {})
+#   opts = {
+#     max_levels: 3,
+#     :type       => :tree,
+#     :side       => :client,
+#     :path       => false,
+#     :title      => :title,
+#     :klass      => define_class_of_elements_of(tree),
+#     # comments options
+#     :node_id           => :id,
+#     :contacts_field    => :email,
+#     :content_field     => :content,
+#     :raw_content_field => :raw_content
+#   }.merge! options
+
+#   # RAILS require
+#   opts[:namespace] = Array.wrap opts[:namespace]
+
+#   # PATH building
+#   opts[:path] = "#{opts[:type]}/#{opts[:side]}" unless opts[:path]
+
+#   render :partial => "#{opts[:path]}/tree", :locals => { :tree => tree, :opts => opts }
+# end
