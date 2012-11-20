@@ -26,18 +26,27 @@ module TheSortableTreeHelper
     opts   = {
       :id    => :id,      # node id field
       :node  => nil,      # node
+      :title => :title,   # name of title fileld
       :type  => :tree,    # tree type
       :root  => false,    # is it root node?
       :level => 0,        # recursion level
-      :boost => []        # BOOST! array
+      :boost => [],       # BOOST! array
+      :namespace => [],   # :admin
+      # SORTABLE options
+      :max_levels => 3,   # deep of sortable tree
+      # COMMENTS options
+      :node_id           => :id,
+      :contacts_field    => :email,
+      :content_field     => :content,
+      :raw_content_field => :raw_content
     }.merge!(options)
 
     # Basic vars
     root = opts[:root]
     node = opts[:node]
 
-    # Namespaces (RAILS require)
-    opts[:namespace] = [] # Array.wrap opts[:namespace]
+    # namespace prepare [Rails require]
+    opts[:namespace] = Array.wrap opts[:namespace]
 
     # Module with **render_helper(opts)** function
     opts[:render_method] = TREE_RENDERERS[opts[:type]] unless opts[:render_method]
@@ -57,12 +66,13 @@ module TheSortableTreeHelper
     unless node
       roots = opts[:boost][0]
 
-      # children rendering
+      # define roots, if it's need
       if roots.empty? && !tree.empty?
         min_parent_id = tree.map(&:parent_id).compact.min
         roots = tree.select{ |elem| elem.parent_id == min_parent_id }
       end
-      
+
+      # children rendering
       roots.each do |root|
         _opts  =  opts.merge({ :node => root, :root => true, :level => opts[:level].next, :boost => opts[:boost] })
         result << build_server_tree(tree, _opts)
@@ -79,7 +89,7 @@ module TheSortableTreeHelper
         end
       end
 
-      result << send(opts[:render_method], { :opts => opts, :root => root, :node => node, :children => children_res })
+      result << send(opts[:render_method], { :root => root, :node => node, :children => children_res, :opts => opts })
     end
     raw result
   end#build_server_tree
