@@ -1,13 +1,8 @@
 module CommentsTreeRenderHelper
-  class Render
-    def initialize context, options = {}
-      @h       = context
-      @context = context
-      @options = options
-    end
-
+  class Render < TreeRender::Base
     # RENDER METHODS
     # USE @h (helper), for View Helpers call
+    # h.html_escape(node.content) - escape potentially dangerous content
     def render_node
       node = @options[:node]
       "

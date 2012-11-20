@@ -1,6 +1,23 @@
 require "the_sortable_tree/engine"
 require "the_sortable_tree/version"
 
+module TreeRender
+  class Base
+    def h
+      @context
+    end
+
+    def options
+      @options
+    end
+
+    def initialize context, options = {}
+      @context = context
+      @options = options
+    end
+  end
+end
+
 module TheSortableTree
   # include TheSortableTree::Scopes
   module Scopes

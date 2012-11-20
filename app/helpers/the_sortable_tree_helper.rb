@@ -10,6 +10,9 @@ module TheSortableTreeHelper
     :comments => CommentsTreeRenderHelper
   }
 
+  ###############################################
+  # Common Base Methods
+  ###############################################
   def define_class_of_elements_of tree
     case
       when tree.is_a?(ActiveRecord::Relation) then tree.name.to_s.underscore.downcase
@@ -18,14 +21,14 @@ module TheSortableTreeHelper
     end
   end
 
-  ###############################################
-  # Server Side Render Tree Helper
-  ###############################################
   def render_tree_node context, render_module, options = {}
     @render = render_module::Render.new(context, options)
     @render.render_node()
   end
 
+  ###############################################
+  # Server Side Render Tree Helper
+  ###############################################
   def build_server_tree(tree, options= {})
     result = ''
     opts   = {
