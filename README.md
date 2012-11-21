@@ -1,3 +1,9 @@
+## Gem under active development!!!
+
+Please use **version 1.9.4**
+
+[TheSortableTree version 1.9.4 Doc](https://github.com/the-teacher/the_sortable_tree/tree/60a9b09db845f8325c5e575e8a464eb43b606d03)
+
 ## TheSortableTree v2.0 (beta)
 
 Best and Fastest **Rails 3** Helper for tree rendering (JS/Client side way)

@@ -1,8 +1,19 @@
 module CommentsTreeRenderHelper
+  # DOC:
+  # We use Helper Methods for tree building,
+  # because it's faster than View Templates and Partials
+
+  # USE h (helper), for View Helpers call
+  # Example: h.url_for(args) | h.link_to(args)
+
+  # SECURITY note
+  # Prepare your data on server side for rendering
+  # or use h.html_escape(node.content)
+  # for escape potentially dangerous content
+
+  # USE option METHOD
+  # to get all args form TheSortableTreeHelper renderer
   class Render < TreeRender::Base
-    # RENDER METHODS
-    # USE @h (helper), for View Helpers call
-    # h.html_escape(node.content) - escape potentially dangerous content
     def render_node
       node = @options[:node]
       "
