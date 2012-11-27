@@ -1,4 +1,4 @@
-module SortableTreeRenderHelper
+module RenderSortableTreeHelper
   # DOC:
   # We use Helper Methods for tree building,
   # because it's faster than View Templates and Partials
@@ -11,13 +11,10 @@ module SortableTreeRenderHelper
   # or use h.html_escape(node.content)
   # for escape potentially dangerous content
 
-  # USE option METHOD
+  # USE **option** method
   # to get all args form TheSortableTreeHelper renderer
 
   # BANCHMARK
-  # Page Load (296.4ms)  SELECT id, title, content, parent_id FROM `pages` ORDER BY lft ASC
-  # Rendered pages/manage.html.haml within layouts/application (1575.4ms)
-  # Completed 200 OK in 2098ms (Views: 1607.1ms | ActiveRecord: 297.0ms)
   class Render < TreeRender::Base
     def render_node
       node = options[:node]
@@ -39,7 +36,7 @@ module SortableTreeRenderHelper
     def show_link
       node = options[:node]
       link = h.link_to(node.title, node)
-      "<h4><a href='#{link}'>#{ node.title }</a></h4>"
+      "<h4>#{ link }</h4>"
     end
 
     def controls
@@ -57,8 +54,8 @@ module SortableTreeRenderHelper
 
       "
         <div class='controls'>
-          <a class='link button edit' href='#{edit_path}' title='#{edit_title}'></a>
-          <a class='link button delete' href='#{link_path}' data-confirm='#{delete_confirm}' data-method='delete' title='#{delete_title}'></a>
+          <a class='edit'   href='#{edit_path}' title='#{edit_title}'></a>
+          <a class='delete' href='#{link_path}' data-confirm='#{delete_confirm}' data-method='delete' title='#{delete_title}'></a>
         </div>
       "
     end

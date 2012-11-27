@@ -1,4 +1,4 @@
-module TreeRenderHelper
+module RenderTreeHelper
   class Render < TreeRender::Base
     # DOC:
     # We use Helper Methods for tree building,
@@ -6,14 +6,20 @@ module TreeRenderHelper
 
     # USE h (helper), for View Helpers call
     # Example: h.url_for(args) | h.link_to(args)
+    # h.render(:partial => "tree/tree", :locals => { })
 
     # SECURITY note
     # Prepare your data on server side for rendering
     # or use h.html_escape(node.content)
     # for escape potentially dangerous content
 
-    # USE option METHOD
+    # USE **option** method
     # to get all args form TheSortableTreeHelper renderer
+
+    # BANCHMARK:
+    # Server Side, 16.000 nodes, 3 levels
+    # Views: 7999.6ms | ActiveRecord: 79.2ms
+    # WebInspector full time ~ 9.64s
     def render_node
       node = @options[:node]
       "
@@ -30,7 +36,8 @@ module TreeRenderHelper
     def show_link
       node = @options[:node]
       ns   = @options[:opts][:namespace]
-      "<h4>#{ h.link_to(node.title, node) } | #{ h.url_for(ns + [node]) }</h4>"
+      url  = h.url_for(ns + [node])
+      "<h4>#{ h.link_to(node.title, url) }</h4>"
     end
 
     def children
@@ -41,5 +48,3 @@ module TreeRenderHelper
 
   end
 end
-
-# h.render(:partial => "tree/tree", :locals => { })

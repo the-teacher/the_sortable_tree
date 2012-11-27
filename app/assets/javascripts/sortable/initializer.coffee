@@ -19,70 +19,14 @@
       console.log error
 
 $ ->
-  # Benchmark:
-  # 3 level deep
-  # 10 nodes per level
-  # ~1000 nodes in tree
-  # 415 ms
-  # drag&drop sorting works fine
-
-  # Benchmark:
-  # 3 level deep
-  # 10 nodes per level
-  # 5000 nodes in tree
-  # ~2000 ms
-  # drag&drop sorting - very slow ~ 10sec
-
-  # Benchmark:
-  # 3 level deep
-  # 25 nodes per level
-  # 16275 nodes in tree
-  # Server rendering: 5065.1ms
-  # Client rendering: 10263ms
-  # drag&drop sorting - very very slow ~ 30-40sec
-
-  # console.time('tree build')
-
-  ############################################
-  # Build Sortable Tree
-  ############################################
-  # Select all trees JSON data and build it
-  for data_block in $ '.sortable_tree'
-    # Init
-    data_block  = $ data_block
-    klass       = data_block.find('.klass').html()
-    plural      = data_block.find('.plural').html()
-    rebuild_url = data_block.find('.rebuild_url').html()
-
-    # Data
-    locale = JSON.parse data_block.find('.locale').html()
-    tree   = JSON.parse data_block.find('.data').html()
-
-    # console.log 'tree length: ', tree.length
-
-    # Build tree
-    tree_html = render_tree tree,
-      render_node: render_sortable_node
-      klass:       klass
-      plural:      plural
-      locale:      locale
-      rebuild_url: rebuild_url
-
-    # Append tree html after JSON data block
-    tree_block = $("<div class='tree_block' />").insertAfter(data_block)
-    tree_block.append """
-      <p class='sortable_new'>
-        <a href='/#{plural}/new'>#{locale.new_path}</a>
-      </p>
-      <ol class='sortable'>
-        #{tree_html}
-      </ol>
-    """
+  for sortable_tree in $('ol.sortable_tree')
+    sortable_tree = $ sortable_tree
+    rebuild_url   = sortable_tree.data('rebuild_url')
 
     ############################################
-    # Initialize Sortable Tree for this block
+    # Initialize Sortable Tree
     ############################################
-    $('ol.sortable', tree_block).nestedSortable
+    sortable_tree.nestedSortable
       items:            'li'
       helper:           'clone'
       handle:           'i.handle'
@@ -97,9 +41,9 @@ $ ->
       forcePlaceholderSize: true
 
     ############################################
-    # Sortable Update Event for this block
+    # Sortable Update Event
     ############################################
-    $('ol.sortable', tree_block).sortable
+    sortable_tree.sortable
       update: (event, ui) =>
         item      = ui.item
         item_id   = item.attr('id')
@@ -109,4 +53,64 @@ $ ->
         
         rebuild_sortable_tree(rebuild_url, item_id, parent_id, prev_id, next_id)
 
-  # console.timeEnd('tree build')
+# console.timeEnd('tree build')
+# Benchmark:
+# 3 level deep
+# 10 nodes per level
+# ~1000 nodes in tree
+# 415 ms
+# drag&drop sorting works fine
+
+# Benchmark:
+# 3 level deep
+# 10 nodes per level
+# 5000 nodes in tree
+# ~2000 ms
+# drag&drop sorting - very slow ~ 10sec
+
+# Benchmark:
+# 3 level deep
+# 25 nodes per level
+# 16275 nodes in tree
+# Server rendering: 5065.1ms
+# Client rendering: 10263ms
+# drag&drop sorting - very very slow ~ 30-40sec
+
+# console.time('tree build')
+
+############################################
+# Build Sortable Tree
+############################################
+# Select all trees JSON data and build it
+# for data_block in $ '.sortable'
+#   console.log '1'
+#   # Init
+#   data_block  = $ data_block
+#   klass       = data_block.find('.klass').html()
+#   plural      = data_block.find('.plural').html()
+#   rebuild_url = data_block.find('.rebuild_url').html()
+
+#   # Data
+#   locale = JSON.parse data_block.find('.locale').html()
+#   tree   = JSON.parse data_block.find('.data').html()
+
+#   # console.log 'tree length: ', tree.length
+
+#   # Build tree
+#   tree_html = render_tree tree,
+#     render_node: render_sortable_node
+#     klass:       klass
+#     plural:      plural
+#     locale:      locale
+#     rebuild_url: rebuild_url
+
+#   # Append tree html after JSON data block
+#   tree_block = $("<div class='tree_block' />").insertAfter(data_block)
+#   tree_block.append """
+#     <p class='sortable_new'>
+#       <a href='/#{plural}/new'>#{locale.new_path}</a>
+#     </p>
+#     <ol class='sortable'>
+#       #{tree_html}
+#     </ol>
+#   """

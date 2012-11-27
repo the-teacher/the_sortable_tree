@@ -1,25 +1,24 @@
 .tree{
-  margin: 0;
-  padding: 0;
+  margin:0; padding:0;
 
   * {
-    margin: 0; padding: 0;
+    margin:0; padding:0;
     list-style:none;
   }
+
+  a:hover { color: red !important; }
 
   .item{
     background: #EEE;
-    padding: 5px;
     margin-bottom: 5px;
+    border-radius: 3px;
+    padding: 5px;
   }
 
   ol{
-    margin: 0; padding: 0;
-    list-style:none;
     margin-left: 20px;
 
-    &.nested_set {
-      list-style:none;
+    &.nested_set{
       font-size: 16px;
 
       li{
@@ -27,7 +26,6 @@
         line-height: 130%;
         margin-bottom: 5px;
         font-weight: bold;
-        list-style:none;
         list-style-position: outside;
       }
 
@@ -39,9 +37,6 @@
 
         li{ font-weight: normal; }
       }
-
-      a:hover { color: #003A89 !important; }
-      a:visited { color: #809dc4; }  
     }
   }
 }

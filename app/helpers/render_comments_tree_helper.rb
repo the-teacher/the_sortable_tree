@@ -1,4 +1,4 @@
-module CommentsTreeRenderHelper
+module RenderCommentsTreeHelper
   # DOC:
   # We use Helper Methods for tree building,
   # because it's faster than View Templates and Partials
@@ -11,7 +11,7 @@ module CommentsTreeRenderHelper
   # or use h.html_escape(node.content)
   # for escape potentially dangerous content
 
-  # USE option METHOD
+  # USE **option** method
   # to get all args form TheSortableTreeHelper renderer
   class Render < TreeRender::Base
     def render_node

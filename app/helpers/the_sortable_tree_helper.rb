@@ -4,9 +4,9 @@ module TheSortableTreeHelper
   # Ilya Zykin, zykin-ilya@ya.ru, Russia, Ivanovo 2009-2012
   # github.com/the-teacher
   TREE_RENDERERS = {
-    :tree     => TreeRenderHelper,
-    :sortable => SortableTreeRenderHelper,
-    :comments => CommentsTreeRenderHelper
+    :tree     => RenderTreeHelper,
+    :sortable => RenderSortableTreeHelper,
+    :comments => RenderCommentsTreeHelper
   }
 
   ###############################################
