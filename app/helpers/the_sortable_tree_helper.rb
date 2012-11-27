@@ -1,7 +1,7 @@
 module TheSortableTreeHelper
   # Publicated by MIT
   # Nested Set View Helper
-  # Ilya Zykin, zykin-ilya@ya.ru, Russia, Ivanovo 2009-2012
+  # Ilya Zykin, zykin-ilya@ya.ru, Russia, Ivanovo 2009-2013
   # github.com/the-teacher
   TREE_RENDERERS = {
     :tree     => RenderTreeHelper,
@@ -99,7 +99,7 @@ module TheSortableTreeHelper
       result << build_tree_html(self, opts[:render_module], { :root => root, :node => node, :children => children_res, :opts => opts })
     end
     raw result
-  end#build_server_tree
+  end
 end
 
 # # types:

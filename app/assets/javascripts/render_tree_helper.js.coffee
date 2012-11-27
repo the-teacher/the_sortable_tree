@@ -20,17 +20,29 @@
     node:  null
     root:  false
     level: 0
+    boost: []
 
   # JQuery hash merge
   $.extend opts, options
 
+  # Define Boost Only Once
+  unless opts['boost'].length is 0
+    boost = []
+    for node in tree
+      num  = node.parent_id || 0
+      item = boost[num]
+      boost[num] = [] unless item instanceof Array
+      boost[num].push node
+
+    opts['boost'] = boost
+
   unless opts.node
     # render root nodes
-    roots = []
+    roots = opts['boost'][0]
 
     # select roots
-    for node in tree
-      roots.push node if node.parent_id is null
+    # for node in tree
+    #   roots.push node if node.parent_id is null
 
     # roots is empty, but tree is not empty
     # I should select nodes with minimal parent_id
@@ -54,10 +66,11 @@
     # render children nodes
     children      = []
     children_html = ''
-    
+    children      = boost[opts.node.id]
+
     # select children
-    for elem in tree
-      children.push elem if elem.parent_id is opts.node.id
+    # for elem in tree
+    #   children.push elem if elem.parent_id is opts.node.id
 
     # render children nodes
     for node in children
