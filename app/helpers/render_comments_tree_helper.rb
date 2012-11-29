@@ -20,7 +20,7 @@ module RenderCommentsTreeHelper
         <li>
           <div class='item'>
             #{ show_link }
-            <p>#{ node.title }</p>
+            <p>#{ node.name }</p>
           </div>
           #{ children }
         </li>
@@ -30,7 +30,7 @@ module RenderCommentsTreeHelper
     def show_link
       node = @options[:node]
       ns   = @options[:opts][:namespace]
-      "<h4>#{ @h.link_to(node.title, node) } | #{ @h.url_for(ns + [node]) }</h4>"
+      "<h4>#{ @h.link_to(node.name, node) }</h4>"
     end
 
     def children

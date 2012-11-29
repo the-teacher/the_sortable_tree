@@ -1,19 +1,20 @@
-.tree_block{
+.comments_tree{
+  margin:0; padding:0;
+  list-style:none;
+
   * {
     margin:0; padding:0;
     list-style:none;
   }
-  .comments{
-    .comment{
-      padding: 15px;
-      background: #EEE;
-      margin-bottom: 10px;
-      border-radius: 5px;
-    }
-    .nested_set{
-      border-left: 1px dashed #ccc;
-      margin-left: 20px;
-      padding-left: 10px;
-    }
+
+  .item{
+    background: #f3f3f3;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    padding: 5px;
+  }
+  .nested_set{
+    border-left: 1px dashed #ccc;
+    padding-left: 20px;
   }
 }
