@@ -10,14 +10,12 @@ class @TheSortableTree
       helper: 'clone'
       items:  'li'
       maxLevels: @max_levels
-      opacity: .6
+      opacity: 0.6
       placeholder: 'placeholder'
       revert: 250
       tabSize: 25
       tolerance: 'pointer'
       toleranceElement: '> div'
-
-    $('ol.sortable').sortable
       update: (event, ui) =>
         parent_id = ui.item.parent().parent().attr('id')
         item_id   = ui.item.attr('id')
