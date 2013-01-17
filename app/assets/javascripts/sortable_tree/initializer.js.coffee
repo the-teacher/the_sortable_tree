@@ -10,10 +10,10 @@
       next_id:   next_id
 
     beforeSend: (xhr) ->
-      $('.nested_set i.handle').hide()
+      $('.sortable_tree i.handle').hide()
 
     success: (data, status, xhr) ->
-      $('.nested_set i.handle').show()
+      $('.sortable_tree i.handle').show()
 
     error: (xhr, status, error) ->
       console.log error
@@ -22,7 +22,7 @@ $ ->
   for sortable_tree in $('ol.sortable_tree')
     sortable_tree = $ sortable_tree
     rebuild_url   = sortable_tree.data('rebuild_url')
-    console.log rebuild_url 
+    max_levels    = sortable_tree.data('max_levels')
 
     ############################################
     # Initialize Sortable Tree
@@ -32,10 +32,10 @@ $ ->
       helper:           'clone'
       handle:           'i.handle'
       tolerance:        'pointer'
-      maxLevels:        3
+      maxLevels:        max_levels
       revert:           250
       tabSize:          25
-      opacity:          .6
+      opacity:          0.6
       placeholder:      'placeholder'
       disableNesting:   'no-nest'
       toleranceElement: '> div'

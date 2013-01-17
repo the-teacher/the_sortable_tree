@@ -1,8 +1,10 @@
 module TheSortableTreeHelper
   # Publicated by MIT
   # Nested Set View Helper
-  # Ilya Zykin, zykin-ilya@ya.ru, Russia, Ivanovo 2009-2013
+
+  # Ilya Zykin, zykin-ilya@ya.ru, Russia [Ivanovo, Saint Petersburg] 2009-2013
   # github.com/the-teacher
+
   TREE_RENDERERS = {
     :tree     => RenderTreeHelper,
     :sortable => RenderSortableTreeHelper
@@ -11,6 +13,7 @@ module TheSortableTreeHelper
   ###############################################
   # Common Base Methods
   ###############################################
+
   def define_class_of_elements_of tree
     case
       when tree.is_a?(ActiveRecord::Relation) then tree.name.to_s.underscore.downcase
@@ -20,31 +23,27 @@ module TheSortableTreeHelper
   end
 
   def build_tree_html context, render_module, options = {}
-    @tree_renderer = render_module::Render.new(context, options)
-    @tree_renderer.render_node()
+    render_module::Render::render_node(self, options)
   end
 
   ###############################################
   # Server Side Render Tree Helper
   ###############################################
+
   def build_server_tree(tree, options= {})
     result = ''
     opts   = {
+      # node and base node params
       :id    => :id,      # node id field
-      :node  => nil,      # node
       :title => :title,   # name of title fileld
+      :node  => nil,      # node
+      # base options
       :type  => :tree,    # tree type
       :root  => false,    # is it root node?
       :level => 0,        # recursion level
-      :boost => [],       # BOOST! array
       :namespace => [],   # :admin
-      # SORTABLE options
-      :max_levels => 3,   # deep of sortable tree
-      # COMMENTS options
-      :node_id           => :id,
-      :contacts_field    => :email,
-      :content_field     => :content,
-      :raw_content_field => :raw_content
+      # SYSTEM boost array
+      :boost => []       # BOOST! array
     }.merge!(options)
 
     # Basic vars
@@ -70,6 +69,7 @@ module TheSortableTreeHelper
     end
 
     unless node
+      # RENDER ROOTS
       roots = opts[:boost][0]
 
       # define roots, if it's need
@@ -84,6 +84,7 @@ module TheSortableTreeHelper
         result << build_server_tree(tree, _opts)
       end
     else
+      # RENDER NODE'S CHILDREN
       children_res = ''
       children     = opts[:boost][node.id]
       opts.merge!({ :has_children => children.blank? })
@@ -97,36 +98,22 @@ module TheSortableTreeHelper
 
       result << build_tree_html(self, opts[:render_module], { :root => root, :node => node, :children => children_res, :opts => opts })
     end
+
     raw result
   end
 end
 
-# # types:
-# #   tree
-# #   sortable
-# #   comments
-# #   expandable [todo]
-# #   select/options [todo]
-# def build_client_tree(tree, options= {})
-#   opts = {
-#     max_levels: 3,
-#     :type       => :tree,
-#     :side       => :client,
-#     :path       => false,
-#     :title      => :title,
-#     :klass      => define_class_of_elements_of(tree),
-#     # comments options
-#     :node_id           => :id,
-#     :contacts_field    => :email,
-#     :content_field     => :content,
-#     :raw_content_field => :raw_content
-#   }.merge! options
-
-#   # RAILS require
-#   opts[:namespace] = Array.wrap opts[:namespace]
-
-#   # PATH building
-#   opts[:path] = "#{opts[:type]}/#{opts[:side]}" unless opts[:path]
-
-#   render :partial => "#{opts[:path]}/tree", :locals => { :tree => tree, :opts => opts }
+# module MyRenderTreeHelper
+#   class Render
+#     class << self
+#       def h; @context; end
+#       def options; @options; end
+# 
+#       def render_node(context, options)
+#         @context = context
+#         @options = options
+#         "<ul>tree html</ul>"
+#       end
+#     end
+#   end
 # end

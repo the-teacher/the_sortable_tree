@@ -1,13 +1,30 @@
 .sortable_tree{
-  margin:0; padding:0;
-  position: relative;
+  margin: 0; padding: 0;
 
-  * {
-    margin:0; padding:0;
-    list-style: none;
+  ol{
+    margin: 0 0 0 13px;
+    padding: 0 0 0 15px;
+    border-left: 1px dashed gray;
+  }
+
+  li{
+    margin-bottom:5px;
+    position: relative;
+  }
+
+  a{
+    color:#000;
+    font-size:10pt;
+    font-weight:normal;
+    text-decoration:none;
+    line-height: 150%;
+    margin-left:30px;
+    margin-right:120px;
+    display:block;
   }
 
   h4{
+    margin: 0; 
     a{
       color: #333;
       font-size: 14px;
@@ -20,7 +37,7 @@
     padding: 5px;
   }
 
-  li{ position: relative; }
+  /*li{ position: relative; }*/
 
   .handle{
     background: transparent url(/assets/iconza/icons/move.png);
@@ -51,17 +68,6 @@
   .ui-nestedSortable-error {
     background: #FAA;
     color: #8a1f11;
-  }
-
-  .nested_set{
-    border-left: 1px dashed #aaa;
-    margin:0 0 0 20px;
-    padding:0 0 0 7px;
-    font-size: 16px;
-
-    .root{
-      a{ font-weight: bold; }
-    }
   }
 
   .controls{

@@ -4,38 +4,42 @@ module TheSortableTree
       source_root File.expand_path('../../../../app/views', __FILE__)
 
       def self.banner
-        <<-BANNER.chomp
-rails g the_sortable_tree:views MODEL [tree|sortable|comments]
-  Copies files for rendering sortable nested set
-        BANNER
+<<-BANNER.chomp
+
+bundle exec rails g the_sortable_tree:views tree
+bundle exec rails g the_sortable_tree:views sortable
+bundle exec rails g the_sortable_tree:views helper
+
+bundle exec rails g the_sortable_tree:views assets
+
+BANNER
       end
 
       def copy_sortable_tree_files
-        # sortable
-        # comments
-        # tree
-
-        # expandable [todo]
-        # select [todo]
-        if ARGV[1] == 'sortable'
-          copy_file "../assets/stylesheets/sortable.css.scss", "app/assets/stylesheets/sortable.css.scss"
-          directory "../assets/javascripts/sortable", "app/assets/javascripts/sortable"
-          directory "sortable/client", "app/views/#{folder}/sortable/client"
-        elsif ARGV[1] == 'comments'
-          copy_file "../assets/stylesheets/comments_tree.css.scss", "app/assets/stylesheets/comments_tree.css.scss"
-          directory "../assets/javascripts/comments", "app/assets/javascripts/comments"
-          directory "comments/client", "app/views/#{folder}/comments/client"
-        else
-          copy_file "../assets/stylesheets/tree.css.scss", "app/assets/stylesheets/tree.css.scss"
-          directory "../assets/javascripts/tree", "app/assets/javascripts/tree"
-          directory "tree/client", "app/views/#{folder}/tree/client"
-        end
+        copy_helper_files
       end
 
       private
 
-      def folder
-        name.pluralize.downcase
+      def param_name
+        name.downcase
+      end
+
+      def copy_helper_files
+        if param_name == 'tree'
+          puts "Copy of tree render helper file"
+          copy_file "../helpers/render_tree_helper.rb", "app/helpers/render_tree_helper.rb"
+        elsif param_name == 'sortable'
+          puts "Copy of sortable tree render helper file"
+          copy_file "../helpers/render_sortable_tree_helper.rb", "app/helpers/render_sortable_tree_helper.rb"
+        elsif param_name == 'helper'
+          puts "Copy of base nested set render helper file"
+          copy_file "../helpers/the_sortable_tree_helper.rb", "app/helpers/the_sortable_tree_helper.rb"
+        elsif param_name == 'assets'
+          directory "../assets/javascripts", "app/assets/javascripts"
+        else
+          puts "Wrong params - use only [assets | tree | sortable] values"
+        end
       end
 
     end
