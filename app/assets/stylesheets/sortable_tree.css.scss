@@ -8,7 +8,11 @@
   }
 
   h4{
-    a{ color: #333; }
+    a{
+      color: #333;
+      font-size: 14px;
+      &:hover{ background: #eee; }
+    }
   }
 
   p{
@@ -19,12 +23,16 @@
   li{ position: relative; }
 
   .handle{
+    background: transparent url(/assets/iconza/icons/move.png);
+    background-position: center center;
+
     width: 16px;
     height: 16px;
     margin: 3px 10px 0 0;
     float: left;
     cursor: move;
-    background: transparent url(/assets/iconza/blue/move.png) no-repeat scroll center center;
+
+    &:hover{ background: transparent url(/assets/iconza/icons/red_move.png); }
   }
 
   .item{
@@ -59,6 +67,7 @@
   .controls{
     position: absolute;
     top: 3px; right: 10px;
+
     a{
       width: 20px;
       height: 20px;
@@ -67,20 +76,21 @@
       padding: 5px;
       cursor: pointer;
       position: relative;
+
       margin: 0 0 5px 5px;
       overflow: hidden; zoom: 1;
 
       &.new{
-        background: transparent url(/assets/iconza/blue/add.png) no-repeat scroll center center;
-        &:hover{ background: transparent url(/assets/iconza/red/add.png) no-repeat scroll center center; }
+        background: transparent url(/assets/iconza/icons/add.png) no-repeat scroll center center;
+        &:hover{ background: transparent url(/assets/iconza/icons/red_add.png) no-repeat scroll center center; }
       }
       &.edit{
-        background: transparent url(/assets/iconza/blue/edit.png) no-repeat scroll center center;
-        &:hover{ background: transparent url(/assets/iconza/red/edit.png) no-repeat scroll center center; }
+        background: transparent url(/assets/iconza/icons/edit.png) no-repeat scroll center center;
+        &:hover{ background: transparent url(/assets/iconza/icons/red_edit.png) no-repeat scroll center center; }
       }
       &.delete{
-        background: transparent url(/assets/iconza/blue/delete.png) no-repeat scroll center center;
-        &:hover{ background: transparent url(/assets/iconza/red/delete.png) no-repeat scroll center center; }
+        background: transparent url(/assets/iconza/icons/delete.png) no-repeat scroll center center;
+        &:hover{ background: transparent url(/assets/iconza/icons/red_delete.png) no-repeat scroll center center; }
       }
       &.undeleted{ background: transparent url(/assets/iconza/gray/delete.png) no-repeat scroll center center; }
     }
