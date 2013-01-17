@@ -5,8 +5,7 @@ module TheSortableTreeHelper
   # github.com/the-teacher
   TREE_RENDERERS = {
     :tree     => RenderTreeHelper,
-    :sortable => RenderSortableTreeHelper,
-    :comments => RenderCommentsTreeHelper
+    :sortable => RenderSortableTreeHelper
   }
 
   ###############################################

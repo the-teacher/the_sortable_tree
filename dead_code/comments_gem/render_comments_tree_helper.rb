@@ -1,3 +1,5 @@
+# deprecated!
+
 module RenderCommentsTreeHelper
   # DOC:
   # We use Helper Methods for tree building,

@@ -1,0 +1,31 @@
+ru:
+  sortable:
+    base:
+      new:
+        create: Добавить элемент
+      controls:
+        edit_this: Редактировать элемент
+        delete: Удалить элемент
+        delete_confirm: Удалить элемент безвозвратно?
+        cant_be_deleted: Не может быть удалено. Есть дочерние элементы
+        delete_nested_elements: Сперва удалите все дочерние элементы
+
+  # comments:
+  #   base:
+  #     new_comment_form:
+  #       title: Тема сообщения
+  #       conatacts: Ваши контакты
+  #       content: Ваш комментарий
+  #       for: Для
+  #       skip: '[Отмена]'
+  #       submit: Оставить комментарий
+  #     comment:
+  #       reply: '[Ответить]'
+  #     new:
+  #       create: Добавить элемент
+  #     controls:
+  #       edit_this: Редактировать элемент
+  #       delete: Удалить элемент
+  #       delete_confirm: Удалить элемент безвозвратно?
+  #       cant_be_deleted: Не может быть удалено. Есть дочерние элементы
+  #       delete_nested_elements: Сперва удалите все дочерние элементы

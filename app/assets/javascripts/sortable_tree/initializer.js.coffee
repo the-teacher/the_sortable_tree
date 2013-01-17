@@ -22,6 +22,7 @@ $ ->
   for sortable_tree in $('ol.sortable_tree')
     sortable_tree = $ sortable_tree
     rebuild_url   = sortable_tree.data('rebuild_url')
+    console.log rebuild_url 
 
     ############################################
     # Initialize Sortable Tree
@@ -43,12 +44,11 @@ $ ->
     ############################################
     # Sortable Update Event
     ############################################
-    sortable_tree.sortable
-      update: (event, ui) =>
-        item      = ui.item
-        item_id   = item.attr('id')
-        prev_id   = item.prev().attr('id')
-        next_id   = item.next().attr('id')
-        parent_id = item.parent().parent().attr('id')
-        
-        rebuild_sortable_tree(rebuild_url, item_id, parent_id, prev_id, next_id)
+    sortable_tree.on "sortupdate", (event, ui) =>
+      item      = ui.item
+      item_id   = item.attr('id')
+      prev_id   = item.prev().attr('id')
+      next_id   = item.next().attr('id')
+      parent_id = item.parent().parent().attr('id')
+      
+      rebuild_sortable_tree(rebuild_url, item_id, parent_id, prev_id, next_id)
