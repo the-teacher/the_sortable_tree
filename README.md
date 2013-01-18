@@ -192,8 +192,9 @@ Try to create view helpers for:
 
 1. Mongoid NestedSet
 2. acts_as_ordered_tree
-3. gem Ancestry (???)
+5. Expand tree via AJAX helper
 4. Comments Tree gem
+3. gem Ancestry (???)
 
 ## The MIT License (MIT)
 
