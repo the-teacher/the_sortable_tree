@@ -1,19 +1,22 @@
-## Gem under active development!!!
-
-Please use **version 1.9.4** => [TheSortableTree version 1.9.4 Doc](https://github.com/the-teacher/the_sortable_tree/tree/60a9b09db845f8325c5e575e8a464eb43b606d03)
-
 ## TheSortableTree v2.0
 
 Best render helper for Nested Set ([RubyGems](http://rubygems.org/gems/the_sortable_tree))
 
 ## Sortable tree. Drag&Drop GUI
 
+!https://raw.github.com/the-teacher/the_sortable_tree/master/docs/sortable.jpg(Drag&Drop GUI for Nested set)!
+
 ## Render tree
 
+!https://raw.github.com/the-teacher/the_sortable_tree/master/docs/tree.jpg(Render tree)!
 
 ## Keywords
 
 Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable nested set, Drag&Drop GUI for nested set, View helper for nested set, render tree
+
+## Gem under active development!!!
+
+Please use **version 1.9.4** => [TheSortableTree version 1.9.4 Doc](https://github.com/the-teacher/the_sortable_tree/tree/60a9b09db845f8325c5e575e8a464eb43b606d03)
 
 ### The MIT License (MIT)
 
