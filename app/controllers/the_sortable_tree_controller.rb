@@ -6,7 +6,8 @@ module TheSortableTreeController
     public
     def the_define_common_variables
       collection = self.class.to_s.split(':').last.sub(/Controller/,'').underscore.downcase                 # recipes
-      variable   = collection.singularize                                                                   # recipe  
+      collection = self.respond_to?(:sortable_collection) ? self.sortable_collection : collection      
+      variable   = collection.singularize                                                                   # recipe
       klass      = self.respond_to?(:sortable_model) ? self.sortable_model : variable.classify.constantize  # Recipe
       ["@#{variable}", collection, klass]
     end
