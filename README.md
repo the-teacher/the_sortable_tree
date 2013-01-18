@@ -1,18 +1,80 @@
 ## TheSortableTree v2.0
 
-Best render helper for Nested Set ([RubyGems](http://rubygems.org/gems/the_sortable_tree))
+Best render helper for Nested Set ([RubyGems](http://rubygems.org/gems/the_sortable_tree)). Very fast! **2000 nodes/sec**. Ready for rails 4
 
 ## Sortable tree. Drag&Drop GUI
 
-!https://raw.github.com/the-teacher/the_sortable_tree/master/docs/sortable.jpg(Drag&Drop)!
+![Drag&Drop GUI. Sotrable tree](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/sortable.jpg)
 
 ## Render tree
 
-!https://raw.github.com/the-teacher/the_sortable_tree/master/docs/tree.jpg(Render tree)!
+![Render tree](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/tree.jpg)
 
 ## Keywords
 
 Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable nested set, Drag&Drop GUI for nested set, View helper for nested set, render tree
+
+## Install
+
+```ruby
+gem 'awesome_nested_set' # or any similar gem
+gem 'the_sortable_tree'
+```
+
+Console
+
+```ruby
+bundle
+```
+
+## Using
+
+#### Jquery and Javascripts
+
+**app/assets/javascripts/application.js**
+
+Sortable GUI require JQuery libs
+
+```ruby
+//= require jquery
+//= require jquery-ui
+//= require jquery_ujs
+```
+
+Add next JS only for Sortable GUI
+
+```ruby
+//= require jquery.ui.nestedSortable
+//= require sortable_tree/initializer
+```
+
+#### Stylesheets
+
+**app/assets/stylesheets/application.css**
+
+```ruby
+*= require tree
+*= require sortable_tree
+```
+
+### Extend your Routes for Sortable GUI
+
+``` ruby
+resources :pages do
+  collection do
+    get :manage
+
+    # required for Sortable GUI server side actions
+    post :rebuild
+  end
+end
+```
+
+**manage** - just page, where you want render Sortable tree.
+
+
+
+
 
 ## Gem under active development!!!
 
