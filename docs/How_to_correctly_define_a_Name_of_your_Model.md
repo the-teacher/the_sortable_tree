@@ -13,16 +13,18 @@ For example you can write something like this:
 class ManagersPagesController < ApplicationController
   include TheSortableTreeController::Rebuild
 
+  def manage
+    @pages = Page.nested_set.select('id, title, content, parent_id').all
+  end
+
+  private
+
   def sortable_model
     Page
   end
 
   def sortable_collection
     "pages"
-  end
-
-  def manage
-    @pages = Page.nested_set.select('id, title, content, parent_id').all
   end
 
   # any code here
