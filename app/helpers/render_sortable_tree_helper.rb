@@ -15,18 +15,15 @@
 module RenderSortableTreeHelper
   module Render 
     class << self
-      def h; @context; end
-      def options; @options; end
+      attr_accessor :h, :options
 
-      def render_node(context, options)
-        @context = context
-        @options = options
+      def render_node(h, options)
+        @h, @options = h, options
 
         node = options[:node]
-        opts = options[:opts]
 
         "
-          <li id='#{ node.id }_#{ opts[:klass] }'>
+          <li id='#{ node.id }_#{ options[:klass] }'>
             <div class='item'>
               <i class='handle'></i>
               #{ show_link }
@@ -39,34 +36,34 @@ module RenderSortableTreeHelper
 
       def show_link
         node = options[:node]
-        link = h.link_to(node.title, node)
-        "<h4>#{ link }</h4>"
+        ns   = options[:opts][:namespace]
+        url  = h.url_for(ns + [node])
+        title_field = options[:opts][:title]
+
+        "<h4>#{ h.link_to(node.send(title_field), url) }</h4>"
       end
 
       def controls
-        node      = options[:node]
-        opts      = options[:opts]
-
-        link_path = h.link_to(node.title, node)
+        node = options[:node]
+        opts = options[:opts]
 
         edit_path = h.url_for(:controller => opts[:klass].pluralize, :action => :edit, :id => node)
-        edit_path = h.url_for(:controller => opts[:klass].pluralize, :action => :edit, :id => node)
-        
-        delete_confirm = 'delete'
-        edit_title     = 'edit title'
-        delete_title   = 'delete title'
+        show_path = h.url_for(:controller => opts[:klass].pluralize, :action => :show, :id => node)
 
         "
           <div class='controls'>
-            <a class='edit'   href='#{edit_path}' title='#{edit_title}'></a>
-            <a class='delete' href='#{link_path}' data-confirm='#{delete_confirm}' data-method='delete' title='#{delete_title}'></a>
+            #{ h.link_to '', edit_path, class: :edit }
+            #{ h.link_to '', show_path, class: :delete, data: { confirm: 'Are you sure?' } }
           </div>
         "
       end
 
       def children
-        "<ol class='nested_set'>#{ options[:children] }</ol>" unless options[:children].blank?
+        unless options[:children].blank?
+          "<ol class='nested_set'>#{ options[:children] }</ol>"
+        end
       end
-    end# self
-  end# Render
-end# RenderSortableTreeHelper
+
+    end
+  end
+end

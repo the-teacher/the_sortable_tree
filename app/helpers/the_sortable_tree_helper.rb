@@ -5,6 +5,7 @@ module TheSortableTreeHelper
   # Ilya Zykin, zykin-ilya@ya.ru, Russia [Ivanovo, Saint Petersburg] 2009-2013
   # github.com/the-teacher
 
+  # Default renderers
   TREE_RENDERERS = {
     :tree     => RenderTreeHelper,
     :sortable => RenderSortableTreeHelper
@@ -106,12 +107,10 @@ end
 # module MyRenderTreeHelper
 #   class Render
 #     class << self
-#       def h; @context; end
-#       def options; @options; end
-# 
-#       def render_node(context, options)
-#         @context = context
-#         @options = options
+#       attr_accessor :h, :options
+#
+#       def render_node(h, options)
+#         @h, @options = h, options
 #         "<ul>tree html</ul>"
 #       end
 #     end

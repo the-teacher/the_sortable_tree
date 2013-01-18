@@ -17,15 +17,15 @@
 # Server Side, 16.000 nodes, 3 levels
 # Views: 7999.6ms | ActiveRecord: 79.2ms
 # WebInspector full time ~ 9.64s
+# ~2000 nodes/sec
 module RenderTreeHelper
   class Render
     class << self
-      def h; @context; end
-      def options; @options; end
 
-      def render_node(context, options)
-        @context = context
-        @options = options
+      attr_accessor :h, :options
+
+      def render_node(h, options)
+        @h, @options = h, options
 
         node = options[:node]
         "
@@ -42,7 +42,9 @@ module RenderTreeHelper
         node = options[:node]
         ns   = options[:opts][:namespace]
         url  = h.url_for(ns + [node])
-        "<h4>#{ h.link_to(node.title, url) }</h4>"
+        title_field = options[:opts][:title]
+
+        "<h4>#{ h.link_to(node.send(title_field), url) }</h4>"
       end
 
       def children
@@ -50,6 +52,7 @@ module RenderTreeHelper
           "<ol>#{ options[:children] }</ol>"
         end
       end
-    end# self
-  end# Render
-end# RenderTreeHelper
+
+    end
+  end
+end
