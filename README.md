@@ -59,7 +59,7 @@ Add next JS only for Sortable GUI
 
 ### Extend your Routes for Sortable GUI
 
-``` ruby
+```ruby
 resources :pages do
   collection do
     get :manage
@@ -74,7 +74,7 @@ end
 
 ### Extend your Model
 
-``` ruby
+```ruby
 class Page < ActiveRecord::Base
   include TheSortableTree::Scopes
   
@@ -84,7 +84,7 @@ end
 
 ### Extend your controller and find your tree
 
-``` ruby
+```ruby
 class PagesController < ApplicationController
   include TheSortableTreeController::Rebuild
 
@@ -139,7 +139,7 @@ bundle exec rails g the_sortable_tree:views assets
 ## I want to know more
 
 1. [How to change HTML code of tree?](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/How_to_change_HTML_code_of_tree.md)
-2. [How to create new tree Render Helper?](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/How_to_create_new_tree_Render_Helper.md)
+2. [How to create new tree HTML Builder helper?](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/How_to_create_new_tree_Render_Helper.md)
 3. [I need to render reversed tree](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/I_need_to_render_reversed_tree.md)
 4. [Gem can't correctly define a Name of your Model](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/How_to_correctly_define_a_Name_of_your_Model.md)
 

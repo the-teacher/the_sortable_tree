@@ -1,8 +1,0 @@
-en:
-  tree:
-    name: "<script>alert(1)</script>"
-  sortable:
-    new_path:       'Add new node'
-    edit:           'Edit node'
-    delete_title:   'Delete node'
-    delete_confirm: 'Are you sure?'

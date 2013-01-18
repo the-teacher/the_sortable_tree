@@ -8,7 +8,7 @@ TheSortableTree has **reverse** methods and scopes for reversed trees.
 
 Just change your controller code:
 
-``` ruby
+```ruby
 class PagesController < ApplicationController
   include TheSortableTreeController::ReversedRebuild
 

@@ -103,16 +103,3 @@ module TheSortableTreeHelper
     raw result
   end
 end
-
-# module MyRenderTreeHelper
-#   class Render
-#     class << self
-#       attr_accessor :h, :options
-#
-#       def render_node(h, options)
-#         @h, @options = h, options
-#         "<ul>tree html</ul>"
-#       end
-#     end
-#   end
-# end

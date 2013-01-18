@@ -9,7 +9,7 @@ To solve this problem you can use special methods of controller:
 
 For example you can write something like this:
 
-``` ruby
+```ruby
 class ManagersPagesController < ApplicationController
   include TheSortableTreeController::Rebuild
 
