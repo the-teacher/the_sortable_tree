@@ -3,4 +3,4 @@ require 'rails'
 
 module TheSortableTree
   class Engine < Rails::Engine; end
-end#TheRole
+end

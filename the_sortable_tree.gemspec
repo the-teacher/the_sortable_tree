@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Ilya N. Zykin, Mikhail Dieterle, Matthew Clark"]
   s.email       = ["zykin-ilya@ya.ru"]
   s.homepage    = "https://github.com/the-teacher/the_sortable_tree"
-  s.summary     = %q{Sortable awesom_nested_set, Drag&Drop GUI for awesom_nested_set, View Helper for nested set, Nested Comments}
-  s.description = %q{Sortable awesom_nested_set, Drag&Drop GUI for awesom_nested_set, View Helper for nested set, Nested Comments}
+  s.summary     = %q{Drag&Drop GUI for awesom_nested_set, Very fast! Ready for Rails 4}
+  s.description = %q{Drag&Drop GUI for awesom_nested_set, Very fast! Ready for Rails 4}
   s.rubyforge_project = "the_sortable_tree"
   s.extra_rdoc_files = ["README.md"]
 
