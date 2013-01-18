@@ -174,7 +174,7 @@ bundle exec rails g the_sortable_tree:views assets
 3. [I need to render reversed tree](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/I_need_to_render_reversed_tree.md)
 4. [Gem can't correctly define a Name of your Model](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/How_to_correctly_define_a_Name_of_your_Model.md)
 
-## Is it fast?
+## Is it fast? Yes, it is!
 
 BANCHMARK:
 
