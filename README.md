@@ -17,7 +17,7 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 ## Install
 
 ```ruby
-gem 'awesome_nested_set' # or any similar gem
+gem 'awesome_nested_set' # or any similar gem (gem 'nested_set')
 gem 'the_sortable_tree'
 ```
 
@@ -72,15 +72,88 @@ end
 
 **manage** - just page, where you want render Sortable tree.
 
+### Extend your Model
 
+``` ruby
+class Page < ActiveRecord::Base
+  include TheSortableTree::Scopes
+  
+  # any code here
+end
+```
 
+### Find your tree
 
+``` ruby
+class PagesController < ApplicationController
+  include TheSortableTreeController::Rebuild
 
-## Gem under active development!!!
+  def manage
+    @pages = Page.nested_set.select('id, title, content, parent_id').all
+  end
 
-Please use **version 1.9.4** => [TheSortableTree version 1.9.4 Doc](https://github.com/the-teacher/the_sortable_tree/tree/60a9b09db845f8325c5e575e8a464eb43b606d03)
+  # any code here
+end
+```
 
-### The MIT License (MIT)
+## Render Tree
+
+**app/views/pages/manage.html.haml**
+
+```haml
+%ol.tree= build_server_tree @pages
+```
+
+## Render Sortable Tree
+
+**app/views/pages/manage.html.haml**
+
+```haml
+%ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
+  = build_server_tree @pages, type: :sortable
+```
+
+# Customization
+
+Try to run next view generators:
+
+Render helpers for HTML tree generation
+
+```ruby
+bundle exec rails g the_sortable_tree:views tree
+bundle exec rails g the_sortable_tree:views sortable
+```
+
+Base Render helper of gem
+
+```ruby
+bundle exec rails g the_sortable_tree:views helper
+```
+
+Assets of gem
+
+```ruby
+bundle exec rails g the_sortable_tree:views assets
+```
+
+# I want to know more
+
+1. [How to change HTML code of tree?](#)
+2. [How to create new tree Render Helper?](#)
+3. [I need to render reversed tree](#)
+
+### Looking for maintainers
+
+Do you want to be open source contributor? There are some ideas:
+
+Try to create view helpers for:
+
+1. Mongoid NestedSet
+2. acts_as_ordered_tree
+3. gem Ancestry (???)
+4. Comments Tree gem
+
+## The MIT License (MIT)
 
 Copyright 2009-2012 Ilya N. Zykin (the-teacher), Mikhail Dieterle (Mik-die), Matthew Clark
 
