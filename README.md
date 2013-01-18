@@ -82,7 +82,7 @@ class Page < ActiveRecord::Base
 end
 ```
 
-### Find your tree
+### Extend your controller and find your tree
 
 ``` ruby
 class PagesController < ApplicationController
@@ -155,7 +155,7 @@ Try to create view helpers for:
 
 ## The MIT License (MIT)
 
-Copyright 2009-2012 Ilya N. Zykin (the-teacher), Mikhail Dieterle (Mik-die), Matthew Clark
+Copyright 2009-2013 Ilya N. Zykin (the-teacher), Mikhail Dieterle (Mik-die), Matthew Clark
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
