@@ -1,0 +1,44 @@
+book = {
+  'Programs' => {
+    'Lexical Structure' => [
+      'Comments',
+      'Documentation',
+      'Whitespace',
+      'Literals',
+      'Identifiers'
+    ]
+  }
+}
+
+def create_hub user, title
+  obj          = user.send(:hubs).new
+  obj.title    = title
+  obj.hub_type = :book
+  obj.state    = :published
+  obj.save!
+  obj
+end
+
+def build_page_tree user, book, parent_obj = nil
+  book.each_pair do |key, value|
+    obj = create_hub(user, key)
+    obj.move_to_child_of(parent_obj) if parent_obj
+    parent_obj = obj
+
+    if value.is_a? Hash
+      build_page_tree(user, value, parent_obj)
+    end
+
+    if value.is_a? Array
+      value.each do |key|
+        obj = create_hub(user, key)
+        obj.move_to_child_of(parent_obj)
+      end
+    end
+
+  end
+end
+
+build_page_tree(User.first, book)
+
+Hub.roots.of_(:book).last.self_and_descendants

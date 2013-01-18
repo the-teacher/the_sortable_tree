@@ -1,42 +1,33 @@
 .tree{
   margin:0; padding:0;
-
-  * {
-    margin:0; padding:0;
-    list-style:none;
-  }
-
-  a:hover { color: red !important; }
-
-  .item{
-    background: #EEE;
-    margin-bottom: 5px;
-    border-radius: 3px;
-    padding: 5px;
-  }
+  *{ margin: 0; padding: 0; }
 
   ol{
-    margin-left: 20px;
+    margin: 0 0 0 13px;
+    padding: 0 0 0 15px;
+    border-left: 1px dashed gray;
+  }
 
-    &.nested_set{
-      font-size: 16px;
+  li{
+    margin-bottom:5px;
+    position: relative;
+  }
 
-      li{
-        font-size: 0.9em;
-        line-height: 130%;
-        margin-bottom: 5px;
-        font-weight: bold;
-        list-style-position: outside;
-      }
+  a{
+    color: black;
+    font-size: 14px;
 
-      ol{
-        border-left: 1px dashed #AAA;
-        padding-left: 10px;
-        margin-left: 15px;
-        margin-top: 5px;
-
-        li{ font-weight: normal; }
-      }
+    &:hover {
+      color: black;
+      background: #ddd;
     }
+  }
+
+  .item{
+    padding: 5px;
+    background: #eee;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    &:hover{ background: #ddd; }
   }
 }

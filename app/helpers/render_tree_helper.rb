@@ -27,12 +27,11 @@ module RenderTreeHelper
         @context = context
         @options = options
 
-        node = @options[:node]
+        node = options[:node]
         "
           <li>
             <div class='item'>
               #{ show_link }
-              <p>#{ node.title }</p>
             </div>
             #{ children }
           </li>
@@ -40,15 +39,15 @@ module RenderTreeHelper
       end
 
       def show_link
-        node = @options[:node]
-        ns   = @options[:opts][:namespace]
+        node = options[:node]
+        ns   = options[:opts][:namespace]
         url  = h.url_for(ns + [node])
         "<h4>#{ h.link_to(node.title, url) }</h4>"
       end
 
       def children
-        unless @options[:children].blank?
-          "<ol class='nested_set'>#{@options[:children]}</ol>"
+        unless options[:children].blank?
+          "<ol>#{ options[:children] }</ol>"
         end
       end
     end# self
