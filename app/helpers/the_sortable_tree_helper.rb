@@ -97,7 +97,7 @@ module TheSortableTreeHelper
         end
       end
 
-      result << build_tree_html(self, opts[:render_module], { :root => root, :node => node, :children => children_res, :opts => opts })
+      result << build_tree_html(self, opts[:render_module], opts.merge({ :root => root, :node => node, :children => children_res }))
     end
 
     raw result

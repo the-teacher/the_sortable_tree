@@ -113,6 +113,37 @@ end
   = build_server_tree @pages, type: :sortable
 ```
 
+## build_server_tree options
+
+**Client side:**
+
+Required params! Must be defined at root element of tree.
+
+1. **max_levels** - maximum depth of nesting
+2. **rebuild_url** - URL to rebuild method on server side
+
+**Server side:**
+
+```ruby
+options[:NAME]
+```
+
+Optional params
+
+1. **id** - id field of node
+2. **title** - title field of node
+3. **type** - type of tree [tree|sortable]
+4. **namespace** - for example: **:admin**. **[]** - by default
+
+**Rendering runtime params:**
+
+You can use next options, when rendering run:
+
+1. **level** - level number
+2. **root** - root flag [true|false]
+3. **klass** - class name
+4. **has_children** - has children flag [true|false]
+
 ## Customization
 
 Try to run next view generators:
@@ -142,6 +173,16 @@ bundle exec rails g the_sortable_tree:views assets
 2. [How to create new tree HTML Builder helper?](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/How_to_create_new_tree_Render_Helper.md)
 3. [I need to render reversed tree](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/I_need_to_render_reversed_tree.md)
 4. [Gem can't correctly define a Name of your Model](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/How_to_correctly_define_a_Name_of_your_Model.md)
+
+## Is it fast?
+
+BANCHMARK:
+
+- Server Side, 16.000 nodes, 3 levels
+- Views: 7999.6ms | ActiveRecord: 79.2ms
+- WebInspector full time ~ 9.64s
+
+total: ~2000 nodes/sec
 
 ## Looking for maintainers
 
