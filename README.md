@@ -135,7 +135,7 @@ Optional params
 3. **type** - type of tree [tree|sortable]
 4. **namespace** - for example: **:admin**. **[]** - by default
 
-**Rendering runtime params:**
+**Rendering runtime params (see code of render helpers):**
 
 You can use next options, when rendering run:
 
