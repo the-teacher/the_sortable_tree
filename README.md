@@ -117,7 +117,7 @@ end
 
 **Client side:**
 
-Required params! Must be defined at root element of tree.
+Required params for sortable GUI! Must be defined at root element of tree.
 
 1. **max_levels** - maximum depth of nesting
 2. **rebuild_url** - URL to rebuild method on server side
