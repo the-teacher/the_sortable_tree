@@ -138,9 +138,9 @@ bundle exec rails g the_sortable_tree:views assets
 
 ## I want to know more
 
-1. [How to change HTML code of tree?](#)
-2. [How to create new tree Render Helper?](#)
-3. [I need to render reversed tree](#)
+1. [How to change HTML code of tree?](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/How_to_change_HTML_code_of_tree.md)
+2. [How to create new tree Render Helper?](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/How_to_create_new_tree_Render_Helper.md)
+3. [I need to render reversed tree](https://github.com/the-teacher/the_sortable_tree/blob/master/docs/I_need_to_render_reversed_tree.md)
 
 ## Looking for maintainers
 
