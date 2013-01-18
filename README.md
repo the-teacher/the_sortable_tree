@@ -4,7 +4,7 @@ Best render helper for Nested Set ([RubyGems](http://rubygems.org/gems/the_sorta
 
 ## Sortable tree. Drag&Drop GUI
 
-!https://raw.github.com/the-teacher/the_sortable_tree/master/docs/sortable.jpg(Drag&Drop GUI for Nested set)!
+!https://raw.github.com/the-teacher/the_sortable_tree/master/docs/sortable.jpg(Drag&Drop\ GUI)!
 
 ## Render tree
 
