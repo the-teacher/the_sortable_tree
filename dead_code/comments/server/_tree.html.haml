@@ -1,5 +1,0 @@
-.comments_tree
-  - unless tree.empty?
-    %ol.nested_set= raw tree
-
-  = raw render(:partial => "#{opts[:path]}/new_comment_form", :locals => {:opts => opts})

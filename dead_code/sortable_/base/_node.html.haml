@@ -1,3 +1,0 @@
-%li{ :id => "#{node.send(opts[:id])}_#{opts[:klass]}" }
-  = raw render(:partial => "#{opts[:path]}/link", :locals => {:opts => opts, :root => root, :node => node})
-  = render(:partial => "#{opts[:path]}/children", :locals => {:opts => opts, :parent => node, :children => children}) unless children.blank?
