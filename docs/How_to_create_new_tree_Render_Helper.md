@@ -42,7 +42,7 @@ View file (HAML):
 
 ## h method as view context
 
-To have access to view helpers you should to use *h** method.
+To have access to view helpers you should to use **h** method.
 
 for example:
 
