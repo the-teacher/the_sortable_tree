@@ -29,7 +29,7 @@ bundle
 
 ## Using
 
-#### Jquery and Javascripts
+#### JQuery and JavaScripts
 
 **app/assets/javascripts/application.js**
 
@@ -113,7 +113,7 @@ end
   = build_server_tree @pages, type: :sortable
 ```
 
-# Customization
+## Customization
 
 Try to run next view generators:
 
@@ -136,13 +136,13 @@ Assets of gem
 bundle exec rails g the_sortable_tree:views assets
 ```
 
-# I want to know more
+## I want to know more
 
 1. [How to change HTML code of tree?](#)
 2. [How to create new tree Render Helper?](#)
 3. [I need to render reversed tree](#)
 
-### Looking for maintainers
+## Looking for maintainers
 
 Do you want to be open source contributor? There are some ideas:
 
