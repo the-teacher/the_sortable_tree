@@ -50,6 +50,8 @@ for example:
   h.link_to 'Edit page', options[:node]
 ```
 
+and example of real code:
+
 ```ruby
   def render_node(h, options)
     @h, @options = h, options
