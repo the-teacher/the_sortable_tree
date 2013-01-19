@@ -16,9 +16,18 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 
 ## Install
 
+**Gemfile** (Rails 4)
+
 ```ruby
 gem 'awesome_nested_set' # or any similar gem (gem 'nested_set')
 gem 'the_sortable_tree'
+```
+
+**Gemfile** (Rails 3)
+
+```ruby
+gem 'awesome_nested_set'
+gem 'the_sortable_tree', :branch => "rails_3"
 ```
 
 Console
