@@ -6,7 +6,7 @@
 2. Client side rendering via JS - removed
 3. Cleanup assets
 4. helper renamed to **build_server_tree**
-5. Comment's tree removed - it's should be is separated gem. New gem comming soon
+5. Comment's tree removed - it's should be a separated gem. New gem comming soon
 6. Rails 4 ready
 
 1.9.4 - rm CoffeeScript document scope, ru locale, fix data-confirm

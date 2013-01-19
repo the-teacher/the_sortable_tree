@@ -2,11 +2,11 @@
 
 Best render helper for Nested Set ([RubyGems](http://rubygems.org/gems/the_sortable_tree)). Very fast! **2000 nodes/sec**. Ready for rails 4
 
-## Sortable tree. Drag&Drop GUI
+### Sortable tree. Drag&Drop GUI
 
 ![Drag&Drop GUI. Sotrable tree](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/sortable.jpg)
 
-## Render tree
+### Render tree
 
 ![Render tree](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/tree.jpg)
 
