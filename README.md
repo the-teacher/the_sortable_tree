@@ -213,6 +213,11 @@ Try to create view helpers for:
 4. Comments Tree gem
 3. gem Ancestry (???)
 
+##  Аcknowledgment
+
+1. [mjsarfatti/nestedSortable](https://github.com/mjsarfatti/nestedSortable)
+2. [iconza](http://iconza.com)
+
 ## The MIT License (MIT)
 
 Copyright 2009-2013 Ilya N. Zykin (the-teacher), Mikhail Dieterle (Mik-die), Matthew Clark
