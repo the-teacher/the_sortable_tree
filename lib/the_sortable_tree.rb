@@ -6,13 +6,8 @@ module TheSortableTree
   module Scopes
     def self.included(base)
       base.class_eval do
-        if Rails::VERSION::MAJOR == 3        
-          scope :nested_set,          order('lft ASC')
-          scope :reversed_nested_set, order('lft DESC')
-        elsif Rails::VERSION::MAJOR == 4
-          scope :nested_set,          -> { order('lft ASC')  }
-          scope :reversed_nested_set, -> { order('lft DESC') }
-        end
+        scope :nested_set,          order('lft ASC')
+        scope :reversed_nested_set, order('lft DESC')
       end
     end
   end

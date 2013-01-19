@@ -6,11 +6,13 @@
     margin: 0 0 0 13px;
     padding: 0 0 0 15px;
     border-left: 1px dashed gray;
+    list-style: none outside none;
   }
 
   li{
     margin-bottom:5px;
     position: relative;
+    list-style: none outside none;
   }
 
   a{

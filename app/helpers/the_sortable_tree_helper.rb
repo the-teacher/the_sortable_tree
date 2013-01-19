@@ -74,7 +74,7 @@ module TheSortableTreeHelper
       roots = opts[:boost][0]
 
       # define roots, if it's need
-      if roots.empty? && !tree.empty?
+      if roots.nil? && !tree.empty?
         min_parent_id = tree.map(&:parent_id).compact.min
         roots = tree.select{ |elem| elem.parent_id == min_parent_id }
       end
