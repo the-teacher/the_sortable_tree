@@ -34,7 +34,7 @@ module RenderSortableTreeHelper
         url  = h.url_for(ns + [node])
         title_field = options[:title]
 
-        "<h4>#{ h.link_to(node.send(title_field), url) } #{node.parent_id} #{node.class}</h4>"
+        "<h4>#{ h.link_to(node.send(title_field), url) }</h4>"
       end
 
       def controls
@@ -45,8 +45,8 @@ module RenderSortableTreeHelper
 
         "
           <div class='controls'>
-            #{ h.link_to '', edit_path, class: :edit }
-            #{ h.link_to '', show_path, class: :delete, data: { confirm: 'Are you sure?' } }
+            #{ h.link_to '', edit_path, :class => :edit }
+            #{ h.link_to '', show_path, :class => :delete, :data => { :confirm => 'Are you sure?' } }
           </div>
         "
       end
