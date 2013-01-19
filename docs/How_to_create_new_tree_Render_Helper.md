@@ -30,6 +30,7 @@ end
 **class Render** should contain **render_node(h, options)** method.
 
 **options** - it's hash of common options and data 
+
 **h** - it's view context
 
 Use your tree HTML Builder helper with next way:
