@@ -122,6 +122,11 @@ Required params for sortable GUI! Must be defined at root element of tree.
 1. **max_levels** - maximum depth of nesting
 2. **rebuild_url** - URL to rebuild method on server side
 
+
+```ruby
+%ol.sortable_tree{ data: { max_levels: 3, rebuild_url: rebuild_pages_url } }
+```
+
 **Server side:**
 
 ```ruby
@@ -134,6 +139,7 @@ Optional params
 2. **title** - title field of node
 3. **type** - type of tree [tree|sortable]
 4. **namespace** - for example: **:admin**. **[]** - by default
+5. **render_module** - your own Render Tree Helper
 
 **Rendering runtime params (see code of render helpers):**
 
@@ -143,6 +149,7 @@ You can use next options, when rendering run:
 2. **root** - root flag [true|false]
 3. **klass** - class name
 4. **has_children** - has children flag [true|false]
+5. **children** - array of children
 
 ## Customization
 
