@@ -1,4 +1,4 @@
-# TheSortableTree v2.0.0
+# TheSortableTree v2.1.0
 
 Nested Set + Drag&Drop GUI. Very fast! Best render helper! **2000 nodes/sec**. Ready for rails 4 ([RubyGems](http://rubygems.org/gems/the_sortable_tree))
 
@@ -10,24 +10,21 @@ Nested Set + Drag&Drop GUI. Very fast! Best render helper! **2000 nodes/sec**. R
 
 ![Render tree](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/tree.jpg)
 
+## Render Nested Options
+
+![Render tree](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/nested_options.jpg)
+
 ## Keywords
 
 Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable nested set, Drag&Drop GUI for nested set, View helper for nested set, render tree
 
 ## Install
 
-**Gemfile** (Rails 4)
+**Gemfile** (Rails 3, Rails 4)
 
 ```ruby
 gem 'awesome_nested_set' # or any similar gem (gem 'nested_set')
-gem "the_sortable_tree", "~> 2.0.0"
-```
-
-**Gemfile** (Rails 3)
-
-```ruby
-gem 'awesome_nested_set'
-gem 'the_sortable_tree', :git => 'git://github.com/the-teacher/the_sortable_tree.git', :branch => "rails_3"
+gem "the_sortable_tree", "~> 2.1.0"
 ```
 
 Console
@@ -64,6 +61,7 @@ Add next JS only for Sortable GUI
 ```ruby
 *= require tree
 *= require sortable_tree
+*= require nested_options
 ```
 
 ### Extend your Routes for Sortable GUI
@@ -120,6 +118,14 @@ end
 ```haml
 %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
   = build_server_tree @pages, type: :sortable
+```
+
+## Render Nested Options Tree
+
+**app/views/pages/manage.html.haml**
+
+```haml
+= select_tag :pages, nested_options(@pages, :selected => Page.last), class: :nested_options
 ```
 
 ## build_server_tree options

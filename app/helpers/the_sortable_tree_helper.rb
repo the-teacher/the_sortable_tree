@@ -8,7 +8,8 @@ module TheSortableTreeHelper
   # Default renderers
   TREE_RENDERERS = {
     :tree     => RenderTreeHelper,
-    :sortable => RenderSortableTreeHelper
+    :sortable => RenderSortableTreeHelper,
+    :select_options => RenderSelectOptionsHelper
   }
 
   ###############################################
@@ -25,6 +26,16 @@ module TheSortableTreeHelper
 
   def build_tree_html context, render_module, options = {}
     render_module::Render::render_node(self, options)
+  end
+
+  ###############################################
+  # Nested Options Helper
+  ###############################################
+
+  def nested_options tree, options = {}
+    opts = { :type => :select_options }
+    opts.merge!(options)
+    build_server_tree(tree, opts)
   end
 
   ###############################################
