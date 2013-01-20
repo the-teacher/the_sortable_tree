@@ -27,7 +27,7 @@ gem "the_sortable_tree", "~> 2.0.0"
 
 ```ruby
 gem 'awesome_nested_set'
-gem "the_sortable_tree", :branch => "rails_3"
+gem 'the_sortable_tree', :git => 'git://github.com/the-teacher/the_sortable_tree.git', :branch => "rails_3"
 ```
 
 Console
