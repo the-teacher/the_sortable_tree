@@ -165,7 +165,7 @@ use
 options[:NAME]
 ```
 
-Optional params
+Options list:
 
 1. **id** - id field of node
 2. **title** - title field of node
