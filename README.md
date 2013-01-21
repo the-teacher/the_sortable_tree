@@ -152,6 +152,15 @@ Required params for sortable GUI! Must be defined at root element of tree.
 
 **Server side:**
 
+
+define
+
+```ruby
+build_server_tree(pages, {:option_1 => :value_1, :option_2 => :value_2})
+```
+
+use
+
 ```ruby
 options[:NAME]
 ```
