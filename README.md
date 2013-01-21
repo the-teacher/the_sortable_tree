@@ -128,7 +128,7 @@ end
 = select_tag :page_id, nested_options(@pages, :selected => Page.last), class: :nested_options
 ```
 
-**nested options** is just alias of **build_server_tree(tree, type: :nested_options)**
+**nested_options** is just alias of **build_server_tree(tree, type: :nested_options)**
 
 
 ## build_server_tree options
