@@ -113,16 +113,12 @@ end
 
 ## Render Sortable Tree
 
-**app/views/pages/manage.html.haml**
-
 ```haml
 %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
   = build_server_tree @pages, type: :sortable
 ```
 
 ## Render Nested Options Tree
-
-**app/views/pages/manage.html.haml**
 
 ```haml
 = select_tag :page_id, nested_options(@pages, :selected => Page.last), class: :nested_options
