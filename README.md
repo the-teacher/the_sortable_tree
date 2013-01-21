@@ -123,7 +123,7 @@ build_server_tree(tree, options)
 
 ```haml
 %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
-  = sortable_tree @pages, type: :sortable
+  = sortable_tree @pages
 ```
 **sortable_tree** is just alias of **build_server_tree(tree, type: :sortable)**
 
@@ -233,7 +233,7 @@ Try to create view helpers for:
 1. I'm develop gem with test app [the_sortable_tree_test_app](https://github.com/the-teacher/the_sortable_tree_test_app). You can clone it and see some testcase-pages for gem
 2. Sorry, but I have not tests for this gem. Gem is so easy. It's easy to test only with test app.
 3. You can write some tests, if your need.
-4. No! I know RSpec. I can write tests. But I have no reasons to write tests here.
+4. No! I know RSpec. I can write tests. But I have not reasons to write tests here.
 
 ##  Аcknowledgment
 
