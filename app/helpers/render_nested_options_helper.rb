@@ -10,7 +10,7 @@ module RenderNestedOptionsHelper
         selected = (options[:selected] == node) ? ' selected' : nil
 
         "
-        <option value='#{node[:id]}' class='l_#{ options[:level] }#{selected}'>#{ node[:title] }</option>
+        <option value='#{node[:id]}' class='l_#{ options[:level] }#{selected}'>#{ node.send(options[:title]) }</option>
         #{ options[:children] }
         "
       end

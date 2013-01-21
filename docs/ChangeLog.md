@@ -1,5 +1,11 @@
 ## ChangeLog
 
+**2.2.0**
+
+1. fix base helper problem with empty tree
+2. shortcuts
+3. little fixes
+
 **2.1.0**
 
 1. Nested Options Helper

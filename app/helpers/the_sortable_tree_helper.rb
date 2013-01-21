@@ -29,13 +29,19 @@ module TheSortableTreeHelper
   end
 
   ###############################################
-  # Nested Options Helper
+  # Shortcuts
   ###############################################
+  
+  def just_tree tree, options = {}
+    build_server_tree(tree, { :type => :tree }.merge!(options))
+  end
+
+  def sortable_tree tree, options = {}
+    build_server_tree(tree, { :type => :sortable }.merge!(options))
+  end
 
   def nested_options tree, options = {}
-    opts = { :type => :nested_options }
-    opts.merge!(options)
-    build_server_tree(tree, opts)
+    build_server_tree(tree, { :type => :nested_options }.merge!(options))
   end
 
   ###############################################
@@ -72,6 +78,8 @@ module TheSortableTreeHelper
     opts[:klass] = define_class_of_elements_of(tree) unless opts[:klass]
 
     # BOOST PATCH (BUILD ONCE)
+    # solution of main perfomance problem
+    # magick index-array, which made me happy!
     if opts[:boost].empty?
       tree.each do |item|
         num = item.parent_id || 0
@@ -91,9 +99,11 @@ module TheSortableTreeHelper
       end
 
       # children rendering
-      roots.each do |root|
-        _opts  =  opts.merge({ :node => root, :root => true, :level => opts[:level].next, :boost => opts[:boost] })
-        result << build_server_tree(tree, _opts)
+      if roots
+        roots.each do |root|
+          _opts  =  opts.merge({ :node => root, :root => true, :level => opts[:level].next, :boost => opts[:boost] })
+          result << build_server_tree(tree, _opts)
+        end
       end
     else
       # RENDER NODE'S CHILDREN

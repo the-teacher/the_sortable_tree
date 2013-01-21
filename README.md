@@ -1,4 +1,4 @@
-# TheSortableTree v2.1.0
+# TheSortableTree v2.2.0
 
 Nested Set + Drag&Drop GUI. Very fast! Best render helper! **2000 nodes/sec**. Ready for rails 4 ([RubyGems](http://rubygems.org/gems/the_sortable_tree))
 
@@ -103,20 +103,29 @@ class PagesController < ApplicationController
 end
 ```
 
+## Basic Render Method
+
+```ruby
+build_server_tree(tree, options)
+```
+
 ## Render Tree
 
 **app/views/pages/manage.html.haml**
 
 ```haml
-%ol.tree= build_server_tree @pages
+%ol.tree= just_tree @pages
 ```
+
+**just_tree** is just alias of **build_server_tree(tree, type: :tree)**
 
 ## Render Sortable Tree
 
 ```haml
 %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
-  = build_server_tree @pages, type: :sortable
+  = sortable_tree @pages, type: :sortable
 ```
+**sortable_tree** is just alias of **build_server_tree(tree, type: :sortable)**
 
 ## Render Nested Options Tree
 
