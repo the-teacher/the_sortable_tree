@@ -125,8 +125,11 @@ end
 **app/views/pages/manage.html.haml**
 
 ```haml
-= select_tag :pages, nested_options(@pages, :selected => Page.last), class: :nested_options
+= select_tag :page_id, nested_options(@pages, :selected => Page.last), class: :nested_options
 ```
+
+**nested options** is just alias of **build_server_tree(tree, type: :nested_options)**
+
 
 ## build_server_tree options
 
@@ -201,11 +204,12 @@ bundle exec rails g the_sortable_tree:views assets
 
 BANCHMARK:
 
-- Server Side, 16.000 nodes, 3 levels
+tree params: 16.000 nodes, 3 levels
+
 - Views: 7999.6ms | ActiveRecord: 79.2ms
 - WebInspector full time ~ 9.64s
 
-total: ~**2000 nodes/sec**
+total: ~ **2000 nodes/sec**
 
 ## Looking for maintainers
 

@@ -1,5 +1,10 @@
 ## ChangeLog
 
+**2.1.0**
+
+1. Nested Options Helper
+2. Some little fixes
+
 **2.0.0**
 
 1. Magick Performance BOOST patch. Now rendering is fast! 2000 nodes/sec

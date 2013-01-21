@@ -1,4 +1,4 @@
-module RenderSelectOptionsHelper
+module RenderNestedOptionsHelper
   class Render
     class << self
       attr_accessor :h, :options
