@@ -8,7 +8,7 @@ module RenderSelectOptionsHelper
 
         node = options[:node]
         selected = (options[:selected] == node) ? ' selected' : nil
-        value_property = options[:title] || node[:title]
+        value_property = options[:title] || :title
 
         "
         <option value='#{node[:id]}' class='l_#{ options[:level] }#{selected}'>#{ node[value_property] }</option>
