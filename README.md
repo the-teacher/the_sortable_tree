@@ -240,8 +240,8 @@ Try to create view helpers for:
 ## I want to try! I need tests!
 
 1. I'm develop gem with test app [the_sortable_tree_test_app](https://github.com/the-teacher/the_sortable_tree_test_app). You can clone it and see some testcase-pages for gem
-2. Sorry, but I have not tests for this gem. Gem is so easy. It's easy to test only with test app.
-3. You can write some tests, if your need.
+2. Sorry, but I have not tests for this gem. Gem is so simple. It's easy to test only with test app.
+3. You can write some tests, if your need. I will be happy certainly.
 4. No! I know RSpec. I can write tests. But I have not reasons to write tests here.
 
 ##  Аcknowledgment
