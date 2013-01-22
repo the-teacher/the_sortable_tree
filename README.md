@@ -24,7 +24,7 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 
 ```ruby
 gem 'awesome_nested_set' # or any similar gem (gem 'nested_set')
-gem "the_sortable_tree", "~> 2.1.0"
+gem "the_sortable_tree", "~> 2.2.0"
 ```
 
 Console
