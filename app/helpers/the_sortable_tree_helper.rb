@@ -50,6 +50,7 @@ module TheSortableTreeHelper
 
   def build_server_tree(tree, options= {})
     result = ''
+    tree   = Array.wrap tree
     opts   = {
       # node and base node params
       :id    => :id,      # node id field

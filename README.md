@@ -1,4 +1,4 @@
-# TheSortableTree v2.2.1
+# TheSortableTree v2.3.0
 
 Nested Set + Drag&Drop GUI. Very fast! Best render helper! **2000 nodes/sec**. Ready for rails 4 ([RubyGems](http://rubygems.org/gems/the_sortable_tree))
 
