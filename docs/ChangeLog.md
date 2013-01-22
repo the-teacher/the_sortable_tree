@@ -1,8 +1,12 @@
 ## ChangeLog
 
-**2.2.0**
+**2.3.0**
 
 1. fix base helper problem with empty tree
+
+**2.2.0**
+
+1. fix base helper problem with empty tree (fail)
 2. shortcuts
 3. little fixes
 
