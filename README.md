@@ -1,4 +1,4 @@
-# TheSortableTree v2.2.0
+# TheSortableTree v2.2.1
 
 Nested Set + Drag&Drop GUI. Very fast! Best render helper! **2000 nodes/sec**. Ready for rails 4 ([RubyGems](http://rubygems.org/gems/the_sortable_tree))
 
@@ -24,7 +24,7 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 
 ```ruby
 gem 'awesome_nested_set' # or any similar gem (gem 'nested_set')
-gem "the_sortable_tree", "~> 2.2.0"
+gem "the_sortable_tree", "~> 2.2.1"
 ```
 
 Console
@@ -169,7 +169,7 @@ Options list:
 
 1. **id** - id field of node
 2. **title** - title field of node
-3. **type** - type of tree [tree|sortable]
+3. **type** - type of tree [tree|sortable|nested_options]
 4. **namespace** - for example: **:admin**. **[]** - by default
 5. **render_module** - your own Render Tree Helper
 
@@ -192,6 +192,7 @@ Render helpers for HTML tree generation
 ```ruby
 bundle exec rails g the_sortable_tree:views tree
 bundle exec rails g the_sortable_tree:views sortable
+bundle exec rails g the_sortable_tree:views nested_options
 ```
 
 Base Render helper of gem
