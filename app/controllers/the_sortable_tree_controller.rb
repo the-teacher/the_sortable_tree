@@ -1,6 +1,7 @@
 module TheSortableTreeController
   # include TheSortableTreeController::ReversedRebuild
   # include TheSortableTreeController::Rebuild
+  # include TheSortableTreeController::ExpandNode
   
   module DefineVariablesMethod
     public
@@ -10,6 +11,22 @@ module TheSortableTreeController
       variable   = collection.singularize                                                                   # 'recipe'
       klass      = self.respond_to?(:sortable_model) ? self.sortable_model : variable.classify.constantize  # Recipe
       ["@#{variable}", collection, klass]
+    end
+  end
+
+  
+  module ExpandNode
+    include DefineVariablesMethod
+    def expand_node
+      id = params[:id].to_i
+      render :text => "Do nothing" and return unless id
+
+      variable, collection, klass = self.the_define_common_variables
+      variable = self.instance_variable_set(variable, klass.find(id))
+      @children = variable.children
+
+      render :text => nil and return if @children.count.zero? 
+      render :layout => false, :template => "#{collection}/expand_children"
     end
   end
 

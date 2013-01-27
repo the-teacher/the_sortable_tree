@@ -1,0 +1,20 @@
+.sortable_tree{
+  .expand{
+    float: left;
+    cursor: pointer;
+
+    border: 1px solid gray;
+    color: gray;
+
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 13px;
+    text-align: center;
+    
+    width: 13px;
+    height: 13px;
+    margin: 3px 10px 0 0;
+
+    &.empty{ display:none !important; }
+  }
+}

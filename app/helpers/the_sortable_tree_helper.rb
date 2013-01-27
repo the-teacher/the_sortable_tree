@@ -9,6 +9,7 @@ module TheSortableTreeHelper
   TREE_RENDERERS = {
     :tree     => RenderTreeHelper,
     :sortable => RenderSortableTreeHelper,
+    :expandable => RenderExpandableTreeHelper,
     :nested_options => RenderNestedOptionsHelper
   }
 
@@ -42,6 +43,10 @@ module TheSortableTreeHelper
 
   def nested_options tree, options = {}
     build_server_tree(tree, { :type => :nested_options }.merge!(options))
+  end
+
+  def expandable_tree tree, options = {}
+    build_server_tree(tree, { :type => :expandable }.merge!(options))
   end
 
   ###############################################
