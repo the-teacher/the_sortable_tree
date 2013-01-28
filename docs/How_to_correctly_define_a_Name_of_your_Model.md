@@ -17,7 +17,7 @@ class ManagersPagesController < ApplicationController
     @pages = Page.nested_set.select('id, title, content, parent_id').all
   end
 
-  private
+  protected
 
   def sortable_model
     Page
