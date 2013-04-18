@@ -21,8 +21,8 @@
 $ ->
   for sortable_tree in $('ol.sortable_tree')
     sortable_tree = $ sortable_tree
-    rebuild_url   = sortable_tree.data('rebuild_url')
-    max_levels    = sortable_tree.data('max_levels')
+    rebuild_url   = sortable_tree.data('rebuild_url') || sortable_tree.data('rebuild-url')
+    max_levels    = sortable_tree.data('max_levels')  || sortable_tree.data('rebuild-url')
 
     ############################################
     # Initialize Sortable Tree
