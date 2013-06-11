@@ -3,7 +3,7 @@
 ### Basic steps
 
 1. Copy render helper file into your project
-2. Change HTML builder fucnction in render helper file
+2. Change HTML builder function in render helper file
 
 ### How to copy Render helper?
 
