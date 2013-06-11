@@ -1,0 +1,5 @@
+%p= link_to raw('&larr; back'), '/'
+
+%ol.tree= just_tree @pages
+
+= select_tag :pages, nested_options(@pages, :selected => Page.first), :class => :nested_options

@@ -1,0 +1,8 @@
+.bundle
+db/*.sqlite3
+log/*.log
+Gemfile.lock
+.rvmrc
+tmp/
+config/database.yml
+.sass-cache/
