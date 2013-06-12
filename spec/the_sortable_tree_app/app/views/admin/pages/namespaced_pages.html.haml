@@ -1,7 +1,0 @@
-%p= link_to raw('&larr; back'), '/'
-
-%p= link_to 'Create New Page', new_page_path
-
-Count: #{ @pages.count }
-%ol.sortable_tree{ :data => { :rebuild_url => rebuild_admin_pages_url } }
-  = sortable_tree @pages

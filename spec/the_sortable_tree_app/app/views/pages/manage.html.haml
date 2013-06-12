@@ -3,5 +3,6 @@
 %p= link_to 'Create New Page', new_page_path
 
 Count: #{ @pages.count }
-%ol.sortable_tree{ :data => { :rebuild_url => rebuild_pages_url } }
-  = sortable_tree @pages
+
+%ol.sortable_tree{ data: { rebuild_url: rebuild_pages_url } }
+  = sortable_tree @pages, namespace: :admin

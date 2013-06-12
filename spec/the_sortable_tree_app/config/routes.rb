@@ -5,34 +5,26 @@ TheSortableTreeTest::Application.routes.draw do
 
   root :to => 'welcome#index'
 
-  resources :article_categories do
-    collection do
-      get  :manage
-      post :rebuild
-    end
-  end
-
   resources :pages do
     collection do
+      get  :nested_options, :manage, :node_manage,  :expand
       post :rebuild, :expand_node
-      get  :manage, :expand
-    end
-  end
-
-  resources :comments do
-    collection do
-      post :rebuild
-      get  :manage
-      get  :comments
     end
   end
 
   namespace :admin do
     resources :pages do
       collection do
-        get  :manage, :first_root_manage, :namespaced_pages
+        get  :nested_options, :manage, :node_manage
         post :rebuild
       end
+    end
+  end
+
+  resources :article_categories do
+    collection do
+      get  :manage
+      post :rebuild
     end
   end
 
@@ -45,4 +37,11 @@ TheSortableTreeTest::Application.routes.draw do
     end
   end
 
+  # resources :comments do
+  #   collection do
+  #     post :rebuild
+  #     get  :manage
+  #     get  :comments
+  #   end
+  # end
 end
