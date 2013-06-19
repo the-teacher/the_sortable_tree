@@ -1,4 +1,4 @@
-# TheSortableTree v2.3.2
+# TheSortableTree v2.3.3
 
 > tested with rails 3.2.13 + haml 4
 
