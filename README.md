@@ -4,7 +4,7 @@
 
 Nested Set + Drag&Drop GUI. Very fast! Best render helper! **2000 nodes/sec**. Ready for rails 4 ([RubyGems](http://rubygems.org/gems/the_sortable_tree))
 
-### Test Application
+### Dummy Application
 
 * [spec/the_sortable_tree_app](https://github.com/the-teacher/the_sortable_tree/tree/master/spec/the_sortable_tree_app)
 * [spec/the_sortable_tree_app/README.md](https://github.com/the-teacher/the_sortable_tree/blob/master/spec/the_sortable_tree_app/README.md)
