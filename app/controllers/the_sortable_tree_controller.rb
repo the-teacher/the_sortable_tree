@@ -18,15 +18,16 @@ module TheSortableTreeController
   module ExpandNode
     include DefineVariablesMethod
     def expand_node
-      id = params[:id].to_i
-      render :text => "Do nothing" and return unless id
+      id   = params[:id].to_i
+      return render(nothing: true) unless id
+      sort = (params[:tree_sort] == 'reversed') ? 'reversed_' : nil
 
       variable, collection, klass = self.the_define_common_variables
-      variable = self.instance_variable_set(variable, klass.find(id))
-      @children = variable.children
+      variable  = self.instance_variable_set(variable, klass.find(id))
+      @children = variable.children.send("#{sort}nested_set")
 
-      render :text => nil and return if @children.count.zero? 
-      render :layout => false, :template => "#{collection}/expand_children"
+      return render(nothing: :true) if @children.count.zero?
+      render layout: false, template: "#{collection}/expand_children"
     end
   end
 

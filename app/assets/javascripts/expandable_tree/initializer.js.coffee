@@ -1,3 +1,9 @@
+@nested_tree_toggle = (button) ->
+  if button.hasClass('minus')
+    button.removeClass('minus').addClass('plus').html('+')
+  else
+    button.removeClass('plus').addClass('minus').html('&ndash;')
+
 @append_children_to_node = (node, html) ->
   html = html.trim()
   item = node.children('.item')
@@ -8,43 +14,61 @@
     button.addClass 'empty'
 
   if html.length > 0
-    button.removeClass('plus').addClass('minus').html('&ndash;')
+    nested_tree_toggle(button)
     item.after html
-    
 
-@upload_nodes_children = (node, expand_node_url, tree_type = 'expandable') ->
-  node_id = node.attr 'id'
+@upload_nodes_children = (node, expand_node_url) ->
+  node_id    = node.attr 'id'
+  tree       = $('.sortable_tree')
+  ctrl_items = $('i.handle, b.expand', tree)
 
   $.ajax
     type:     'POST'
     dataType: 'html'
+    data:     { id: node_id }
     url:      expand_node_url
-    data:
-      id: node_id
-      tree_type: tree_type
 
     beforeSend: (xhr) ->
-      $('.sortable_tree i.handle').hide()
-      $('.sortable_tree b.expand').hide()
+      ctrl_items.hide()
 
     success: (data, status, xhr) ->
-      $('.sortable_tree i.handle').show()
-      $('.sortable_tree b.expand').show()
+      ctrl_items.show()
       append_children_to_node(node, data)
+
+      if is_restorable_tree
+        id = node_id.split('_').shift()
+        nested_tree_path_add(id)
 
     error: (xhr, status, error) ->
       console.log error
 
 $ ->
+  window.is_restorable_tree ||= false
+
   for sortable_tree in $('ol.sortable_tree')
     sortable_tree   = $ sortable_tree
-    expand_node_url = sortable_tree.data('expand_node_url')
-    tree_type       = sortable_tree.data('tree_type')
+    expand_node_url = sortable_tree.data('expand_node_url') || sortable_tree.data('expand-node-url')
 
-    pluses = $ '.expand.plus', sortable_tree
+    # Now it's designed only for one tree
+    restore_nested_tree(sortable_tree, expand_node_url) if is_restorable_tree
 
-    pluses.live 'click', (e) ->
-      node = $(@).parent().parent()
-      upload_nodes_children(node, expand_node_url, tree_type)
+    sortable_tree.on 'click', '.expand.minus', (e) ->
+      button = $ @
+      node   = button.parent().parent()
+      nested_tree_toggle(button)
+      node.children('.nested_set').hide()
+      
+      false
+
+    sortable_tree.on 'click', '.expand.plus', (e) ->
+      button     = $ @
+      node       = button.parent().parent()
+      nested_set = node.children('.nested_set')
+      
+      if nested_set.length is 0
+        upload_nodes_children(node, expand_node_url)
+      else
+        nested_set.show()
+        nested_tree_toggle(button)
 
       false
