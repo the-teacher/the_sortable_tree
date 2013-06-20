@@ -1,7 +1,7 @@
 module TheSortableTreeController
-  # include TheSortableTreeController::ReversedRebuild
   # include TheSortableTreeController::Rebuild
   # include TheSortableTreeController::ExpandNode
+  # include TheSortableTreeController::ReversedRebuild
   
   module DefineVariablesMethod
     public
