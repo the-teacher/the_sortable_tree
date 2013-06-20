@@ -1,3 +1,23 @@
+# ----------------------------------------
+# Restorable Helpers
+# ----------------------------------------
+@add_to_restorable_path = (node) ->
+  if is_restorable_tree
+    node_id = node.attr('id')
+    id = node_id.split('_').shift()
+    nested_tree_path_add(id)
+    return true
+  false
+
+@remove_from_restorable_path = (node) ->
+  if is_restorable_tree
+    id = node.attr('id').split('_').shift()
+    nested_tree_path_remove id
+    return true
+  false
+# ----------------------------------------
+# Main Helpers
+# ----------------------------------------
 @nested_tree_toggle = (button) ->
   if button.hasClass('minus')
     button.removeClass('minus').addClass('plus').html('+')
@@ -14,8 +34,9 @@
     button.addClass 'empty'
 
   if html.length > 0
-    nested_tree_toggle(button)
     item.after html
+    nested_tree_toggle(button)
+    add_to_restorable_path(node)
 
 @upload_nodes_children = (node, expand_node_url) ->
   node_id    = node.attr 'id'
@@ -35,10 +56,6 @@
       ctrl_items.show()
       append_children_to_node(node, data)
 
-      if is_restorable_tree
-        id = node_id.split('_').shift()
-        nested_tree_path_add(id)
-
     error: (xhr, status, error) ->
       console.log error
 
@@ -56,8 +73,8 @@ $ ->
       button = $ @
       node   = button.parent().parent()
       nested_tree_toggle(button)
+      remove_from_restorable_path(node)
       node.children('.nested_set').hide()
-      
       false
 
     sortable_tree.on 'click', '.expand.plus', (e) ->
@@ -70,5 +87,6 @@ $ ->
       else
         nested_set.show()
         nested_tree_toggle(button)
+        add_to_restorable_path(node)
 
       false
