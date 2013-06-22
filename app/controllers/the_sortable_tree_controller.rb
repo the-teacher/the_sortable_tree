@@ -27,7 +27,7 @@ module TheSortableTreeController
       @children = variable.children.send("#{sort}nested_set")
 
       return render(nothing: :true) if @children.count.zero?
-      render layout: false, template: "#{collection}/expand_children"
+      render layout: false, template: "#{collection}/expand_node"
     end
   end
 
