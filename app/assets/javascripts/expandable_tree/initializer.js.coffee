@@ -67,7 +67,7 @@ $ ->
     expand_node_url = sortable_tree.data('expand_node_url') || sortable_tree.data('expand-node-url')
 
     # Now it's designed only for one tree
-    restore_nested_tree(sortable_tree, expand_node_url) if is_restorable_tree
+    restore_nested_tree(sortable_tree, expand_node_url) if window.is_restorable_tree
 
     sortable_tree.on 'click', '.expand.minus', (e) ->
       button = $ @
