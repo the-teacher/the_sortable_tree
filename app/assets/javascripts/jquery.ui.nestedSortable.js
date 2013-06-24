@@ -19,6 +19,7 @@
 			disableNesting: 'ui-nestedSortable-no-nesting',
 			errorClass: 'ui-nestedSortable-error',
 			listType: 'ol',
+			listClass: 'nested_set',
 			maxLevels: 0,
 			noJumpFix: 0
 		},
@@ -128,6 +129,7 @@
 			}
 
 			newList = document.createElement(o.listType);
+			$(newList).addClass(o.listClass)
 
 			this.beyondMaxLevels = 0;
 
