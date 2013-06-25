@@ -2,7 +2,7 @@
 # Restorable Helpers
 # ----------------------------------------
 @add_to_restorable_path = (node) ->
-  if is_restorable_tree
+  if window.is_restorable_tree
     node_id = node.attr('id')
     id = node_id.split('_').shift()
     nested_tree_path_add(id)
@@ -10,7 +10,7 @@
   false
 
 @remove_from_restorable_path = (node) ->
-  if is_restorable_tree
+  if window.is_restorable_tree
     id = node.attr('id').split('_').shift()
     nested_tree_path_remove id
     return true
@@ -60,7 +60,12 @@
       console.log error
 
 $ ->
-  window.is_restorable_tree ||= false
+  window.is_restorable_tree  ||= false
+  window.is_cookie_restoreable_tree ||= false
+
+  if window.is_cookie_restoreable_tree
+    steps = $.cookie('TST')
+    _set_hash('TST|' + steps) if steps
 
   for sortable_tree in $('ol.sortable_tree')
     sortable_tree   = $ sortable_tree

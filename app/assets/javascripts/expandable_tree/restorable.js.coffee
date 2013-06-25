@@ -34,9 +34,16 @@ window.is_restorable_tree = true
 
   arr.splice(index, 1)
   str = _uniqueArray(arr).join(';')
-  str = if str.length is 0 then '' else ("TST|" + str)
-  _set_hash(str)
-  
+  if str.length is 0
+    if window.is_cookie_restoreable_tree
+      $.removeCookie('TST')
+    _set_hash('')
+  else
+    if window.is_cookie_restoreable_tree
+      $.cookie('TST', str,  { expires: 7 })
+
+    _set_hash("TST|" + str)
+
 @nested_tree_path_add = (id) ->
   str  = id
   hash = _get_hash()
@@ -46,6 +53,9 @@ window.is_restorable_tree = true
     arr.push(id)
     arr = _uniqueArray arr
     str = arr.join(';')
+
+  if window.is_cookie_restoreable_tree
+    $.cookie('TST', str,  { expires: 7 })
 
   _set_hash("TST|" + str)
 
