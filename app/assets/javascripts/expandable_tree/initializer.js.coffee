@@ -15,6 +15,7 @@
     nested_tree_path_remove id
     return true
   false
+
 # ----------------------------------------
 # Main Helpers
 # ----------------------------------------
@@ -59,39 +60,44 @@
     error: (xhr, status, error) ->
       console.log error
 
-$ ->
-  window.is_restorable_tree  ||= false
-  window.is_cookie_restoreable_tree ||= false
+@init_expandable_tree = ->
+  sortable_tree = $('ol.sortable_tree')
+  return false if sortable_tree.length is 0
+
+  window.is_restorable_tree         ||= false
+  window.is_cookie_restoreable_tree   = sortable_tree.data('cookie_store') || sortable_tree.data('cookie-store')
 
   if window.is_cookie_restoreable_tree
-    steps = $.cookie('TST')
-    _set_hash('TST|' + steps) if steps
+    steps = $.cookie(TSTconst ._name)
+    _set_hash(TSTconst.hash_prefix + steps) if steps
 
-  for sortable_tree in $('ol.sortable_tree')
-    sortable_tree   = $ sortable_tree
-    expand_node_url = sortable_tree.data('expand_node_url') || sortable_tree.data('expand-node-url')
+  expand_node_url = sortable_tree.data('expand_node_url') || sortable_tree.data('expand-node-url')
 
-    # Now it's designed only for one tree
-    restore_nested_tree(sortable_tree, expand_node_url) if window.is_restorable_tree
+  # Now it's designed only for one tree
+  restore_nested_tree(sortable_tree, expand_node_url) if window.is_restorable_tree
 
-    sortable_tree.on 'click', '.expand.minus', (e) ->
-      button = $ @
-      node   = button.parent().parent()
+  sortable_tree.on 'click', '.expand.minus', (e) ->
+    button = $ @
+    node   = button.parent().parent()
+    nested_tree_toggle(button)
+    remove_from_restorable_path(node)
+    node.children('.nested_set').hide()
+    false
+
+  sortable_tree.on 'click', '.expand.plus', (e) ->
+    button     = $ @
+    node       = button.parent().parent()
+    nested_set = node.children('.nested_set')
+    
+    if nested_set.length is 0
+      upload_nodes_children(node, expand_node_url)
+    else
+      nested_set.show()
       nested_tree_toggle(button)
-      remove_from_restorable_path(node)
-      node.children('.nested_set').hide()
-      false
+      add_to_restorable_path(node)
 
-    sortable_tree.on 'click', '.expand.plus', (e) ->
-      button     = $ @
-      node       = button.parent().parent()
-      nested_set = node.children('.nested_set')
-      
-      if nested_set.length is 0
-        upload_nodes_children(node, expand_node_url)
-      else
-        nested_set.show()
-        nested_tree_toggle(button)
-        add_to_restorable_path(node)
+    false
 
-      false
+  true
+
+$ -> init_expandable_tree()
