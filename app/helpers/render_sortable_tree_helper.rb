@@ -13,11 +13,10 @@ module RenderSortableTreeHelper
 
       def render_node(h, options)
         @h, @options = h, options
-
         node = options[:node]
 
         "
-          <li id='#{ node.id }_#{ options[:klass] }'>
+          <li data-node-id='#{ node.id }'>
             <div class='item'>
               <i class='handle'></i>
               #{ show_link }

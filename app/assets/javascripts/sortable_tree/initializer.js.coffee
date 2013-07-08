@@ -22,8 +22,8 @@
   sortable_tree = $('ol.sortable_tree')
   return false if sortable_tree.length is 0
   
-  rebuild_url   = sortable_tree.data('rebuild_url') || sortable_tree.data('rebuild-url')
-  max_levels    = sortable_tree.data('max_levels')  || sortable_tree.data('max-levels')
+  rebuild_url = sortable_tree.data('rebuild_url') || sortable_tree.data('rebuild-url')
+  max_levels  = sortable_tree.data('max_levels')  || sortable_tree.data('max-levels')
 
   ############################################
   # Initialize Sortable Tree
@@ -47,10 +47,10 @@
   ############################################
   sortable_tree.on "sortupdate", (event, ui) =>
     item      = ui.item
-    item_id   = item.attr('id')
-    prev_id   = item.prev().attr('id')
-    next_id   = item.next().attr('id')
-    parent_id = item.parent().parent().attr('id')
+    item_id   = item.data('node-id')
+    prev_id   = item.prev().data('node-id')
+    next_id   = item.next().data('node-id')
+    parent_id = item.parent().parent().data('node-id')
     
     rebuild_sortable_tree(rebuild_url, item_id, parent_id, prev_id, next_id)
 

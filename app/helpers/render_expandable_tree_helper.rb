@@ -13,12 +13,10 @@ module RenderExpandableTreeHelper
 
       def render_node(h, options)
         @h, @options = h, options
-
         node = options[:node]
-        # &ndash;
 
         "
-          <li id='#{ node.id }_#{ options[:klass] }'>
+          <li data-node-id='#{ node.id }'>
             <div class='item'>
               <i class='handle'></i>
               <b class='expand plus'>+</b>
