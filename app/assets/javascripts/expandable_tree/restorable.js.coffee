@@ -41,11 +41,25 @@ class @TSTconst
 
 @nested_tree_path_remove = (id) ->
   hash  = _get_hash()
+
   return false unless hash.match(TSTconst.re())
   arr   = _nested_set_hash_arr(hash)
-
   index = arr.indexOf(id+'')
-  return false if index is -1
+
+  if index is -1
+    if window.is_cookie_restoreable_tree
+      cpath = $.cookie TSTconst.cookie_name()
+      return false unless cpath
+
+      _arr = cpath.split(';')
+      pos  = _arr.indexOf(id+'')
+      return false if pos is -1
+
+      _arr.splice(pos,1)
+      str = _arr.join(';')
+      $.cookie(TSTconst.cookie_name(), str, { expires: 14 })
+
+    return false
 
   arr.splice(index, 1)
   str = _uniqueArray(arr).join(TSTconst.delimiter)
@@ -59,6 +73,8 @@ class @TSTconst
       $.cookie(TSTconst.cookie_name(), str, { expires: 14 })
 
     _set_hash(TSTconst.hash_prefix() + str)
+
+  true
 
 @nested_tree_path_add = (id) ->
   str  = id
@@ -97,6 +113,7 @@ class @TSTconst
 
       beforeSend: (xhr) ->
         ctrl_items.hide()
+        window.skip_expandable_tree_hashchange = true
 
       success: (data, status, xhr) ->
         ctrl_items.show()
@@ -104,8 +121,8 @@ class @TSTconst
         load_nested_nodes(arr, expand_node_url)
 
       error: (xhr, status, error) ->
-        try
-          console.log error
+        # try
+        #   console.log error
 
 @restore_nested_tree = (sortable_tree, expand_node_url) ->
   arr  = nested_tree_get_path()

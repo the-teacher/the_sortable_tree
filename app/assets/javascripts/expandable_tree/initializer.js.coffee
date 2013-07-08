@@ -11,7 +11,7 @@
 @remove_from_restorable_path = (node) ->
   if window.is_restorable_tree
     id = node.data('node-id')
-    nested_tree_path_remove id
+    nested_tree_path_remove(id)
     return true
   false
 
@@ -51,14 +51,15 @@
 
     beforeSend: (xhr) ->
       ctrl_items.hide()
+      window.skip_expandable_tree_hashchange = true
 
     success: (data, status, xhr) ->
       ctrl_items.show()
       append_children_to_node(node, data)
 
     error: (xhr, status, error) ->
-      try
-        console.log error
+      # try
+      #   console.log error
 
 @init_expandable_tree = ->
   sortable_tree = $('ol.sortable_tree')

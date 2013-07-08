@@ -25,7 +25,7 @@
   for id in diff_ids
     btn = $("[data-node-id=#{id}] > .item .expand")
     btn.click()
-    window.skip_expandable_tree_hashchange = false
+    setTimeout -> window.skip_expandable_tree_hashchange = false
 
-# $(window).bind 'hashchange', (hash_event) ->
-#   expandable_tree_hashchange(hash_event)
+$(window).bind 'hashchange', (hash_event) ->
+  expandable_tree_hashchange(hash_event)
