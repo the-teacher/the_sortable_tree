@@ -15,7 +15,9 @@ class @TSTconst
 # Helpers
 # ====================================
 @_get_hash = -> document.location.hash
-@_set_hash = (str) -> document.location.hash = str
+@_set_hash = (str) ->
+  window.skip_expandable_tree_hashchange = true
+  document.location.hash = str
 
 @_uniqueArray = (arr = []) ->
   output = {}
@@ -25,6 +27,7 @@ class @TSTconst
 @_compactArray = (array) -> array.filter (e) -> return e
 
 @_nested_set_hash_arr = (hash) ->
+    return [] unless hash
     [prefix, arr] = hash.split(TSTconst.separator)
     _compactArray _uniqueArray arr.split(TSTconst.delimiter)
 
@@ -40,7 +43,8 @@ class @TSTconst
   hash  = _get_hash()
   return false unless hash.match(TSTconst.re())
   arr   = _nested_set_hash_arr(hash)
-  index = arr.indexOf(id)
+
+  index = arr.indexOf(id+'')
   return false if index is -1
 
   arr.splice(index, 1)
@@ -52,7 +56,7 @@ class @TSTconst
     _set_hash('')
   else
     if window.is_cookie_restoreable_tree
-      $.cookie(TSTconst.cookie_name(), str,  { expires: 7 })
+      $.cookie(TSTconst.cookie_name(), str, { expires: 14 })
 
     _set_hash(TSTconst.hash_prefix() + str)
 
@@ -67,7 +71,7 @@ class @TSTconst
     str = arr.join(TSTconst.delimiter)
 
   if window.is_cookie_restoreable_tree
-    $.cookie(TSTconst.cookie_name(), str,  { expires: 7 })
+    $.cookie(TSTconst.cookie_name(), str, { expires: 14 })
 
   _set_hash(TSTconst.hash_prefix() + str)
 
@@ -79,8 +83,7 @@ class @TSTconst
 
   id         = arr.shift()
   tree       = $('.sortable_tree')
-  klass      = tree.data('klass')
-  node       = $ "##{id}_#{klass}"
+  node       = $("[data-node-id=#{id}]")
   ctrl_items = $('i.handle, b.expand', tree)
 
   if node.length is 0
@@ -101,7 +104,8 @@ class @TSTconst
         load_nested_nodes(arr, expand_node_url)
 
       error: (xhr, status, error) ->
-        console.log error
+        try
+          console.log error
 
 @restore_nested_tree = (sortable_tree, expand_node_url) ->
   arr  = nested_tree_get_path()

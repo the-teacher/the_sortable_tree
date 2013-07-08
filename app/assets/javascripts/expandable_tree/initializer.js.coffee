@@ -57,7 +57,8 @@
       append_children_to_node(node, data)
 
     error: (xhr, status, error) ->
-      console.log error
+      try
+        console.log error
 
 @init_expandable_tree = ->
   sortable_tree = $('ol.sortable_tree')
@@ -67,8 +68,8 @@
   window.is_cookie_restoreable_tree   = sortable_tree.data('cookie_store') || sortable_tree.data('cookie-store')
 
   if window.is_cookie_restoreable_tree
-    steps = $.cookie(TSTconst ._name)
-    _set_hash(TSTconst.hash_prefix + steps) if steps
+    steps = $.cookie(TSTconst.cookie_name())
+    _set_hash(TSTconst.hash_prefix() + steps) if steps
 
   expand_node_url = sortable_tree.data('expand_node_url') || sortable_tree.data('expand-node-url')
 
