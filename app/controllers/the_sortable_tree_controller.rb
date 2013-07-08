@@ -40,7 +40,7 @@ module TheSortableTreeController
       prev_id   = params[:prev_id].to_i
       next_id   = params[:next_id].to_i
 
-      render :text => "Do nothing" and return if parent_id.zero? && prev_id.zero? && next_id.zero?
+      return render(nothing: true, status: :no_content) if parent_id.zero? && prev_id.zero? && next_id.zero?
 
       variable, collection, klass = self.the_define_common_variables
       variable = self.instance_variable_set(variable, klass.find(id))
@@ -53,7 +53,7 @@ module TheSortableTreeController
         variable.move_to_left_of klass.find(next_id)
       end
 
-      render(:nothing => true)
+      render(nothing: true, status: :ok)
     end
   end
   
@@ -66,7 +66,7 @@ module TheSortableTreeController
       prev_id   = params[:prev_id].to_i
       next_id   = params[:next_id].to_i
 
-      render :text => "Do nothing" and return if parent_id.zero? && prev_id.zero? && next_id.zero?
+      return render(nothing: true, status: :no_content) if parent_id.zero? && prev_id.zero? && next_id.zero?
 
       variable, collection, klass = self.the_define_common_variables
       variable = self.instance_variable_set(variable, klass.find(id))
@@ -79,7 +79,7 @@ module TheSortableTreeController
         variable.move_to_right_of klass.find(next_id)
       end
 
-      render(:nothing => true)
+      render(nothing: true, status: :ok)
     end
   end
 end

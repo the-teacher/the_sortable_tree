@@ -1,11 +1,15 @@
 window.is_restorable_tree = true
 
 class @TSTconst
-  @_name       = 'TST'
-  @delimiter   = ';'
-  @separator   = '|'
-  @re          = new RegExp(@_name + '\\' + @separator)
-  @hash_prefix = @_name + @separator
+  @_name        = 'TST'
+  @delimiter    = ';'
+  @separator    = '|'
+  @re           = -> new RegExp(@cookie_name() + '\\' + @separator)
+  @hash_prefix  = -> @cookie_name() + @separator
+  @cookie_scope = -> $('.sortable_tree').data('cookie_scope') || $('.sortable_tree').data('cookie-scope')
+  @cookie_name  = ->
+    return @_name unless @cookie_scope()
+    @_name + '_' + @cookie_scope()
 
 # ====================================
 # Helpers
@@ -29,42 +33,43 @@ class @TSTconst
 # ====================================
 @nested_tree_get_path = ->
   hash = _get_hash()
-  return false unless hash.match(TSTconst.re)
+  return false unless hash.match(TSTconst.re())
   _nested_set_hash_arr(hash)
 
 @nested_tree_path_remove = (id) ->
   hash  = _get_hash()
-  return false unless hash.match(TSTconst.re)
+  return false unless hash.match(TSTconst.re())
   arr   = _nested_set_hash_arr(hash)
   index = arr.indexOf(id)
   return false if index is -1
 
   arr.splice(index, 1)
   str = _uniqueArray(arr).join(TSTconst.delimiter)
+
   if str.length is 0
     if window.is_cookie_restoreable_tree
-      $.removeCookie(TSTconst._name)
+      $.removeCookie( TSTconst.cookie_name() )
     _set_hash('')
   else
     if window.is_cookie_restoreable_tree
-      $.cookie(TSTconst._name, str,  { expires: 7 })
+      $.cookie(TSTconst.cookie_name(), str,  { expires: 7 })
 
-    _set_hash(TSTconst.hash_prefix + str)
+    _set_hash(TSTconst.hash_prefix() + str)
 
 @nested_tree_path_add = (id) ->
   str  = id
   hash = _get_hash()
 
-  if hash.match(TSTconst.re)
+  if hash.match(TSTconst.re())
     arr = _nested_set_hash_arr(hash)
     arr.push(id)
     arr = _uniqueArray arr
     str = arr.join(TSTconst.delimiter)
 
   if window.is_cookie_restoreable_tree
-    $.cookie(TSTconst._name, str,  { expires: 7 })
+    $.cookie(TSTconst.cookie_name(), str,  { expires: 7 })
 
-  _set_hash(TSTconst.hash_prefix + str)
+  _set_hash(TSTconst.hash_prefix() + str)
 
 # ====================================
 # Restore Fn

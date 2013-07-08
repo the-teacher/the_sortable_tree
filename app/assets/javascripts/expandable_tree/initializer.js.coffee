@@ -3,15 +3,14 @@
 # ----------------------------------------
 @add_to_restorable_path = (node) ->
   if window.is_restorable_tree
-    node_id = node.attr('id')
-    id = node_id.split('_').shift()
+    id = node.data('node-id')
     nested_tree_path_add(id)
     return true
   false
 
 @remove_from_restorable_path = (node) ->
   if window.is_restorable_tree
-    id = node.attr('id').split('_').shift()
+    id = node.data('node-id')
     nested_tree_path_remove id
     return true
   false
@@ -40,7 +39,7 @@
     add_to_restorable_path(node)
 
 @upload_nodes_children = (node, expand_node_url) ->
-  node_id    = node.attr 'id'
+  node_id    = node.data('node-id')
   tree       = $('.sortable_tree')
   ctrl_items = $('i.handle, b.expand', tree)
 

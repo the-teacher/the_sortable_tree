@@ -47,10 +47,11 @@
   ############################################
   sortable_tree.on "sortupdate", (event, ui) =>
     item      = ui.item
-    item_id   = item.data('node-id')
-    prev_id   = item.prev().data('node-id')
-    next_id   = item.next().data('node-id')
-    parent_id = item.parent().parent().data('node-id')
+    attr_name = 'node-id'
+    item_id   = item.data(attr_name)
+    prev_id   = item.prev().data(attr_name)
+    next_id   = item.next().data(attr_name)
+    parent_id = item.parent().parent().data(attr_name)
     
     rebuild_sortable_tree(rebuild_url, item_id, parent_id, prev_id, next_id)
 
