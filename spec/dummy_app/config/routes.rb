@@ -7,8 +7,13 @@ TheSortableTreeTest::Application.routes.draw do
 
   resources :pages do
     collection do
-      get  :nested_options, :manage, :node_manage,  :expand
-      post :rebuild, :expand_node
+      get  :nested_options
+      get  :manage
+      get  :node_manage
+      get  :expand
+
+      post :rebuild
+      post :expand_node
     end
   end
 

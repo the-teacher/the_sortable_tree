@@ -1,4 +1,10 @@
 .sortable_tree{
+  &.expandable{
+    h4{
+      margin-left: 50px;
+    }
+  }
+
   .expand{
     float: left;
     cursor: pointer;

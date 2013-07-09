@@ -9,11 +9,11 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128160328) do
+ActiveRecord::Schema.define(version: 20130128160328) do
 
-  create_table "admin_pages", :force => true do |t|
+  create_table "admin_pages", force: true do |t|
     t.string   "title"
     t.text     "content"
     t.text     "secret_field"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(:version => 20130128160328) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "article_categories", :force => true do |t|
+  create_table "article_categories", force: true do |t|
     t.string   "title"
     t.text     "content"
     t.text     "secret_field"
@@ -33,11 +33,11 @@ ActiveRecord::Schema.define(:version => 20130128160328) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "inventory_categories", :force => true do |t|
+  create_table "inventory_categories", force: true do |t|
     t.string   "title"
     t.text     "content"
     t.text     "secret_field"
@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(:version => 20130128160328) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "pages", :force => true do |t|
+  create_table "pages", force: true do |t|
     t.string   "title"
     t.text     "content"
     t.text     "secret_field"
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(:version => 20130128160328) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

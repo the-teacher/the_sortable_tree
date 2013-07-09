@@ -7,5 +7,5 @@
  *= require tree
  *= require sortable_tree
  *= require nested_options
- * require expandable_tree
+ *= require expandable_tree
 */

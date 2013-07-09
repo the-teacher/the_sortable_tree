@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   include TheSortableTreeController::Rebuild
-  # include TheSortableTreeController::ExpandNode
+  include TheSortableTreeController::ExpandNode
 
   def index
     @pages = Page.nested_set.select('id, title, content, parent_id').limit(15)

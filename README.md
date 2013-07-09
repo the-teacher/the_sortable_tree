@@ -8,8 +8,8 @@ Nested Set + Drag&Drop GUI. Very fast! Best render helper! **2000 nodes/sec**. R
 
 ### Dummy Application
 
-* [spec/the_sortable_tree_app](https://github.com/the-teacher/the_sortable_tree/tree/master/spec/the_sortable_tree_app)
-* [spec/the_sortable_tree_app/README.md](https://github.com/the-teacher/the_sortable_tree/blob/master/spec/the_sortable_tree_app/README.md)
+* [spec/dummy_app](https://github.com/the-teacher/the_sortable_tree/tree/master/spec/dummy_app)
+* [spec/dummy_app/README.md](https://github.com/the-teacher/the_sortable_tree/blob/master/spec/dummy_app/README.md)
 
 ## Sortable tree. Drag&Drop GUI
 
@@ -21,7 +21,11 @@ Nested Set + Drag&Drop GUI. Very fast! Best render helper! **2000 nodes/sec**. R
 
 ## Render Nested Options
 
-![Render tree](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/nested_options.jpg)
+![Nested options](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/nested_options.jpg)
+
+## Expandable tree
+
+![Expandable](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/expandable.jpg)
 
 ## Keywords
 
