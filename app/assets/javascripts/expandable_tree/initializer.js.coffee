@@ -58,8 +58,8 @@
       append_children_to_node(node, data)
 
     error: (xhr, status, error) ->
-      # try
-      #   console.log error
+      try
+        console.log error
 
 @init_expandable_tree = ->
   sortable_tree = $('ol.sortable_tree')

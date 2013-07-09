@@ -28,10 +28,12 @@
   }
 
   h4{
-    margin: 0; 
+    margin-left: 50px;
+
     a{
       color: #333;
       font-size: 14px;
+      margin-left: 0;
       &:hover{ background: #eee; }
     }
   }
@@ -42,7 +44,7 @@
   }
 
   .handle{
-    background: transparent url(/assets/iconza/icons/move.png);
+    background: transparent image-url("iconza/icons/move.png");
     background-position: center center;
 
     width: 16px;
@@ -51,7 +53,7 @@
     float: left;
     cursor: move;
 
-    &:hover{ background: transparent url(/assets/iconza/icons/red_move.png); }
+    &:hover{ background: transparent image-url("iconza/icons/red_move.png"); }
   }
 
   .item{
@@ -90,16 +92,16 @@
       overflow: hidden; zoom: 1;
 
       &.new{
-        background: transparent url(/assets/iconza/icons/add.png) no-repeat scroll center center;
-        &:hover{ background: transparent url(/assets/iconza/icons/red_add.png) no-repeat scroll center center; }
+        background: transparent image-url("iconza/icons/add.png") no-repeat scroll center center;
+        &:hover{ background: transparent image-url("iconza/icons/red_add.png") no-repeat scroll center center; }
       }
       &.edit{
-        background: transparent url(/assets/iconza/icons/edit.png) no-repeat scroll center center;
-        &:hover{ background: transparent url(/assets/iconza/icons/red_edit.png) no-repeat scroll center center; }
+        background: transparent image-url("iconza/icons/edit.png") no-repeat scroll center center;
+        &:hover{ background: transparent image-url("iconza/icons/red_edit.png") no-repeat scroll center center; }
       }
       &.delete{
-        background: transparent url(/assets/iconza/icons/delete.png) no-repeat scroll center center;
-        &:hover{ background: transparent url(/assets/iconza/icons/red_delete.png) no-repeat scroll center center; }
+        background: transparent image-url("iconza/icons/delete.png") no-repeat scroll center center;
+        &:hover{ background: transparent image-url("iconza/icons/red_delete.png") no-repeat scroll center center; }
       }
     }
   }

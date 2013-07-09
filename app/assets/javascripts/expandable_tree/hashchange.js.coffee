@@ -5,6 +5,8 @@
     window.skip_expandable_tree_hashchange = false
     return true
 
+  hash_and_cookie_accordance()
+  
   oEvent  = hash_event.originalEvent
   new_url = oEvent.newURL
   old_url = oEvent.oldURL

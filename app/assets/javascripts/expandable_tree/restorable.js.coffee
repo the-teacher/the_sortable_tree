@@ -39,40 +39,35 @@ class @TSTconst
   return false unless hash.match(TSTconst.re())
   _nested_set_hash_arr(hash)
 
-@nested_tree_path_remove = (id) ->
-  hash  = _get_hash()
-
-  return false unless hash.match(TSTconst.re())
-  arr   = _nested_set_hash_arr(hash)
-  index = arr.indexOf(id+'')
-
-  if index is -1
-    if window.is_cookie_restoreable_tree
-      cpath = $.cookie TSTconst.cookie_name()
-      return false unless cpath
-
-      _arr = cpath.split(';')
-      pos  = _arr.indexOf(id+'')
-      return false if pos is -1
-
-      _arr.splice(pos,1)
-      str = _arr.join(';')
+@hash_and_cookie_accordance = ->
+  if window.is_cookie_restoreable_tree
+    hash = _get_hash()
+    if hash.length is 0
+      $.removeCookie( TSTconst.cookie_name() )
+    else
+      return false unless hash.match(TSTconst.re())
+      str = hash.split(TSTconst.separator)[1]
       $.cookie(TSTconst.cookie_name(), str, { expires: 14 })
 
-    return false
+  false
+
+@nested_tree_path_remove = (id) ->
+  hash  = _get_hash()
+  return false unless hash.match(TSTconst.re())
+
+  arr   = _nested_set_hash_arr(hash)
+  index = arr.indexOf(id+'')
+  return hash_and_cookie_accordance() if index is -1
 
   arr.splice(index, 1)
   str = _uniqueArray(arr).join(TSTconst.delimiter)
 
   if str.length is 0
-    if window.is_cookie_restoreable_tree
-      $.removeCookie( TSTconst.cookie_name() )
     _set_hash('')
   else
-    if window.is_cookie_restoreable_tree
-      $.cookie(TSTconst.cookie_name(), str, { expires: 14 })
-
     _set_hash(TSTconst.hash_prefix() + str)
+  
+  hash_and_cookie_accordance()
 
   true
 
@@ -86,16 +81,16 @@ class @TSTconst
     arr = _uniqueArray arr
     str = arr.join(TSTconst.delimiter)
 
-  if window.is_cookie_restoreable_tree
-    $.cookie(TSTconst.cookie_name(), str, { expires: 14 })
-
   _set_hash(TSTconst.hash_prefix() + str)
+  hash_and_cookie_accordance()
 
 # ====================================
 # Restore Fn
 # ====================================
 @load_nested_nodes = (arr, expand_node_url) ->
-  return false if arr.length is 0
+  if arr.length is 0
+    window.skip_expandable_tree_hashchange = false
+    return false
 
   id         = arr.shift()
   tree       = $('.sortable_tree')
@@ -121,8 +116,8 @@ class @TSTconst
         load_nested_nodes(arr, expand_node_url)
 
       error: (xhr, status, error) ->
-        # try
-        #   console.log error
+        try
+          console.log error
 
 @restore_nested_tree = (sortable_tree, expand_node_url) ->
   arr  = nested_tree_get_path()
