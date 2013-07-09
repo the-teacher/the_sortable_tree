@@ -1,6 +1,6 @@
 # TheSortableTree v2.3.3
 
-[![Code Climate](https://codeclimate.com/github/the-teacher/the_sortable_tree.png)](https://codeclimate.com/github/the-teacher/the_sortable_tree)
+[![Gem Version](https://badge.fury.io/rb/the_sortable_tree.png)](http://badge.fury.io/rb/the_sortable_tree) [![Code Climate](https://codeclimate.com/github/the-teacher/the_sortable_tree.png)](https://codeclimate.com/github/the-teacher/the_sortable_tree)
 
 > tested with rails 3.2.13 + haml 4
 
