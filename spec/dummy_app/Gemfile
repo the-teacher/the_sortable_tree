@@ -13,8 +13,25 @@ gem 'awesome_nested_set'
 gem 'the_sortable_tree', path: '../../'
 
 group :assets do
+  gem 'uglifier'
   gem 'sass-rails'
   gem 'coffee-rails'
-  gem 'uglifier'
+end
+
+group :development, :test do
   gem 'faker'
+
+  gem 'rspec'
+  gem 'rspec-core'
+  gem 'rspec-rails'
+  gem 'rspec-mocks'
+  gem 'rspec-expectations'
+
+  gem 'capybara'
+  gem 'selenium-webdriver'
+end
+
+group :test do
+  gem 'factory_girl'
+  gem 'database_cleaner'
 end
