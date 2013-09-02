@@ -2,6 +2,9 @@
 
 #### Ruby 2.0.0p247 + Rails 4 + Haml 4 + the_sortable_tree (2.3.0)
 
+
+### Install App and try to use TheSortableTree
+
 Create Database config file
 
 ```
@@ -32,7 +35,7 @@ Open browser
 localhost:3000
 ```
 
-How to test TheSortable tree
+### How to run tests for TheSortable tree
 
 ```ruby
 git clone git@github.com:the-teacher/the_sortable_tree.git
