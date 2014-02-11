@@ -30,7 +30,7 @@ module RenderExpandableTreeHelper
 
       def show_link
         node = options[:node]
-        url = h.url_for(:namespace => options[:namespace], :controller => kontroller, :action => :show, :id => node)
+        url = h.url_for(:controller => kontroller, :action => :show, :id => node)
         title_field = options[:title]
 
         "<h4>#{ h.link_to(node.send(title_field), url) }</h4>"
@@ -39,8 +39,8 @@ module RenderExpandableTreeHelper
       def controls
         node = options[:node]
 
-        edit_path = h.url_for(:namespace => options[:namespace], :controller => kontroller, :action => :edit, :id => node)
-        destroy_path = h.url_for(:namespace => options[:namespace], :controller => kontroller, :action => :destroy, :id => node)
+        edit_path = h.url_for(:controller => kontroller, :action => :edit, :id => node)
+        destroy_path = h.url_for(:controller => kontroller, :action => :destroy, :id => node)
 
         "
           <div class='controls'>
