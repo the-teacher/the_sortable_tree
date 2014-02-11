@@ -27,7 +27,7 @@ module RenderTreeHelper
 
       def show_link
         node = options[:node]
-        url = h.url_for(:namespace => options[:namespace], :controller => options[:klass].pluralize, :action => :show, :id => node)
+        url = h.url_for(:namespace => options[:namespace], :controller => kontroller, :action => :show, :id => node)
         title_field = options[:title]
 
         "<h4>#{ h.link_to(node.send(title_field), url) }</h4>"
@@ -37,6 +37,10 @@ module RenderTreeHelper
         unless options[:children].blank?
           "<ol>#{ options[:children] }</ol>"
         end
+      end
+
+      def kontroller
+        options[:controller] ||= options[:klass].pluralize
       end
 
     end
