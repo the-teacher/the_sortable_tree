@@ -7,7 +7,7 @@
 # or use h.html_escape(node.content)
 # for escape potentially dangerous content
 module RenderExpandableTreeHelper
-  module Render 
+  module Render
     class << self
       attr_accessor :h, :options
 
@@ -30,8 +30,7 @@ module RenderExpandableTreeHelper
 
       def show_link
         node = options[:node]
-        ns   = options[:namespace]
-        url  = h.url_for(ns + [node])
+        url = h.url_for(:namespace => options[:namespace], :controller => options[:klass].pluralize, :action => :show, :id => node)
         title_field = options[:title]
 
         "<h4>#{ h.link_to(node.send(title_field), url) }</h4>"
@@ -40,13 +39,13 @@ module RenderExpandableTreeHelper
       def controls
         node = options[:node]
 
-        edit_path = h.url_for(:controller => options[:klass].pluralize, :action => :edit, :id => node)
-        show_path = h.url_for(:controller => options[:klass].pluralize, :action => :show, :id => node)
+        edit_path = h.url_for(:namespace => options[:namespace], :controller => options[:klass].pluralize, :action => :edit, :id => node)
+        destroy_path = h.url_for(:namespace => options[:namespace], :controller => options[:klass].pluralize, :action => :destroy, :id => node)
 
         "
           <div class='controls'>
             #{ h.link_to '', edit_path, :class => :edit }
-            #{ h.link_to '', show_path, :class => :delete, :method => :delete, :data => { :confirm => 'Are you sure?' } }
+            #{ h.link_to '', destroy_path, :class => :delete, :method => :delete, :data => { :confirm => 'Are you sure?' } }
           </div>
         "
       end
