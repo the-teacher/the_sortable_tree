@@ -52,12 +52,12 @@ def build_test_tree klass = Page, count = 5
 end
 
 # 20 - 8420
-build_test_tree Page, 20
+build_test_tree Page, 7
 
-# build_test_tree ArticleCategory, 4
+build_test_tree ArticleCategory, 4
 
-# build_test_tree Inventory::Category, 4
-# build_test_tree Admin::Page, 4
+build_test_tree Inventory::Category, 4
+build_test_tree Admin::Page, 4
 
 # def build_test_comments count = 3
 #   count.times do
