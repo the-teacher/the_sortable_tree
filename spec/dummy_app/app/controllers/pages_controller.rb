@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   end
 
   def manage
-    @pages = Page.nested_set.select('id, title, content, parent_id')
+    @pages = Page.nested_set.select('id, title, content, parent_id').all
   end
 
   def node_manage

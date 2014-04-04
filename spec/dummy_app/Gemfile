@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 4.0.0'
+gem 'rails', '~> 4.1.0.rc2'
 gem 'sqlite3'
 
 gem 'json'
@@ -9,7 +9,9 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-gem 'awesome_nested_set'
+gem 'quiet_assets'
+
+gem 'awesome_nested_set', github: "collectiveidea/awesome_nested_set"
 gem 'the_sortable_tree', path: '../../'
 
 group :assets do
@@ -20,6 +22,7 @@ end
 
 group :development, :test do
   gem 'faker'
+  gem 'pry'
 
   gem 'rspec'
   gem 'rspec-core'

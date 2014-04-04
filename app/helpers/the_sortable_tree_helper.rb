@@ -2,7 +2,7 @@ module TheSortableTreeHelper
   # Publicated by MIT
   # Nested Set View Helper
 
-  # Ilya Zykin, zykin-ilya@ya.ru, Russia [Ivanovo, Saint Petersburg] 2009-2013
+  # Ilya Zykin, zykin-ilya@ya.ru, Russia [Ivanovo, Saint Petersburg] 2009-2014
   # github.com/the-teacher
 
   # Default renderers
@@ -61,13 +61,15 @@ module TheSortableTreeHelper
       :id    => :id,      # node id field
       :title => :title,   # name of title fileld
       :node  => nil,      # node
+
       # base options
       :type  => :tree,    # tree type
       :root  => false,    # is it root node?
       :level => 0,        # recursion level
       :namespace => [],   # :admin
-      # SYSTEM boost array
-      :boost => []       # BOOST! array
+
+      # BOOST! hash
+      :boost => {} 
     }.merge!(options)
 
     # Basic vars
@@ -85,18 +87,26 @@ module TheSortableTreeHelper
 
     # BOOST PATCH (BUILD ONCE)
     # solution of main perfomance problem
-    # magick index-array, which made me happy!
+    # magick index-hash, which made me happy!
+
+    # Performance comparison
+    # Boost OFF: 8000 nodes, 3 levels => (Views: 176281.9ms | ActiveRecord: 189.8ms)
+    # Boost  ON: 8000 nodes, 3 levels => (Views: 8987.8ms   | ActiveRecord: 141.6ms)
+
     if opts[:boost].empty?
       tree.each do |item|
         num = item.parent_id || 0
-        opts[:boost][num] = [] unless opts[:boost][num]
-        opts[:boost][num].push item
+        opts[:boost][num.to_s] = [] unless opts[:boost][num.to_s]
+        opts[:boost][num.to_s].push item
       end
     end
 
     unless node
       # RENDER ROOTS
-      roots = opts[:boost][0]
+      roots = opts[:boost]['0']
+
+      # Boost OFF
+      # roots = tree.select{ |node| node.parent_id.blank? }
 
       # define roots, if it's need
       if roots.nil? && !tree.empty?
@@ -114,7 +124,11 @@ module TheSortableTreeHelper
     else
       # RENDER NODE'S CHILDREN
       children_res = ''
-      children     = opts[:boost][node.id]
+      children = opts[:boost][node.id.to_s]
+
+      # Boost OFF
+      # children = tree.select{ |_node| _node.parent_id == node.id } 
+
       opts.merge!({ :has_children => children.blank? })
 
       unless children.nil?

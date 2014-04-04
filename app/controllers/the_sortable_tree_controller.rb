@@ -9,11 +9,10 @@ module TheSortableTreeController
       collection = self.class.to_s.split(':').last.sub(/Controller/,'').underscore.downcase                 # 'recipes'
       collection = self.respond_to?(:sortable_collection) ? self.sortable_collection : collection           # 'recipes'
       variable   = collection.singularize                                                                   # 'recipe'
-      klass      = self.respond_to?(:sortable_model) ? self.sortable_model : variable.classify.constantize  # Recipe
+      klass      = self.respond_to?(:sortable_model) ? self.sortable_model : variable.classify.constantize  #  Recipe
       ["@#{variable}", collection, klass]
     end
   end
-
   
   module ExpandNode
     include DefineVariablesMethod
@@ -26,7 +25,7 @@ module TheSortableTreeController
       variable  = self.instance_variable_set(variable, klass.find(id))
       @children = variable.children.send("#{sort}nested_set")
 
-      return render(nothing: :true) if @children.count.zero?
+      return render(nothing: true) if @children.count.zero?
       render layout: false, template: "#{collection}/expand_node"
     end
   end

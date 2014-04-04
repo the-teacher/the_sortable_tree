@@ -2,7 +2,7 @@
 
 %p= link_to 'Create New Page', new_page_path
 
-Count: #{ @pages.count }
+Count: #{ @pages.to_a.count }
 
 %ol.sortable_tree.expandable{ data: { max_levels: 5, rebuild_url: rebuild_pages_url, expand_node_url: expand_node_pages_url, cookie_store: :true, cookie_scope: @pages.first.class } }
   = expandable_tree @pages
