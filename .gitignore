@@ -1,6 +1,8 @@
 *.gem
 .bundle
-Gemfile.lock
 pkg/*
 spec/dummy_app/config/database.yml
 spec/dummy_app/db/*.db
+
+.DS_Store
+*.sublime-workspace
