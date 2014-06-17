@@ -1,3 +1,1 @@
-module TheSortableTree
-  VERSION = "2.5.0"
-end
+require_relative '../../gem_version'

@@ -37,6 +37,8 @@ Awesome nested set, Nested set, Ruby, Rails, Nested set view helper, Sortable ne
 
 ```ruby
 gem 'awesome_nested_set' # or any similar gem (gem 'nested_set')
+#gem 'ancestry'      # alternatively, you can use the ancestry gem
+#gem 'acts_as_list'  # plus acts_as_list for sorting
 gem "the_sortable_tree", "~> 2.5.0"
 ```
 
@@ -96,9 +98,22 @@ end
 
 ```ruby
 class Page < ActiveRecord::Base
+  acts_as_nested_set
   include TheSortableTree::Scopes
-  
+
   # any code here
+end
+```
+
+Alternatively you can use `ancestry` instead of a nested set, optionally
+combined with `acts_as_list` for sorting. Please make sure to load these
+*before* including `TheSortableTree::Scopes`.
+
+```ruby
+class Page < ActiveRecord::Base
+  has_ancestry
+  acts_as_list scope: [:ancestry]
+  include TheSortableTree::Scopes
 end
 ```
 
@@ -110,6 +125,7 @@ class PagesController < ApplicationController
 
   def manage
     @pages = Page.nested_set.select('id, title, content, parent_id').all
+    #@pages = Page.nested_set.select('id, title, content, ancestry').all # use instead for ancestry
   end
 
   # any code here
@@ -247,9 +263,8 @@ Try to create view helpers for:
 
 1. Mongoid NestedSet
 2. acts_as_ordered_tree
-5. Expand tree via AJAX
-4. Comments Tree gem
-3. gem Ancestry (???)
+5. Expand tree via AJAX (we have a prototype for it)
+4. Comments Tree gem (gem 'the_comments')
 
 ## I want to try! I need tests!
 
@@ -265,7 +280,7 @@ Try to create view helpers for:
 
 ## The MIT License (MIT)
 
-Copyright 2009-2013 Ilya N. Zykin (the-teacher), Mikhail Dieterle (Mik-die), Matthew Clark
+Copyright 2009-2014 Ilya N. Zykin (the-teacher), Mikhail Dieterle (Mik-die), Matthew Clark
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

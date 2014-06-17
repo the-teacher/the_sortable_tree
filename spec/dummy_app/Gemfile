@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.1.1'
 gem 'sqlite3'
 
 gem 'json'
@@ -9,14 +9,29 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-gem 'quiet_assets'
+# Supported GEMS
+# ------------------------------
+# gem 'awesome_nested_set', github: "collectiveidea/awesome_nested_set"
 
+# or
+# gem 'ancestry', github: "stefankroes/ancestry"
+
+# or
+# gem 'ancestry',     github: "stefankroes/ancestry"
+# gem 'acts_as_list', github: "swanandp/acts_as_list"
+# ------------------------------
+
+# We add all supported GEMS for tests, but you should not
 gem 'awesome_nested_set', github: "collectiveidea/awesome_nested_set"
+gem 'ancestry', github: "stefankroes/ancestry"
+gem 'acts_as_list', github: "swanandp/acts_as_list"
+
 gem 'the_sortable_tree', path: '../../'
+gem 'quiet_assets'
 
 group :assets do
   gem 'uglifier'
-  gem 'sass-rails'
+  gem 'sass-rails', github: "rails/sass-rails"
   gem 'coffee-rails'
 end
 
@@ -24,17 +39,17 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
 
-  gem 'rspec'
-  gem 'rspec-core'
-  gem 'rspec-rails'
-  gem 'rspec-mocks'
-  gem 'rspec-expectations'
+  # gem 'rspec'
+  # gem 'rspec-core'
+  # gem 'rspec-rails'
+  # gem 'rspec-mocks'
+  # gem 'rspec-expectations'
 
-  gem 'capybara'
-  gem 'selenium-webdriver'
+  # gem 'capybara'
+  # gem 'selenium-webdriver'
 end
 
-group :test do
-  gem 'factory_girl'
-  gem 'database_cleaner'
-end
+# group :test do
+#   gem 'factory_girl'
+#   gem 'database_cleaner'
+# end
