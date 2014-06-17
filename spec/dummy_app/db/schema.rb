@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617185530) do
+ActiveRecord::Schema.define(version: 20140617215136) do
 
   create_table "admin_pages", force: true do |t|
     t.string   "title"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140617185530) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
+    t.integer  "position"
   end
 
   add_index "admin_pages", ["ancestry"], name: "index_admin_pages_on_ancestry"
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140617185530) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
+    t.integer  "position"
   end
 
   add_index "article_categories", ["ancestry"], name: "index_article_categories_on_ancestry"
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140617185530) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
+    t.integer  "position"
   end
 
   add_index "inventory_categories", ["ancestry"], name: "index_inventory_categories_on_ancestry"
@@ -69,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140617185530) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
+    t.integer  "position"
   end
 
   add_index "pages", ["ancestry"], name: "index_pages_on_ancestry"
