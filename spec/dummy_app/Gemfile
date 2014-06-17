@@ -11,12 +11,13 @@ gem 'jquery-ui-rails'
 
 gem 'quiet_assets'
 
+gem 'ancestry', github: "stefankroes/ancestry"
 gem 'awesome_nested_set', github: "collectiveidea/awesome_nested_set"
 gem 'the_sortable_tree', path: '../../'
 
 group :assets do
   gem 'uglifier'
-  gem 'sass-rails'
+  gem 'sass-rails', github: "rails/sass-rails"
   gem 'coffee-rails'
 end
 
