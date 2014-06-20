@@ -203,6 +203,24 @@ You can use next options, when rendering run:
 4. **has_children** - has children flag [true|false]
 5. **children** - array of children
 
+## Simple\_form input
+
+Using indented options with [simple\_form](https://github.com/plataformatec/simple_form)
+is easy:
+
+```ruby
+= simple_form_for @website do |form|
+  = form.association :front_page, as: :indented_collection_select
+```
+
+Additional options can be supplied to the input:
+
+1. **spacing** - number of spaces to use for each level (default 3)
+2. **depth\_method** - method name to get level from object (default `:depth`)
+
+Please note that when you're using awesome\_nested\_set, you need to have the
+optional `depth` column in your table.
+
 ## Customization
 
 Try to run next view generators:
