@@ -213,6 +213,7 @@ Render helpers for HTML tree generation
 bundle exec rails g the_sortable_tree:views tree
 bundle exec rails g the_sortable_tree:views sortable
 bundle exec rails g the_sortable_tree:views nested_options
+bundle exec rails g the_sortable_tree:views indented_options
 ```
 
 Base Render helper of gem
