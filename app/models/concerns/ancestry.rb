@@ -1,5 +1,5 @@
 # include TheSortableTree::Ancestry::Base
-# include TheSortableTree::Ancestry::ActAsList
+# include TheSortableTree::Ancestry::ActsAsList
 module TheSortableTree
   module Ancestry
     module Base
@@ -31,7 +31,7 @@ module TheSortableTree
       end
     end
 
-    module ActAsList
+    module ActsAsList
       extend ActiveSupport::Concern
 
       module ClassMethods
