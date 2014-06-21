@@ -14,9 +14,9 @@ class Page < ActiveRecord::Base
   end
 
   # OR
-  if TheSortableTreeTest.app_type == 'ancestry_act_as_list'
+  if TheSortableTreeTest.app_type == 'ancestry_acts_as_list'
     has_ancestry
     acts_as_list scope: [:ancestry]
-    include TheSortableTree::Ancestry::ActAsList
+    include TheSortableTree::Ancestry::ActsAsList
   end
 end

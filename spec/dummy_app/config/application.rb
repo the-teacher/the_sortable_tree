@@ -11,10 +11,14 @@ end
 
 module TheSortableTreeTest
 
+  # This application supports multiple nested list backends. Either set it
+  # using the environment variable +SORTABLE_TREE_TYPE+, or specify one
+  # here.
   def self.app_type
-    # 'ancestry_act_as_list'
+    ENV['SORTABLE_TREE_TYPE'] || 'ancestry'
+    # 'ancestry_acts_as_list'
     # 'nested_set'
-    'ancestry'
+    # 'ancestry'
   end
 
   class Application < Rails::Application
