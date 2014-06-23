@@ -27,6 +27,7 @@ def build_test_tree klass = Page, count = 5
       var1.title        = "Chapter #{chapter_i}"
       var1.content      = @text_1 + Faker::Lorem.sentence(5)
       var1.secret_field = @text_2
+      var1.parent = var
       var1.save
 
       var1.move_to_child_of var
@@ -39,6 +40,7 @@ def build_test_tree klass = Page, count = 5
         var2.title        = "Page #{page_i}"
         var2.content      = @text_1 + Faker::Lorem.sentence(25)
         var2.secret_field = @text_2
+        var1.parent = var1
         var2.save
 
         var2.move_to_child_of var1
