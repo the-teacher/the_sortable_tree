@@ -12,7 +12,7 @@ module TheSortableTree
         include TheSortableTree::CheckType
 
         scope :nested_set, lambda { order('ancestry ASC, position ASC') }
-        scope :reversed_nested_set, lambda { order('ancestry DESC, position DESC') }
+        scope :reversed_nested_set, lambda { nested_set.reverse_order }
 
         # based on
         # https://github.com/stefankroes/ancestry/wiki/awesome_nested_set-like-methods-for-scriptaculous-and-acts_as_list

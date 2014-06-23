@@ -11,8 +11,8 @@ module TheSortableTree
       included do
         include TheSortableTree::CheckType
 
-        scope :nested_set, lambda { order('parent_id ASC') }
-        scope :reversed_nested_set, lambda { order('parent_id DESC') }
+        scope :nested_set, lambda { order('ancestry ASC, id ASC') }
+        scope :reversed_nested_set, lambda { nested_set.reverse_order }
 
         def move_to_child_of(parent)
           self.update_column :parent_id, parent.id

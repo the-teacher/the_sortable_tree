@@ -12,7 +12,7 @@ module TheSortableTree
         include TheSortableTree::CheckType
 
         scope :nested_set, lambda { order('lft ASC') }
-        scope :reversed_nested_set, lambda { order('lft DESC') }
+        scope :reversed_nested_set, lambda { nested_set.reverse_order }
       end
     end
   end
