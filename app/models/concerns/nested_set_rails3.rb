@@ -1,7 +1,7 @@
-# include TheSortableTree::NestedSet::Base
+# include TheSortableTree::NestedSet::Rails3
 module TheSortableTree
   module NestedSet
-    module Base
+    module Rails3
       extend ActiveSupport::Concern
 
       module ClassMethods
@@ -11,8 +11,8 @@ module TheSortableTree
       included do
         include TheSortableTree::CheckType
 
-        scope :nested_set, lambda { order('lft ASC') }
-        scope :reversed_nested_set, lambda { order('lft DESC') }
+        scope :nested_set, order('lft ASC')
+        scope :reversed_nested_set, order('lft DESC')
       end
     end
   end

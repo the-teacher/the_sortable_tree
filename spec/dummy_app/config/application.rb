@@ -10,13 +10,6 @@ if defined?(Bundler)
 end
 
 module TheSortableTreeTest
-
-  def self.app_type
-    # 'ancestry_act_as_list'
-    # 'nested_set'
-    'ancestry'
-  end
-
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

@@ -1,4 +1,4 @@
-## TheSortableTree Test Application 
+## TheSortableTree Test Application
 
 #### Ruby 2.0.0p247 + Rails 4 + Haml 4 + the_sortable_tree (2.3.0)
 
@@ -53,7 +53,15 @@ rspec
 The dummy app supports a number ways to add a sortable tree to the model, which can be
 set by the environment variable `SORTABLE_TREE_TYPE`.
 
-* `awesome_nested_set` uses [awesome\_nested\_set](https://github.com/collectiveidea/awesome_nested_set),
+```sh
+rails s
+SORTABLE_TREE_TYPE=ancestry rails s
+SORTABLE_TREE_TYPE=ancestry_acts_as_list rails s
+```
+
+`rails s`  - by default is `awesome_nested_set`
+
+* `awesome_nested_set` (by default) uses [awesome\_nested\_set](https://github.com/collectiveidea/awesome_nested_set),
 * `ancestry`: with [ancestry](https://github.com/stefankroes/ancestry), and
 * `ancestry_acts_as_list`: with both ancestry and [acts_as_list](https://github.com/swanandp/acts_as_list).
 

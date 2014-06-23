@@ -8,6 +8,6 @@ end
 # Loading of concerns
 _root_ = File.expand_path('../../', __FILE__)
 
-%w[ nested_set ancestry ].each do |concern|
+%w[ check_type nested_set nested_set_rails3 ancestry ancestry_acts_as_list ].each do |concern|
   require "#{ _root_ }/app/models/concerns/#{ concern }.rb"
 end
