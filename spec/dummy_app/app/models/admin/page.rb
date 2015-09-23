@@ -1,4 +1,4 @@
 class Admin::Page < ActiveRecord::Base
-  acts_as_nested_set
+  include TheTreeModel # acts_as_nested_set or has_ancestry
   include TheSortableTree::Scopes
 end

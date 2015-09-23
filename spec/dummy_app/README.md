@@ -46,3 +46,16 @@ cd the_sortable_tree/spec/dummy_app/
 rake db:bootstrap RAILS_ENV=test
 rspec
 ```
+
+
+### Using ancestry
+
+The dummy app supports a number ways to add a sortable tree to the model, which can be
+set by the environment variable `SORTABLE_TREE_TYPE`.
+
+* `awesome_nested_set` uses [awesome\_nested\_set](https://github.com/collectiveidea/awesome_nested_set),
+* `ancestry`: with [ancestry](https://github.com/stefankroes/ancestry), and
+* `ancestry_acts_as_list`: with both ancestry and [acts_as_list](https://github.com/swanandp/acts_as_list).
+
+Note that you need to set the environment variable when seeding the database as well as when
+running the rails server or tests.
