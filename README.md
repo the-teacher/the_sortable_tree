@@ -64,7 +64,15 @@ Add next JS only for Sortable GUI
 
 ```ruby
 //= require jquery.ui.nestedSortable
-//= require sortable_tree/initializer
+//= require sortable_tree/base
+
+// with Turbolinks
+$ ->
+  TheSortableTree.init()
+
+// with Turbolinks
+$(document).on "ready page:load", ->
+  TheSortableTree.init()
 ```
 
 #### Stylesheets
@@ -97,7 +105,7 @@ end
 ```ruby
 class Page < ActiveRecord::Base
   include TheSortableTree::Scopes
-  
+
   # any code here
 end
 ```
