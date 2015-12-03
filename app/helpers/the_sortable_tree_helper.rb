@@ -7,9 +7,9 @@ module TheSortableTreeHelper
 
   # Default renderers
   TREE_RENDERERS = {
-    :tree     => RenderTreeHelper,
-    :sortable => RenderSortableTreeHelper,
-    :expandable => RenderExpandableTreeHelper,
+    :tree           => RenderTreeHelper,
+    :sortable       => RenderSortableTreeHelper,
+    :expandable     => RenderExpandableTreeHelper,
     :nested_options => RenderNestedOptionsHelper
   }
 
@@ -32,7 +32,7 @@ module TheSortableTreeHelper
   ###############################################
   # Shortcuts
   ###############################################
-  
+
   def just_tree tree, options = {}
     build_server_tree(tree, { :type => :tree }.merge!(options))
   end
@@ -69,7 +69,7 @@ module TheSortableTreeHelper
       :namespace => [],   # :admin
 
       # BOOST! hash
-      :boost => {} 
+      :boost => {}
     }.merge!(options)
 
     # Basic vars
@@ -127,7 +127,7 @@ module TheSortableTreeHelper
       children = opts[:boost][node.id.to_s]
 
       # Boost OFF
-      # children = tree.select{ |_node| _node.parent_id == node.id } 
+      # children = tree.select{ |_node| _node.parent_id == node.id }
 
       opts.merge!({ :has_children => children.blank? })
 

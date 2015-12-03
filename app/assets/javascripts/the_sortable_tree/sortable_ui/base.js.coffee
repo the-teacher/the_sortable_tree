@@ -1,7 +1,7 @@
 @TheSortableTree ||= {}
 @TheSortableTree.SortableUI = do ->
   init: ->
-    sortable_tree = $('ol.sortable_tree')
+    sortable_tree = $('.the-sortable-tree')
     return false if sortable_tree.length is 0
 
     rebuild_url = sortable_tree.data('rebuild_url') || sortable_tree.data('rebuild-url')
@@ -11,18 +11,45 @@
     # Initialize Sortable Tree
     ############################################
     sortable_tree.nestedSortable
+      # nested sortable plugin options
+      tabSize:          25
+      listType:       'ol'
+      disableNesting: 'the-sortable-tree--no-nest'
+      listClass:      'the-sortable-tree--nested-set'
+      errorClass:     'the-sortable-tree--sortable-error'
+      maxLevels:       max_levels
+
+      # JQ sortable optopns
+
+      placeholder:      'the-sortable-tree--placeholder'
+      handle:           '.the-sortable-tree--handler'
+      toleranceElement: '> div'
+
       items:            'li'
       helper:           'clone'
-      handle:           'i.handle'
       tolerance:        'pointer'
-      maxLevels:        max_levels
+
       revert:           250
-      tabSize:          25
       opacity:          0.6
-      placeholder:      'placeholder'
-      disableNesting:   'no-nest'
-      toleranceElement: '> div'
       forcePlaceholderSize: true
+
+      # JQ sortable Callbacks
+      #
+      # create:     ->
+      # start:      ->
+      # activate:   ->
+      # over:       ->
+      # sort:       ->
+      # change:     ->
+      # sort:       ->
+      # beforeStop: ->
+      # # => AJAX
+      # update:     ->
+      # deactivate: ->
+      # out:        ->
+      # stop:       ->
+      # receive:    ->
+      # remove:     ->
 
     ############################################
     # Sortable Update Event
@@ -37,6 +64,8 @@
 
       TheSortableTree.SortableUI.rebuild_sortable_tree(rebuild_url, item_id, parent_id, prev_id, next_id)
 
+    true
+
   rebuild_sortable_tree: (rebuild_url, item_id, parent_id, prev_id, next_id) ->
     $.ajax
       type:     'POST'
@@ -49,10 +78,10 @@
         next_id:   next_id
 
       beforeSend: (xhr) ->
-        $('.sortable_tree i.handle').hide()
+        $('.the-sortable-tree--handler').css { opacity: 0 }
 
       success: (data, status, xhr) ->
-        $('.sortable_tree i.handle').show()
+        $('.the-sortable-tree--handler').css { opacity: 1 }
 
       error: (xhr, status, error) ->
         log error
