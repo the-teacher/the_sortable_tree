@@ -7,7 +7,7 @@
 # or use h.html_escape(node.content)
 # for escape potentially dangerous content
 module RenderSortableTreeHelper
-  module Render 
+  module Render
     class << self
       attr_accessor :h, :options
 
@@ -17,14 +17,31 @@ module RenderSortableTreeHelper
 
         "
           <li data-node-id='#{ node.id }'>
-            <div class='item'>
-              <i class='handle'></i>
-              #{ show_link }
-              #{ controls }
+            <div class='table w100p the-sortable-tree--item ptz--div-0 p5'>
+              <div class='row'>
+                <div class='cell vam w30'>
+                  #{ handler }
+                </div>
+
+                <div class='cell vam'>
+                  #{ show_link }
+                </div>
+
+                <div class='cell vam br-off w10 pr5'>
+                  #{ controls }
+                </div>
+              </div>
             </div>
+
             #{ children }
           </li>
         "
+      end
+
+      def handler
+        "<div class='the-sortable-tree--handler p5'>
+          <i class='fa fa-arrows fs16'></i>
+        </div>"
       end
 
       def show_link
@@ -33,7 +50,9 @@ module RenderSortableTreeHelper
         url = h.url_for(:controller => options[:klass].pluralize, :action => :show, :id => node)
         title_field = options[:title]
 
-        "<h4>#{ h.link_to(node.send(title_field), url) }</h4>"
+        "<div class='fs15'>
+          #{ h.link_to(node.send(title_field), url) }
+        </div>"
       end
 
       def controls
@@ -43,16 +62,15 @@ module RenderSortableTreeHelper
         destroy_path = h.url_for(:controller => options[:klass].pluralize, :action => :destroy, :id => node)
 
         "
-          <div class='controls'>
-            #{ h.link_to '', edit_path, :class => :edit }
-            #{ h.link_to '', destroy_path, :class => :delete, :method => :delete, :data => { :confirm => 'Are you sure?' } }
-          </div>
+          <a href='#{ edit_path }'>
+            <i class='fa fa-edit fs20'></i>
+          </a>
         "
       end
 
       def children
         unless options[:children].blank?
-          "<ol class='nested_set'>#{ options[:children] }</ol>"
+          "<ol class='the-sortable-tree--nested-set'>#{ options[:children] }</ol>"
         end
       end
 

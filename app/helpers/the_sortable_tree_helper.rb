@@ -7,9 +7,9 @@ module TheSortableTreeHelper
 
   # Default renderers
   TREE_RENDERERS = {
-    :tree     => RenderTreeHelper,
-    :sortable => RenderSortableTreeHelper,
-    :expandable => RenderExpandableTreeHelper,
+    :tree           => RenderTreeHelper,
+    :sortable       => RenderSortableTreeHelper,
+    :expandable     => RenderExpandableTreeHelper,
     :nested_options => RenderNestedOptionsHelper
   }
 
