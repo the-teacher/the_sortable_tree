@@ -63,16 +63,16 @@ Sortable GUI require JQuery libs
 Add next JS only for Sortable GUI
 
 ```ruby
-//= require jquery.ui.nestedSortable
-//= require sortable_tree/base
+//= require the_sortable_tree/jquery.ui.nestedSortable
+//= require the_sortable_tree/sortable_ui/base
 
 // with Turbolinks
 $ ->
-  TheSortableTree.init()
+  TheSortableTree.SortableUI.init()
 
 // with Turbolinks
 $(document).on "ready page:load", ->
-  TheSortableTree.init()
+  TheSortableTree.SortableUI.init()
 ```
 
 #### Stylesheets
