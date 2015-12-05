@@ -85,6 +85,10 @@ $(document).on "ready page:load", ->
 *= require nested_options
 ```
 
+```
+  ol.the-sortable-tree.the-sortable-tree--list(data={ max_levels: 5, rebuild_url: rebuild_hubs_url })
+    = sortable_tree @hubs
+```
 ### Extend your Routes for Sortable GUI
 
 ```ruby
