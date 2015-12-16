@@ -83,6 +83,8 @@ $(document).on "ready page:load", ->
 *= require tree
 *= require sortable_tree
 *= require nested_options
+
+*= the_sortable_tree/sortable_ui/base
 ```
 
 ```
