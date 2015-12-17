@@ -110,7 +110,8 @@ end
 
 ```ruby
 class Page < ActiveRecord::Base
-  include TheSortableTree::Scopes
+  acts_as_nested_set scope: :user
+  include ::TheSortableTree::Scopes
 
   # any code here
 end
@@ -120,7 +121,7 @@ end
 
 ```ruby
 class PagesController < ApplicationController
-  include TheSortableTreeController::Rebuild
+  include ::TheSortableTreeController::Rebuild
 
   def manage
     @pages = Page.nested_set.select('id, title, content, parent_id').all
