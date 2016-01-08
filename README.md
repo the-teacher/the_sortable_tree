@@ -278,6 +278,8 @@ Try to create view helpers for:
 1. [mjsarfatti/nestedSortable](https://github.com/mjsarfatti/nestedSortable)
 2. [iconza](http://iconza.com)
 
+`this line fot testing with submodules`
+
 ## The MIT License (MIT)
 
 Copyright 2009-2013 Ilya N. Zykin (the-teacher), Mikhail Dieterle (Mik-die), Matthew Clark
