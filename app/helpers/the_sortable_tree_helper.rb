@@ -110,8 +110,10 @@ module TheSortableTreeHelper
 
       # define roots, if it's need
       if roots.nil? && !tree.empty?
-        min_parent_id = tree.map(&:parent_id).compact.min
-        roots = tree.select{ |elem| elem.parent_id == min_parent_id }
+        ids = tree.map(&:id)
+        opt_ids = opts[:boost].keys.map(&:to_i)
+        candidate_ids = (ids+opt_ids).uniq - (ids&opt_ids) #xor
+        roots = candidate_ids.map {|c| opts[:boost][c.to_s]}.compact.flatten
       end
 
       # children rendering
