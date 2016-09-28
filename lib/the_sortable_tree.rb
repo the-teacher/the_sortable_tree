@@ -13,7 +13,7 @@ module TheSortableTree
           scope :nested_set,          lambda { order('lft ASC')  }
           scope :reversed_nested_set, lambda { order('lft DESC') }
         else
-          puts "[TheSortableTree] ERROR: required Rails 3 or Rails 4"
+          puts "[TheSortableTree] ERROR: required Rails >= version 3"
         end
       end
     end

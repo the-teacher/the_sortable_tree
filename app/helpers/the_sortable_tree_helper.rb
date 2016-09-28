@@ -32,7 +32,7 @@ module TheSortableTreeHelper
   ###############################################
   # Shortcuts
   ###############################################
-  
+
   def just_tree tree, options = {}
     build_server_tree(tree, { :type => :tree }.merge!(options))
   end
@@ -69,7 +69,7 @@ module TheSortableTreeHelper
       :namespace => [],   # :admin
 
       # BOOST! hash
-      :boost => {} 
+      :boost => {}
     }.merge!(options)
 
     # Basic vars
@@ -110,9 +110,12 @@ module TheSortableTreeHelper
 
       # define roots, if it's need
       if roots.nil? && !tree.empty?
+        # Looks like the new algo really does what we need (28 sept. 2016)
+        # Thanks to: https://github.com/patrick-nits
+        #
         ids = tree.map(&:id)
         opt_ids = opts[:boost].keys.map(&:to_i)
-        candidate_ids = (ids+opt_ids).uniq - (ids&opt_ids) #xor
+        candidate_ids = (ids + opt_ids).uniq - (ids & opt_ids) # xor
         roots = candidate_ids.map {|c| opts[:boost][c.to_s]}.compact.flatten
       end
 
@@ -129,7 +132,7 @@ module TheSortableTreeHelper
       children = opts[:boost][node.id.to_s]
 
       # Boost OFF
-      # children = tree.select{ |_node| _node.parent_id == node.id } 
+      # children = tree.select{ |_node| _node.parent_id == node.id }
 
       opts.merge!({ :has_children => children.blank? })
 
