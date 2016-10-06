@@ -12,7 +12,8 @@ gem 'jquery-ui-rails'
 gem 'quiet_assets'
 
 gem 'awesome_nested_set', github: "collectiveidea/awesome_nested_set"
-gem 'the_sortable_tree', path: '../../'
+# gem 'the_sortable_tree', path: '../../'
+gem 'the_sortable_tree', '2.6.1'
 
 group :assets do
   gem 'uglifier'
