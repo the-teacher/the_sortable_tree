@@ -63,6 +63,7 @@ Sortable GUI require JQuery libs
 Add next JS only for Sortable GUI
 
 ```ruby
+//= require jquery-ui/sortable
 //= require jquery.ui.nestedSortable
 //= require sortable_tree/initializer
 ```
@@ -97,7 +98,7 @@ end
 ```ruby
 class Page < ActiveRecord::Base
   include TheSortableTree::Scopes
-  
+
   # any code here
 end
 ```
