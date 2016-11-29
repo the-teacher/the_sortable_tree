@@ -16,7 +16,7 @@ module RenderSortableTreeHelper
         node = options[:node]
 
         "
-          <li data-node-id='#{ node.id }'>
+          <li data-node-id='#{ node.id }' data-node-id='#{ node.id }'>
             <div class='item'>
               <i class='handle'></i>
               #{ show_link }
