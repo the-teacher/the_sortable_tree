@@ -1,0 +1,3 @@
+%p= link_to raw('&larr; back'), '/'
+
+= select_tag :pages, indented_options(@pages, selected: @pages.last), class: :nested_options

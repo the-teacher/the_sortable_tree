@@ -8,24 +8,28 @@ Nested Set + Drag&Drop GUI. Very fast! Best render helper! **2000 nodes/sec**. R
 
 ### Dummy Application
 
-* [spec/dummy_app](https://github.com/the-teacher/the_sortable_tree/tree/master/spec/dummy_app)
-* [spec/dummy_app/README.md](https://github.com/the-teacher/the_sortable_tree/blob/master/spec/dummy_app/README.md)
+* [spec/dummy_app](spec/dummy_app)
+* [spec/dummy_app/README.md](dummy_app/README.md)
 
 ## Sortable tree. Drag&Drop GUI
 
-![Drag&Drop GUI. Sotrable tree](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/sortable.jpg)
+![Drag&Drop GUI. Sotrable tree](docs/sortable.jpg)
 
 ## Render tree
 
-![Render tree](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/tree.jpg)
+![Render tree](docs/tree.jpg)
 
 ## Render Nested Options
 
-![Nested options](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/nested_options.jpg)
+![Nested options](docs/nested_options.jpg)
+
+## Render Indented Options
+
+![Indented options](docs/indented_options.jpg)
 
 ## Expandable tree
 
-![Expandable](https://raw.github.com/the-teacher/the_sortable_tree/master/docs/expandable.jpg)
+![Expandable](docs/expandable.jpg)
 
 ## Keywords
 
@@ -148,6 +152,8 @@ build_server_tree(tree, options)
 
 **nested_options** is just alias of **build_server_tree(tree, type: :nested_options)**
 
+This uses CSS styling, for indenting with spaces, use **indented_options** instead.
+
 
 ## build_server_tree options
 
@@ -182,9 +188,10 @@ Options list:
 
 1. **id** - id field of node
 2. **title** - title field of node
-3. **type** - type of tree [tree|sortable|nested_options]
+3. **type** - type of tree [tree|sortable|nested_options|indented_options]
 4. **namespace** - for example: **:admin**. **[]** - by default
 5. **render_module** - your own Render Tree Helper
+6. **spacing** - number of spaces per level (indented_options only)
 
 **Rendering runtime params (see code of render helpers):**
 
@@ -196,6 +203,24 @@ You can use next options, when rendering run:
 4. **has_children** - has children flag [true|false]
 5. **children** - array of children
 
+## Simple\_form input
+
+Using indented options with [simple\_form](https://github.com/plataformatec/simple_form)
+is easy:
+
+```ruby
+= simple_form_for @website do |form|
+  = form.association :front_page, as: :indented_collection_select
+```
+
+Additional options can be supplied to the input:
+
+1. **spacing** - number of spaces to use for each level (default 3)
+2. **depth\_method** - method name to get level from object (default `:depth`)
+
+Please note that when you're using awesome\_nested\_set, you need to have the
+optional `depth` column in your table.
+
 ## Customization
 
 Try to run next view generators:
@@ -206,6 +231,7 @@ Render helpers for HTML tree generation
 bundle exec rails g the_sortable_tree:views tree
 bundle exec rails g the_sortable_tree:views sortable
 bundle exec rails g the_sortable_tree:views nested_options
+bundle exec rails g the_sortable_tree:views indented_options
 ```
 
 Base Render helper of gem

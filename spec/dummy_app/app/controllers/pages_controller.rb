@@ -10,6 +10,10 @@ class PagesController < ApplicationController
     @pages = Page.nested_set.select('id, title, content, parent_id').limit(15)
   end
 
+  def indented_options
+    @pages = Page.nested_set.select('id, title, content, parent_id').limit(15)
+  end
+
   def manage
     @pages = Page.nested_set.select('id, title, content, parent_id').all
   end

@@ -8,6 +8,7 @@ TheSortableTreeTest::Application.routes.draw do
   resources :pages do
     collection do
       get  :nested_options
+      get  :indented_options
       get  :manage
       get  :node_manage
       get  :expand
@@ -20,7 +21,7 @@ TheSortableTreeTest::Application.routes.draw do
   namespace :admin do
     resources :pages do
       collection do
-        get  :nested_options, :manage, :node_manage
+        get  :nested_options, :indented_options, :manage, :node_manage
         post :rebuild
       end
     end
