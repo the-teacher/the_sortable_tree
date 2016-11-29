@@ -13,6 +13,10 @@ class Admin::PagesController < ApplicationController
     @pages = Admin::Page.nested_set.select('id, title, content, parent_id').limit(15)
   end
 
+  def indented_options
+    @pages = Admin::Page.nested_set.select('id, title, content, parent_id').limit(15)
+  end
+
   def node_manage
     @root  = Admin::Page.root
     @pages = @root.self_and_descendants.nested_set.select('id, title, content, parent_id').limit(15)
