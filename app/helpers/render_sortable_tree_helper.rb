@@ -17,17 +17,17 @@ module RenderSortableTreeHelper
 
         "
           <li data-node-id='#{ node.id }'>
-            <div class='ptz--table w100p the-sortable-tree--item ptz--div-0 p5'>
-              <div class='ptz--tr'>
-                <div class='ptz--td vam w30'>
+            <div class='ptz_table w100p the-sortable-tree--item ptz_div-0 p5'>
+              <div class='ptz_tr'>
+                <div class='ptz_td vam w30'>
                   #{ handler }
                 </div>
 
-                <div class='ptz--td vam'>
+                <div class='ptz_td vam'>
                   #{ show_link }
                 </div>
 
-                <div class='ptz--td vam br-off w10 pr5'>
+                <div class='ptz_td vam br-off w10 pr5'>
                   #{ controls }
                 </div>
               </div>
