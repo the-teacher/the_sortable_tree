@@ -1,5 +1,11 @@
 /*
- //= require the_sortable_tree/tree
- //= require the_sortable_tree/nested_options
- //= require the_sortable_tree/expandable_tree
+  //= require ptz/reset
+  //= require ptz/base
+  //= require ptz/framework
+
+  //= require the_sortable_tree/sortable_ui/base
+
+  //= require the_sortable_tree/tree
+  //= require the_sortable_tree/nested_options
+  //= require the_sortable_tree/expandable_tree
 */
