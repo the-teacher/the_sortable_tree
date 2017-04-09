@@ -10,18 +10,18 @@
       next_id:   next_id
 
     beforeSend: (xhr) ->
-      $('.sortable_tree i.handle').hide()
+      $('.the_sortable_tree-handler').hide()
 
     success: (data, status, xhr) ->
-      $('.sortable_tree i.handle').show()
+      $('.the_sortable_tree-handler').show()
 
     error: (xhr, status, error) ->
       console.log error
 
 @init_sortable_tree = ->
-  sortable_tree = $('ol.sortable_tree')
+  sortable_tree = $('.the_sortable_tree')
   return false if sortable_tree.length is 0
-  
+
   rebuild_url = sortable_tree.data('rebuild_url') || sortable_tree.data('rebuild-url')
   max_levels  = sortable_tree.data('max_levels')  || sortable_tree.data('max-levels')
 
@@ -29,15 +29,16 @@
   # Initialize Sortable Tree
   ############################################
   sortable_tree.nestedSortable
-    items:            'li'
-    helper:           'clone'
-    handle:           'i.handle'
+    items:            '.the_sortable_tree-item'
+    handle:           '.the_sortable_tree-handler'
+    placeholder:      'the_sortable_tree-placeholder'
+
     tolerance:        'pointer'
+    helper:           'clone'
     maxLevels:        max_levels
     revert:           250
     tabSize:          25
     opacity:          0.6
-    placeholder:      'placeholder'
     disableNesting:   'no-nest'
     toleranceElement: '> div'
     forcePlaceholderSize: true
@@ -52,7 +53,7 @@
     prev_id   = item.prev().data(attr_name)
     next_id   = item.next().data(attr_name)
     parent_id = item.parent().parent().data(attr_name)
-    
+
     rebuild_sortable_tree(rebuild_url, item_id, parent_id, prev_id, next_id)
 
   true

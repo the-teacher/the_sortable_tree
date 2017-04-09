@@ -2,7 +2,7 @@
 
 %p= link_to raw('&larr; back'), '/'
 
-%ol.sortable_tree{ :data => { :rebuild_url => rebuild_pages_url } }
+%ol.the_sortable_tree{ :data => { :rebuild_url => rebuild_pages_url } }
   = build_server_tree @pages, :type => :sortable
 
 %h2 Root:

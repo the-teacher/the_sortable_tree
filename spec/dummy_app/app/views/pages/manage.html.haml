@@ -4,5 +4,5 @@
 
 Count: #{ @pages.to_a.count }
 
-%ol.sortable_tree{ data: { rebuild_url: rebuild_pages_url } }
+%ol.the_sortable_tree{ data: { rebuild_url: rebuild_pages_url } }
   = sortable_tree @pages, namespace: :admin

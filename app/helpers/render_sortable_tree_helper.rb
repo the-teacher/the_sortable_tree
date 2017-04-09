@@ -17,7 +17,7 @@ module RenderSortableTreeHelper
 
         "
           <li data-node-id='#{ node.id }'>
-            <div class='ptz_table w100p the-sortable-tree--item ptz_div-0 p5'>
+            <div class='ptz_table w100p the_sortable_tree-item ptz_div-0 p5'>
               <div class='ptz_tr'>
                 <div class='ptz_td vam w30'>
                   #{ handler }
@@ -39,7 +39,7 @@ module RenderSortableTreeHelper
       end
 
       def handler
-        "<div class='the-sortable-tree--handler p5'>
+        "<div class='the_sortable_tree-handler p5'>
           <i class='fa fa-arrows fs16'></i>
         </div>"
       end
@@ -70,7 +70,7 @@ module RenderSortableTreeHelper
 
       def children
         unless options[:children].blank?
-          "<ol class='the-sortable-tree--nested-set'>#{ options[:children] }</ol>"
+          "<ol class='the_sortable_tree-nested_set'>#{ options[:children] }</ol>"
         end
       end
 
