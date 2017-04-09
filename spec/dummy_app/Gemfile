@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'quiet_assets'
+gem 'sass-rails'
 
 gem 'awesome_nested_set', github: "collectiveidea/awesome_nested_set"
 gem 'the_sortable_tree', path: '../../'
@@ -17,7 +18,6 @@ gem 'the_sortable_tree', path: '../../'
 
 group :assets do
   gem 'uglifier'
-  gem 'sass-rails'
   gem 'coffee-rails'
 end
 
