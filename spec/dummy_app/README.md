@@ -22,13 +22,13 @@
 3. Launch the App
 
   ```
-  rails s
+  bin/rails s
   ```
 
   or
 
   ```
-  rails s -p 3000 -b site.com
+  bin/rails s -p 3000 -b site.com
   ```
 
 4. Visit the Index page
