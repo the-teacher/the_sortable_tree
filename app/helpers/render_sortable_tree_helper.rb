@@ -16,8 +16,8 @@ module RenderSortableTreeHelper
         node = options[:node]
 
         "
-          <li data-node-id='#{ node.id }'>
-            <div class='ptz_table w100p the_sortable_tree-item ptz_div-0 p5'>
+          <li data-node-id='#{ node.id }' class='the_sortable_tree-item'>
+            <div class='ptz_table w100p p5 the_sortable_tree-item_content'>
               <div class='ptz_tr'>
                 <div class='ptz_td vam w30'>
                   #{ handler }

@@ -1,3 +1,4 @@
-%p= link_to raw('&larr; back'), '/'
+.ma.w800
+  %p= link_to raw('&larr; back'), '/'
 
-= select_tag :pages, nested_options(@pages, selected: @pages.last), class: :nested_options
+  = select_tag :pages, nested_options(@pages, selected: @pages.last), class: :nested_options

@@ -7,7 +7,7 @@
 # or use h.html_escape(node.content)
 # for escape potentially dangerous content
 module RenderExpandableTreeHelper
-  module Render 
+  module Render
     class << self
       attr_accessor :h, :options
 
@@ -53,7 +53,7 @@ module RenderExpandableTreeHelper
 
       def children
         unless options[:children].blank?
-          "<ol class='nested_set'>#{ options[:children] }</ol>"
+          "<ol class='the_sortable_tree-nested_set'>#{ options[:children] }</ol>"
         end
       end
 

@@ -1,40 +1,41 @@
-%h1 Welcome to TheSortableTree test application!
+.w800.ma.fs16.ffa.lh150
+  %h1.mb30 Welcome to TheSortableTree test application!
 
-%h4 Default views
+  %h4.mb20 Default views
 
-%h5 Pages (model Pages)
+  %h5.mb20 Pages (model Pages)
 
-%ul
-  %li= link_to 'pages/index (just tree)',           pages_path
-  %li= link_to 'pages/nested_options',              nested_options_pages_path
-  %li= link_to 'pages/manage (sortable tree)',      manage_pages_path
-  %li= link_to 'pages/node_manage (sortable tree)', node_manage_pages_path
-  %li= link_to 'pages/expand (expandable tree)',    expand_pages_path
+  %ul.ml40.mb20
+    %li= link_to 'pages/index (just tree)',           pages_path
+    %li= link_to 'pages/nested_options',              nested_options_pages_path
+    %li= link_to 'pages/manage (sortable tree)',      manage_pages_path
+    %li= link_to 'pages/node_manage (sortable tree)', node_manage_pages_path
+    %li= link_to 'pages/expand (expandable tree)',    expand_pages_path
 
-%h5 Admin::Pages (model Admin::Pages + namespace :admin)
+  %h5.mb20 Admin::Pages (model Admin::Pages + namespace :admin)
 
-%ul
-  %li= link_to '/admin/pages/index (just tree)',           admin_pages_path
-  %li= link_to '/admin/pages/nested_options',              nested_options_admin_pages_path
-  %li= link_to '/admin/pages/manage (sortable tree)',      manage_admin_pages_path
-  %li= link_to '/admin/pages/node_manage (sortable tree)', node_manage_admin_pages_path
+  %ul.ml40.mb20
+    %li= link_to '/admin/pages/index (just tree)',           admin_pages_path
+    %li= link_to '/admin/pages/nested_options',              nested_options_admin_pages_path
+    %li= link_to '/admin/pages/manage (sortable tree)',      manage_admin_pages_path
+    %li= link_to '/admin/pages/node_manage (sortable tree)', node_manage_admin_pages_path
 
-%h5 Сompound model name (Inventory::Category)
+  %h5.mb20 Сompound model name (Inventory::Category)
 
-%ul
-  %li= link_to 'inventory/categories/index',                  inventory_categories_path
-  %li= link_to 'inventory/categories/manage (sortable tree)', manage_inventory_categories_path
+  %ul.ml40.mb20
+    %li= link_to 'inventory/categories/index',                  inventory_categories_path
+    %li= link_to 'inventory/categories/manage (sortable tree)', manage_inventory_categories_path
 
-%h5 Сompound model name (ArticleCategory)
+  %h5.mb20 Сompound model name (ArticleCategory)
 
-%ul
-  %li= link_to 'article_categories/index',                  article_categories_path
-  %li= link_to 'article_categories/manage (sortable tree)', manage_article_categories_path
+  %ul.ml40.mb20
+    %li= link_to 'article_categories/index',                  article_categories_path
+    %li= link_to 'article_categories/manage (sortable tree)', manage_article_categories_path
 
-%h4 Customized views
+  -# %h4 Customized views
 
--#
-  %ul
-    %li= link_to 'comments/index (min)', comments_path
-    %li= link_to 'comments/manage (sortable tree)', manage_comments_path
-    %li= link_to 'comments/manage (Tree of Comments)', comments_comments_path
+  -#
+    %ul
+      %li= link_to 'comments/index (min)', comments_path
+      %li= link_to 'comments/manage (sortable tree)', manage_comments_path
+      %li= link_to 'comments/manage (Tree of Comments)', comments_comments_path

@@ -29,9 +29,10 @@
   # Initialize Sortable Tree
   ############################################
   sortable_tree.nestedSortable
-    items:            '.the_sortable_tree-item'
-    handle:           '.the_sortable_tree-handler'
-    placeholder:      'the_sortable_tree-placeholder'
+    items:       '.the_sortable_tree-item'
+    handle:      '.the_sortable_tree-handler'
+    placeholder: 'the_sortable_tree-placeholder'
+    listClass:   'the_sortable_tree-nested_set'
 
     tolerance:        'pointer'
     helper:           'clone'
@@ -47,8 +48,9 @@
   # Sortable Update Event
   ############################################
   sortable_tree.on "sortupdate", (event, ui) =>
-    item      = ui.item
+    item = ui.item
     attr_name = 'node-id'
+
     item_id   = item.data(attr_name)
     prev_id   = item.prev().data(attr_name)
     next_id   = item.next().data(attr_name)

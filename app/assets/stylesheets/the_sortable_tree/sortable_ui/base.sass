@@ -7,33 +7,30 @@
       margin: 0
       padding: 0
 
-  &-list
-    position: relative
-    list-style: none outside none
-
-    li
-      position: relative
-      margin-bottom: 15px
-      list-style: none outside none
-
   &-item
     position: relative
+    margin: 0 0 10px 10px
+
+  &-item_content
+    background: #eef
+    border-radius: 3px
 
   &-handler
     cursor: move
 
   &-placeholder
-    background: #4ed740
-    margin-bottom: 15px
+    margin-left: 10px
+    margin-bottom: 10px
     border-radius: 3px
+    background: #4ed740
 
   &-sortable_error
     background: red
 
   &-nested_set
-    margin: 15px 0 0 15px
+    margin: 10px 0 0 10px
     border-left: 1px dashed #bbb
     list-style: none outside none
 
-    li
-      margin: 0 0 15px 15px
+    .the_sortable_tree-item
+      margin: 0 0 10px 10px
