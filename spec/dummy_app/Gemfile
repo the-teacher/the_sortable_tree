@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '4.1.16'
 gem 'sqlite3'
 
 gem 'json'
@@ -12,8 +12,8 @@ gem 'jquery-ui-rails'
 gem 'quiet_assets'
 
 gem 'awesome_nested_set', github: "collectiveidea/awesome_nested_set"
-# gem 'the_sortable_tree', path: '../../'
-gem 'the_sortable_tree', '2.6.1'
+gem 'the_sortable_tree', path: '../../'
+# gem 'the_sortable_tree', '2.6.1'
 
 group :assets do
   gem 'uglifier'

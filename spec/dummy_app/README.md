@@ -1,48 +1,38 @@
-## TheSortableTree Test Application 
+## TheSortableTree Test Application
 
-#### Ruby 2.0.0p247 + Rails 4 + Haml 4 + the_sortable_tree (2.3.0)
+* Ruby 2.3.3
+* Rails 4
+* Haml 4
+* the_sortable_tree
 
+### Setup the App
 
-### Install App and try to use TheSortableTree
+1. Copy and configure `database.yml`
 
-Create Database config file
+  ```
+  cp config/database.yml.example config/database.yml
+  ```
 
-```
-cp config/database.yml.example config/database.yml
-```
+2. Create DB and Seeds for development
 
-Create Database and Test data
+  ```
+  rake db:bootstrap_and_seed
+  ```
 
-```
-rake db:bootstrap_and_seed
-```
+3. Launch the App
 
-Start Rails 4
+  ```
+  rails s
+  ```
 
-```
-rails s
-```
+  or
 
-or
+  ```
+  rails s -p 3000 -b site.com
+  ```
 
-```
-rails s -p 3000 -b site.com
-```
+4. Visit the Index page
 
-Open browser
-
-```
-localhost:3000
-```
-
-### How to run tests for TheSortable tree
-
-```ruby
-git clone git@github.com:the-teacher/the_sortable_tree.git
-cd the_sortable_tree/spec/dummy_app/
-
-# cp config/database.yml.example config/database.yml
-
-rake db:bootstrap RAILS_ENV=test
-rspec
-```
+  ```
+  localhost:3000
+  ```
