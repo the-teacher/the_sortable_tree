@@ -16,8 +16,8 @@ module RenderTreeHelper
 
         node = options[:node]
         "
-          <li>
-            <div class='item'>
+          <li class='tst_tree-item'>
+            <div class='tst_tree-item_content'>
               #{ show_link }
             </div>
             #{ children }
@@ -30,13 +30,14 @@ module RenderTreeHelper
         ns   = options[:namespace]
         url  = h.url_for(ns + [node])
         title_field = options[:title]
+        klass = 'tst_tree-link'
 
-        "<h4>#{ h.link_to(node.send(title_field), url) }</h4>"
+        "<h4>#{ h.link_to(node.send(title_field), url, class: klass) }</h4>"
       end
 
       def children
         unless options[:children].blank?
-          "<ol>#{ options[:children] }</ol>"
+          "<ol class='tst_tree-list'>#{ options[:children] }</ol>"
         end
       end
 
