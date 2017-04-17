@@ -52,7 +52,7 @@ module TheSortableTreeController
         variable.move_to_left_of klass.find(next_id)
       end
 
-      render(nothing: true, status: :ok)
+     render json: klass.nested_set
     end
   end
   
@@ -78,7 +78,7 @@ module TheSortableTreeController
         variable.move_to_right_of klass.find(next_id)
       end
 
-      render(nothing: true, status: :ok)
+      render json: klass.nested_set
     end
   end
 end
