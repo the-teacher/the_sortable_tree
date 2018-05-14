@@ -23,6 +23,7 @@ module TheSortableTreeController
 
   module ExpandNode
     include DefineVariablesMethod
+    include DefineDeprecatedMethods
     def expand_node
       id   = params[:id].to_i
       return head_respond unless id
@@ -39,6 +40,7 @@ module TheSortableTreeController
 
   module Rebuild
     include DefineVariablesMethod
+    include DefineDeprecatedMethods
     public
     def rebuild
       id        = params[:id].to_i
@@ -65,6 +67,7 @@ module TheSortableTreeController
 
   module ReversedRebuild
     include DefineVariablesMethod
+    include DefineDeprecatedMethods
     public
     def rebuild
       id        = params[:id].to_i
