@@ -46,8 +46,7 @@ module RenderSortableTreeHelper
 
       def show_link
         node = options[:node]
-        ns   = options[:namespace]
-        url = h.url_for(:controller => options[:klass].pluralize, :action => :show, :id => node)
+        url = h.url_for(:controller => kontroller, :action => :show, :id => node)
         title_field = options[:title]
 
         "<div class='fs15'>
@@ -58,8 +57,8 @@ module RenderSortableTreeHelper
       def controls
         node = options[:node]
 
-        edit_path = h.url_for(:controller => options[:klass].pluralize, :action => :edit, :id => node)
-        destroy_path = h.url_for(:controller => options[:klass].pluralize, :action => :destroy, :id => node)
+        edit_path = h.url_for(:controller => kontroller, :action => :edit, :id => node)
+        destroy_path = h.url_for(:controller => kontroller, :action => :destroy, :id => node)
 
         "
           <a href='#{ edit_path }'>
@@ -74,6 +73,9 @@ module RenderSortableTreeHelper
         end
       end
 
+      def kontroller
+        options[:controller] ||= options[:klass].pluralize
+      end
     end
   end
 end

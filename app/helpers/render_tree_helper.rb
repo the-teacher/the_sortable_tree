@@ -27,8 +27,7 @@ module RenderTreeHelper
 
       def show_link
         node = options[:node]
-        ns   = options[:namespace]
-        url  = h.url_for(ns + [node])
+        url = h.url_for(:controller => kontroller, :action => :show, :id => node)
         title_field = options[:title]
         klass = 'tst_tree-link'
 
@@ -39,6 +38,10 @@ module RenderTreeHelper
         unless options[:children].blank?
           "<ol class='tst_tree-list'>#{ options[:children] }</ol>"
         end
+      end
+
+      def kontroller
+        options[:controller] ||= options[:klass].pluralize
       end
 
     end
