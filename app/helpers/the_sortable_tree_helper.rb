@@ -116,7 +116,7 @@ module TheSortableTreeHelper
         ids = tree.map(&:id)
         opt_ids = opts[:boost].keys.map(&:to_i)
         candidate_ids = (ids + opt_ids).uniq - (ids & opt_ids) # xor
-        roots = candidate_ids.map {|c| opts[:boost][c.to_s]}.compact.flatten
+        roots = (candidate_ids & opt_ids).map {|c| opts[:boost][c.to_s]}.flatten
       end
 
       # children rendering
